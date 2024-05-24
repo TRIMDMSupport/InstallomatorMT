@@ -1512,6 +1512,24 @@ valuesfromarguments)
     ;;
 
 # label descriptions start here
+dockutil)
+    name="dockutil"
+    type="pkg"
+    packageID="dockutil.cli.tool"
+    downloadURL=$(downloadURLFromGit "kcrawford" "dockutil")
+    appNewVersion=$(versionFromGit "kcrawford" "dockutil")
+    expectedTeamID="Z5J8CJBUWC"
+    blockingProcesses=( NONE )
+    ;;
+dialog|\
+swiftdialog)
+    name="Dialog"
+    type="pkg"
+    packageID="au.csiro.dialogcli"
+    downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
+    appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
+    expectedTeamID="PWA5E9TQ59"
+    ;;
 spotify1013)
 	name="Spotify"
 	type="dmg"
