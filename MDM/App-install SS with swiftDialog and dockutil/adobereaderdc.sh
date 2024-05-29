@@ -4,7 +4,7 @@
 
 LOGO="" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="drawio24_4_8" # enter the software to install
+item="adobereaderdc" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
@@ -14,7 +14,7 @@ icon=""
 
 # dockutil variables
 addToDock="1" # with dockutil after installation (0 if not)
-appPath="/Applications/Cyberduck.app"
+appPath=""
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
@@ -87,7 +87,9 @@ getCustomInstallomator () {
 
     if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/download/test/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
             echo "ERROR: Cannot download Installomator script."
-        fi
+    else
+        chmod 755 /usr/local/Installomator/Installomator.sh
+    fi
 }
 
 # Check the currently logged in user

@@ -87,7 +87,9 @@ getCustomInstallomator () {
 
     if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/download/test/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
             echo "ERROR: Cannot download Installomator script."
-        fi
+    else
+        chmod 755 /usr/local/Installomator/Installomator.sh
+    fi
 }
 
 # Check the currently logged in user
