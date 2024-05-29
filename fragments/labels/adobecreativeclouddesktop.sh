@@ -1,4 +1,4 @@
-adobecreativeclouddesktop6_2_0)
+adobecreativeclouddesktop)
     name="Adobe Creative Cloud"
     appName="Creative Cloud.app"
     type="dmg"
@@ -12,8 +12,7 @@ adobecreativeclouddesktop6_2_0)
     else
         downloadURL="https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/6.2.0/554/osx10/ACCCx6_2_0_554.dmg"
     fi
-    #appNewVersion=$(curl -fs "https://helpx.adobe.com/creative-cloud/release-note/cc-release-notes.html" | grep "mandatory" | head -1 | grep -o "Version *.* released" | cut -d " " -f2)
-    #appNewVersion=$(echo $downloadURL | grep -o '[^x]*$' | cut -d '.' -f 1 | sed 's/_/\./g')
+    appNewVersion="6.2.0"
     targetDir="/Applications/Utilities/Adobe Creative Cloud/ACC/"
     installerTool="Install.app"
     CLIInstaller="Install.app/Contents/MacOS/Install"
