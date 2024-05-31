@@ -85,7 +85,7 @@ getCustomInstallomator () {
     # Ensure the target directory exists
     mkdir -p /usr/local/Installomator
 
-    if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/download/test/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
+    if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/latest/download/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
             echo "ERROR: Cannot download Installomator script."
     else
         chmod 755 /usr/local/Installomator/Installomator.sh
