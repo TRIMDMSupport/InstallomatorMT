@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6beta"
-VERSIONDATE="2024-05-24"
+VERSIONDATE="2024-06-04"
 
 # MARK: Functions
 
@@ -1512,7 +1512,7 @@ valuesfromarguments)
     ;;
 
 # label descriptions start here
-adobecreativeclouddesktop6_2_0)
+adobecreativeclouddesktop)
     name="Adobe Creative Cloud"
     appName="Creative Cloud.app"
     type="dmg"
@@ -1526,8 +1526,7 @@ adobecreativeclouddesktop6_2_0)
     else
         downloadURL="https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/6.2.0/554/osx10/ACCCx6_2_0_554.dmg"
     fi
-    #appNewVersion=$(curl -fs "https://helpx.adobe.com/creative-cloud/release-note/cc-release-notes.html" | grep "mandatory" | head -1 | grep -o "Version *.* released" | cut -d " " -f2)
-    #appNewVersion=$(echo $downloadURL | grep -o '[^x]*$' | cut -d '.' -f 1 | sed 's/_/\./g')
+    appNewVersion="6.2.0"
     targetDir="/Applications/Utilities/Adobe Creative Cloud/ACC/"
     installerTool="Install.app"
     CLIInstaller="Install.app/Contents/MacOS/Install"
@@ -1536,11 +1535,11 @@ adobecreativeclouddesktop6_2_0)
     blockingProcesses=( "Creative Cloud" )
     Company="Adobe"
     ;;
-adobedigitaleditions4_5)
+adobedigitaleditions)
     name="Adobe Digital Editions"
     type="pkgInDmg"
     downloadURL="https://adedownload.adobe.com/pub/adobe/digitaleditions/ADE_4.5_Installer.dmg"
-    #appNewVersion=$(curl -fs https://www.adobe.com/solutions/ebook/digital-editions/download.html | grep -o 'Adobe Digital Editions.*Installers' | awk -F' ' '{ print $4 }')
+    appNewVersion="4.5"
     expectedTeamID="JQ525L2MZD"
     ;;
 adobereaderdc|\
@@ -1607,65 +1606,63 @@ adobereaderdc-update)
     blockingProcesses=( "Acrobat Pro DC" "AdobeAcrobat" "AdobeReader" "Distiller" )
     Company="Adobe"
     ;;
-alttab6_69_0)
+alttab)
     name="AltTab"
     type="zip"
-    downloadURL="https://github.com/lwouis/alt-tab-macos/releases/download/v6.69.0/AltTab-6.69.0.zip"
-    #appNewVersion=$(versionFromGit lwouis alt-tab-macos)
+    downloadURL="https://github.com/lwouis/alt-tab-macos/releases/download/v6.70.1/AltTab-6.70.1.zip"
+    appNewVersion="6.70.1"
     expectedTeamID="QXD7GW8FHY"
     ;;
-betterdisplay2_3_4)
+betterdisplay)
     name="BetterDisplay"
     type="dmg"
     downloadURL="https://github.com/waydabber/BetterDisplay/releases/download/v2.3.4/BetterDisplay-v2.3.4.dmg"
-    #appNewVersion=$(versionFromGit waydabber BetterDisplay)
+    appNewVersion="2.3.4"
     expectedTeamID="299YSU96J7"
     ;;
-bruno1_18_0)
+bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
     if [[ $(arch) == “arm64” ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.18.0/bruno_1.18.0_arm64_mac.dmg"
+        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_arm64_mac.dmg"
     elif [[ $(arch) == “i386” ]]; then
         archiveName="bruno_[0-9.]*_x64_mac.dmg"
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.18.0/bruno_1.18.0_x64_mac.dmg"
+        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_x64_mac.dmg"
     fi
-    #appNewVersion="$(versionFromGit usebruno bruno)"
+    appNewVersion="1.11.0"
     expectedTeamID="W7LPPWA48L"
     ;;
-dbeaverce24_0_5)
+dbeaverce)
     name="DBeaver"
     type="dmg"
     if [[ $(arch) == "arm64" ]]; then
-        downloadURL="https://dbeaver.io/files/24.0.5/dbeaver-ce-24.0.5-macos-aarch64.dmg"
-        #appNewVersion="$(curl -fsIL "${downloadURL}" | grep -i ^location | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/' | head -1)"
+        downloadURL="https://dbeaver.io/files/23.3.3/dbeaver-ce-23.3.3-macos-aarch64.dmg"
     elif [[ $(arch) == "i386" ]]; then
-        downloadURL="https://dbeaver.io/files/24.0.5/dbeaver-ce-24.0.5-macos-x86_64.dmg"
-        #appNewVersion="$(curl -fsIL "${downloadURL}" | grep -i ^location | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/' | head -1)"
+        downloadURL="https://dbeaver.io/files/23.3.3/dbeaver-ce-23.3.3-macos-x86_64.dmg"
     fi
+    appNewVersion="23.3.3"
     expectedTeamID="42B6MDKMW8"
     blockingProcesses=( dbeaver )
     ;;
-displaylinkmanager1_10_2)
+displaylinkmanager)
     name="DisplayLink Manager"
     type="pkg"
-    #packageID="com.displaylink.displaylinkmanagerapp"
-    downloadURL="https://www.synaptics.com/node/6576?filetype=exe"
-    #appNewVersion=$(curl -sfL https://www.synaptics.com/products/displaylink-graphics/downloads/macos | grep -m 1 "Release:" | cut -d ' ' -f2)
+    packageID="com.displaylink.displaylinkmanagerapp"
+    downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2023-10/DisplayLink%20Manager%20Graphics%20Connectivity1.10-EXE.pkg"
+    appNewVersion="1.10.2"
     expectedTeamID="73YQY62QM3"
     ;;
-docker4_30_0)
+docker)
     name="Docker"
     type="dmg"
     if [[ $(arch) == arm64 ]]; then
-     downloadURL="https://desktop.docker.com/mac/main/arm64/149282/Docker.dmg"
-     #appNewVersion=$( curl -fs "https://desktop.docker.com/mac/main/arm64/appcast.xml" | xpath '(//rss/channel/item/enclosure/@sparkle:shortVersionString)[last()]' 2>/dev/null | cut -d '"' -f2 )
+     downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
     elif [[ $(arch) == i386 ]]; then
-     downloadURL="hhttps://desktop.docker.com/mac/main/amd64/149282/Docker.dmg"
-     #appNewVersion=$( curl -fs "https://desktop.docker.com/mac/main/amd64/appcast.xml" | xpath '(//rss/channel/item/enclosure/@sparkle:shortVersionString)[last()]' 2>/dev/null | cut -d '"' -f2 )
+     downloadURL="https://desktop.docker.com/mac/main/amd64/137060/Docker.dmg"
     fi
+    appNewVersion="4.27.2"
     expectedTeamID="9BNSXJN65R"
     blockingProcesses=( "Docker Desktop" "Docker" )
     ;;
@@ -1677,21 +1674,12 @@ dockutil)
     appNewVersion=$(versionFromGit "kcrawford" "dockutil")
     expectedTeamID="Z5J8CJBUWC"
     blockingProcesses=( NONE )
-    ;;dockutil3_1_3)
-    name="dockutil"
-    type="pkg"
-    packageID="dockutil.cli.tool"
-    downloadURL="https://github.com/kcrawford/dockutil/releases/download/3.1.3/dockutil-3.1.3.pkg"
-    #appNewVersion=$(versionFromGit "kcrawford" "dockutil")
-    expectedTeamID="Z5J8CJBUWC"
-    blockingProcesses=( NONE )
-    ;;
-drawio24_4_8)
+    ;;drawio)
     name="draw.io"
     type="dmg"
     archiveName="draw.io-universal-[0-9.]*.dmg"
-    downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v24.4.8/draw.io-universal-24.4.8.dmg"
-    #appNewVersion="$(versionFromGit jgraph drawio-desktop)"
+    downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/draw.io-universal-24.1.0.dmg"
+    appNewVersion="24.1.0"
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
     ;;
@@ -1705,92 +1693,92 @@ installomator_theile)
     expectedTeamID="JME5BW3F3R"
     blockingProcesses=( NONE )
     ;;
-iterm23_5_0)
+iterm)
     name="iTerm"
     type="zip"
-    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_0.zip"
-    #appNewVersion=$(curl -is https://iterm2.com/downloads/stable/latest | grep location: | grep -o "iTerm2.*zip" | cut -d "-" -f 2 | cut -d '.' -f1 | sed 's/_/./g')
+    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_4_23.zip"
+    appNewVersion="3.4.23"
     expectedTeamID="H7V7XYVQ7D"
     blockingProcesses=( iTerm2 )
     ;;
-jetbrainsintellijideace2024_1_2|\
-intellijideace2024_1_2)
+jetbrainsintellijideace|\
+intellijideace)
     name="IntelliJ IDEA CE"
     type="dmg"
     if [[ $(arch) == i386 ]]; then
-        downloadURL="https://download.jetbrains.com/idea/ideaIC-2024.1.2.dmg"
+        downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4.dmg"
     elif [[ $(arch) == arm64 ]]; then
-        downloadURL="https://download.jetbrains.com/idea/ideaIC-2024.1.2-aarch64.dmg"
+        downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4-aarch64.dmg"
     fi
-    #appNewVersion=$( curl -fsIL "${downloadURL}" | grep -i "location" | tail -1 | sed -E 's/.*-([0-9.]+)[-.].*/\1/g' )
+    appNewVersion="2023.3.4"
     expectedTeamID="2ZEFAR8TH3"
     ;;
-keystoreexplorer5_5_3)
+keystoreexplorer)
     name="KeyStore Explorer"
     type="dmg"
     downloadURL="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.3/kse-553.dmg"
-    #appNewVersion="$(versionFromGit kaikramer keystore-explorer)"
+    appNewVersion="5.5.3"
     expectedTeamID="BKXPBP395L"
     ;;
-krita5_2_1)
+krita)
     # credit: Søren Theilgaard (@theilgaard)
     name="krita"
     type="dmg"
-    downloadURL="https://download.kde.org/Attic/krita/5.2.1/krita-5.2.1.dmg"
-    #appNewVersion=$( echo "${downloadURL}" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g' )
+    downloadURL="https://download.kde.org/stable/krita/5.2.2/krita-5.2.2.dmg"
+    appNewVersion="5.2.2"
     expectedTeamID="5433B4KXM8"
     ;;
-macpass0_8_1)
+macpass)
     name="MacPass"
     type="zip"
     downloadURL="https://github.com/MacPass/MacPass/releases/download/0.8.1/MacPass-0.8.1.zip"
-    #appNewVersion=$(versionFromGit MacPass MacPass)
+    appNewVersion="0.8.1"
     expectedTeamID="55SM4L4Z97"
     ;;
 
-microsoftazurestorageexplorer1_34_0)
+microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
     if [[ $(arch) == arm64 ]]; then
-        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.34.0/StorageExplorer-darwin-arm64.zip"
+        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
     elif [[ $(arch) == i386 ]]; then
-        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.34.0/StorageExplorer-darwin-x64.zip"
+        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-x64.zip"
         archiveName="StorageExplorer-darwin-x64.zip" 
     fi
-    #appNewVersion=$(versionFromGit microsoft AzureStorageExplorer )
+    appNewVersion="1.33.1"
     expectedTeamID="UBF8T346G9"
     ;;
-microsoftvisualstudiocode1_89_0|\
-visualstudiocode1_89_0)
+microsoftvisualstudiocode|\
+visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    downloadURL="https://update.code.visualstudio.com/1.89.0/darwin-universal/stable"
-    #appNewVersion=$(curl -fsL "https://code.visualstudio.com/Updates" | grep "/darwin" | grep -oiE ".com/([^>]+)([^<]+)/darwin" | cut -d "/" -f 2 | sed $'s/[^[:print:]	]//g' | head -1 )
+    downloadURL="https://update.code.visualstudio.com/1.85.2/darwin-universal/stable"
+    appNewVersion="1.85.2"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
     blockingProcesses=( Code )
     ;;
-privileges1_5_4)
+privileges)
     # credit: Erik Stam (@erikstam)
     name="Privileges"
     type="zip"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/1.5.4/Privileges.zip"
-    #appNewVersion=$(versionFromGit sap macOS-enterprise-privileges )
+    appNewVersion="1.5.4"
     expectedTeamID="7R5ZEU67FQ"
     ;;
-rectangle0_79)
+rectangle)
     name="Rectangle"
     type="dmg"
     downloadURL="https://github.com/TRIMDMSupport/RectangleMT/releases/download/v0.79/Rectangle0.79.dmg"
-    #appNewVersion=$(versionFromGit rxhanson Rectangle)
+    appNewVersion="0.79"
     expectedTeamID="XSYZ3E4B7D"
     ;;
-stats2_10_15)
+stats)
     name="Stats"
     type="dmg"
     downloadURL="https://github.com/exelban/stats/releases/download/v2.10.15/Stats.dmg"
-    #appNewVersion="$(versionFromGit exelban stats)"
+    appNewVersion="2.10.15"
     expectedTeamID="RP2S87B72W"
     ;;
 dialog|\
@@ -1801,31 +1789,31 @@ swiftdialog)
     downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
     appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
     expectedTeamID="PWA5E9TQ59"
-    ;;utm4_5_3)
+    ;;utm)
     name="UTM"
     type="dmg"
-    downloadURL="https://github.com/utmapp/UTM/releases/download/v4.5.3/UTM.dmg"
-    #appNewVersion=$(versionFromGit utmapp UTM )
+    downloadURL="https://github.com/utmapp/UTM/releases/download/v4.4.5/UTM.dmg"
+    appNewVersion="4.4.5"
     expectedTeamID="WDNLXAD4W8"
     ;;
-vlc3_0_20)
+vlc)
     name="VLC"
     type="dmg"
-    #atestVersionURL="https://get.videolan.org/vlc/last/macosx/"
-    #archiveName=$(curl -sf "$latestVersionURL" | grep -ioE 'vlc-[0-9]+\.[0-9]+\.[0-9]+-universal\.dmg' | uniq)
+    #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
+    archiveName="vlc-3.0.20-universal.dmg"
     downloadURL="https://get.videolan.org/vlc/3.0.20/macosx/vlc-3.0.20-universal.dmg"
-    #appNewVersion=$(awk -F'[-.]' '{print $2"."$3"."$4}' <<< "$archiveName")
+    appNewVersion="3.0.20"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
 
-vmwarehorizonclient2312_1_8)
+vmwarehorizonclient)
     name="VMware Horizon Client"
     type="pkgInDmg"
     #downloadGroup=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY" | grep -o '[^"]*_MAC_[^"]*')
     #fileName=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&dlgType=PRODUCT_BINARY&downloadGroup=${downloadGroup}" | grep -o '"fileName":"[^"]*"' | cut -d: -f2 | sed 's/"//g')
     downloadURL="https://download3.omnissa.com/software/CART25FQ1_MAC_2312.1/VMware-Horizon-Client-2312.1-8.12.1-23531248.dmg"
-    #appNewVersion=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=${downloadGroup}" | grep -o '[^"]*\.dmg[^"]*' | sed 's/.*-\(.*\)-.*/\1/')
+    appNewVersion="2312.1"
     expectedTeamID="EG7KH642X6"
     ;;
 webex|\
@@ -1842,15 +1830,15 @@ webexteams)
     fi
     expectedTeamID="DE8Y96K9QP"
     ;;
-wireshark4_2_5)
+wireshark)
     name="Wireshark"
     type="dmg"
     if [[ $(arch) == i386 ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%204.2.5%20Intel%2064.dmg"
+      downloadURL="https://1.na.dl.wireshark.org/osx/all-versions/Wireshark%20dSYM%204.2.3%20Intel%2064.dmg"
     elif [[ $(arch) == arm64 ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%204.2.5%20Arm%2064.dmg"
+      downloadURL="https://1.na.dl.wireshark.org/osx/all-versions/Wireshark%20dSYM%204.2.3%20Arm%2064.dmg"
     fi
-    #appNewVersion=$(echo "$sparkleFeed" | xpath '(//rss/channel/item/enclosure/@sparkle:version)[1]' 2>/dev/null | cut -d '"' -f 2)
+    appNewVersion="4.2.3"
     expectedTeamID="7Z6EMTD2C6"
     ;;
 *)

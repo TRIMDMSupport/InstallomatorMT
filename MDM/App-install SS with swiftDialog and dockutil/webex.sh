@@ -4,7 +4,7 @@
 
 LOGO="" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="adobereaderdc" # enter the software to install
+item="webex" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
@@ -14,7 +14,7 @@ icon=""
 
 # dockutil variables
 addToDock="1" # with dockutil after installation (0 if not)
-appPath=""
+appPath="/Applications/Webex.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
@@ -87,15 +87,9 @@ getCustomInstallomator () {
 
     if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/download/test/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
             echo "ERROR: Cannot download Installomator script."
-<<<<<<< Updated upstream
-    else
-        chmod 755 /usr/local/Installomator/Installomator.sh
-    fi
-=======
 	else
 		chmod 755 /usr/local/Installomator/Installomator.sh
 	fi
->>>>>>> Stashed changes
 }
 
 # Check the currently logged in user
