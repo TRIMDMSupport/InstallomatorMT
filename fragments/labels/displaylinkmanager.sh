@@ -1,5 +1,5 @@
-displaylinkmanagergraphicsconnectivity)
-    name="DisplayLink Manager Graphics Connectivity"
+displaylinkmanager)
+    name="DisplayLink Manager"
     type="pkg"
     packageID="com.displaylink.displaylinkmanagerapp"
     downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2023-10/DisplayLink%20Manager%20Graphics%20Connectivity1.10-EXE.pkg"
