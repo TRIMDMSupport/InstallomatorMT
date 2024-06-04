@@ -1512,100 +1512,6 @@ valuesfromarguments)
     ;;
 
 # label descriptions start here
-adobecreativeclouddesktop)
-    name="Adobe Creative Cloud"
-    appName="Creative Cloud.app"
-    type="dmg"
-    if pgrep -q "Adobe Installer"; then
-        printlog "Adobe Installer is running, not a good time to update." WARN
-        printlog "################## End $APPLICATION \n\n" INFO
-        exit 75
-    fi
-    if [[ "$(arch)" == "arm64" ]]; then
-        downloadURL="https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/6.2.0/554/macarm64/ACCCx6_2_0_554.dmg"
-    else
-        downloadURL="https://ccmdls.adobe.com/AdobeProducts/StandaloneBuilds/ACCC/ESD/6.2.0/554/osx10/ACCCx6_2_0_554.dmg"
-    fi
-    appNewVersion="6.2.0"
-    targetDir="/Applications/Utilities/Adobe Creative Cloud/ACC/"
-    installerTool="Install.app"
-    CLIInstaller="Install.app/Contents/MacOS/Install"
-    CLIArguments=(--mode=silent)
-    expectedTeamID="JQ525L2MZD"
-    blockingProcesses=( "Creative Cloud" )
-    Company="Adobe"
-    ;;
-adobedigitaleditions)
-    name="Adobe Digital Editions"
-    type="pkgInDmg"
-    downloadURL="https://adedownload.adobe.com/pub/adobe/digitaleditions/ADE_4.5_Installer.dmg"
-    appNewVersion="4.5"
-    expectedTeamID="JQ525L2MZD"
-    ;;
-adobereaderdc|\
-adobereaderdc-install|\
-adobereaderdc-update)
-    name="Adobe Acrobat Reader"
-    type="pkgInDmg"
-    if [[ -d "/Applications/Adobe Acrobat Reader DC.app" ]]; then
-      printlog "Found /Applications/Adobe Acrobat Reader DC.app - Setting readerPath" INFO
-      readerPath="/Applications/Adobe Acrobat Reader DC.app"
-      name="Adobe Acrobat Reader DC"
-    elif [[ -d "/Applications/Adobe Acrobat Reader.app" ]]; then
-      printlog "Found /Applications/Adobe Acrobat Reader.app - Setting readerPath" INFO
-      readerPath="/Applications/Adobe Acrobat Reader.app"
-    fi
-    if ! [[ `defaults read "$readerPath/Contents/Resources/AcroLocale.plist"` ]]; then
-      printlog "Missing locale data, this will cause the updater to fail.  Deleting Adobe Acrobat Reader DC.app and installing fresh." INFO
-      rm -Rf "$readerPath"
-      unset $readerPath
-    fi
-    if [[ -n $readerPath ]]; then
-      mkdir -p "/Library/Application Support/Adobe/Acrobat/11.0"
-      defaults write "/Library/Application Support/Adobe/Acrobat/11.0/com.adobe.Acrobat.InstallerOverrides.plist" ReaderAppPath "$readerPath"
-      defaults write "/Library/Application Support/Adobe/Acrobat/11.0/com.adobe.Acrobat.InstallerOverrides.plist" BreakIfAppPathInvalid -bool false
-      printlog "Adobe Reader Installed, running updater." INFO
-      adobecurrent=$(curl -sL https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt)
-      adobecurrentmod="${adobecurrent//.}"
-      if [[ "${adobecurrentmod}" != <-> ]]; then
-        printlog "Got an invalid response for the Adobe Reader Current Version: ${adobecurrent}" ERROR
-        printlog "################## End $APPLICATION \n\n" INFO
-        exit 50
-      fi
-      if pgrep -q "Acrobat Updater"; then
-        printlog "Adobe Acrobat Updater Running, killing it to avoid any conflicts" INFO
-        killall "Acrobat Updater"
-      fi
-      downloadURL=$(echo https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/"$adobecurrentmod"/AcroRdrDCUpd"$adobecurrentmod"_MUI.dmg)
-      appNewVersion="${adobecurrent}"
-    else
-      printlog "Changing IFS for Adobe Reader" INFO
-      SAVEIFS=$IFS
-      IFS=$'\n'
-      versions=( $( curl -s https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+"| head -n 30) )
-      local version
-      for version in $versions; do
-        version="${version//.}"
-        printlog "trying version: $version" INFO
-        local httpstatus=$(curl -X HEAD -s "https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/${version}/AcroRdrDC_${version}_MUI.dmg" --write-out "%{http_code}")
-        printlog "HTTP status for Adobe Reader full installer URL https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/${version}/AcroRdrDC_${version}_MUI.dmg is $httpstatus" DEBUG
-        if [[ "${httpstatus}" == "200" ]]; then
-          downloadURL="https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/${version}/AcroRdrDC_${version}_MUI.dmg"
-          unset httpstatus
-          break
-        fi
-      done
-      unset version
-      IFS=$SAVEIFS
-    fi
-    updateTool="/usr/local/bin/RemoteUpdateManager"
-    updateToolArguments=( --productVersions=RDR )
-    updateToolLog="/Users/$currentUser/Library/Logs/RemoteUpdateManager.log"
-    updateToolLogDateFormat="%m/%d/%y %H:%M:%S"
-    expectedTeamID="JQ525L2MZD"
-    blockingProcesses=( "Acrobat Pro DC" "AdobeAcrobat" "AdobeReader" "Distiller" )
-    Company="Adobe"
-    ;;
 alttab)
     name="AltTab"
     type="zip"
@@ -1682,16 +1588,6 @@ dockutil)
     appNewVersion="24.1.0"
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
-    ;;
-installomator|\
-installomator_theile)
-    name="Installomator"
-    type="pkg"
-    packageID="com.scriptingosx.Installomator"
-    downloadURL=$(downloadURLFromGit Installomator Installomator )
-    appNewVersion=$(versionFromGit Installomator Installomator )
-    expectedTeamID="JME5BW3F3R"
-    blockingProcesses=( NONE )
     ;;
 iterm)
     name="iTerm"
