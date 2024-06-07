@@ -1530,10 +1530,10 @@ bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    if [[ $(arch) == “arm64” ]]; then
+    if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
         downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_arm64_mac.dmg"
-    elif [[ $(arch) == “i386” ]]; then
+    elif [[ $(arch) == "i386" ]]; then
         archiveName="bruno_[0-9.]*_x64_mac.dmg"
         downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_x64_mac.dmg"
     fi
@@ -1563,9 +1563,9 @@ displaylinkmanager)
 docker)
     name="Docker"
     type="dmg"
-    if [[ $(arch) == arm64 ]]; then
+    if [[ $(arch) == "arm64" ]]; then
      downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
-    elif [[ $(arch) == i386 ]]; then
+    elif [[ $(arch) == "i386" ]]; then
      downloadURL="https://desktop.docker.com/mac/main/amd64/137060/Docker.dmg"
     fi
     appNewVersion="4.27.2"
@@ -1601,9 +1601,9 @@ jetbrainsintellijideace|\
 intellijideace)
     name="IntelliJ IDEA CE"
     type="dmg"
-    if [[ $(arch) == i386 ]]; then
+    if [[ $(arch) == "i386" ]]; then
         downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4.dmg"
-    elif [[ $(arch) == arm64 ]]; then
+    elif [[ $(arch) == "arm64" ]]; then
         downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4-aarch64.dmg"
     fi
     appNewVersion="2023.3.4"
@@ -1635,10 +1635,10 @@ macpass)
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
-    if [[ $(arch) == arm64 ]]; then
+    if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
-    elif [[ $(arch) == i386 ]]; then
+    elif [[ $(arch) == "i386" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-x64.zip"
         archiveName="StorageExplorer-darwin-x64.zip" 
     fi
@@ -1719,9 +1719,9 @@ webexteams)
     type="dmg"
     appNewVersion=$(curl -fs https://help.webex.com/en-us/article/8dmbcr/Webex-App-%7C-What%27s-New | tr '"' "\n" |  grep "Mac—"| head -1|sed 's/[^0-9\.]//g' )
     blockingProcesses=( "Webex" "Webex Teams" "Cisco WebEx Start" "WebexHelper")
-    if [[ $(arch) == arm64 ]]; then
+    if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://binaries.webex.com/WebexDesktop-MACOS-Apple-Silicon-Gold/Webex.dmg"
-    elif [[ $(arch) == i386 ]]; then
+    elif [[ $(arch) == "i386" ]]; then
         downloadURL="https://binaries.webex.com/WebexTeamsDesktop-MACOS-Gold/Webex.dmg"
     fi
     expectedTeamID="DE8Y96K9QP"
@@ -1729,9 +1729,9 @@ webexteams)
 wireshark)
     name="Wireshark"
     type="dmg"
-    if [[ $(arch) == i386 ]]; then
+    if [[ $(arch) == "i386" ]]; then
       downloadURL="https://1.na.dl.wireshark.org/osx/all-versions/Wireshark%20dSYM%204.2.3%20Intel%2064.dmg"
-    elif [[ $(arch) == arm64 ]]; then
+    elif [[ $(arch) == "arm64" ]]; then
       downloadURL="https://1.na.dl.wireshark.org/osx/all-versions/Wireshark%20dSYM%204.2.3%20Arm%2064.dmg"
     fi
     appNewVersion="4.2.3"
