@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6beta"
-VERSIONDATE="2024-06-04"
+VERSIONDATE="2024-06-18"
 
 # MARK: Functions
 
@@ -1588,6 +1588,14 @@ dockutil)
     appNewVersion="24.1.0"
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
+    ;;
+figma)
+    name="Figma"
+    type="dmg"
+    archiveName="Figma-124.1.11.dmg"
+    downloadURL="https://desktop.figma.com/mac/Figma-124.1.11.dmg"
+    appNewVersion="124.1.11"
+    expectedTeamID="T8RA8NE3B7"
     ;;
 iterm)
     name="iTerm"
