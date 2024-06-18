@@ -1,10 +1,10 @@
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
-    if [[ $(arch) == arm64 ]]; then
+    if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
-    elif [[ $(arch) == i386 ]]; then
+    elif [[ $(arch) == "i386" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-x64.zip"
         archiveName="StorageExplorer-darwin-x64.zip" 
     fi
