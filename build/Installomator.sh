@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6beta"
-VERSIONDATE="2024-06-18"
+VERSIONDATE="2024-06-19"
 
 # MARK: Functions
 
@@ -1519,13 +1519,6 @@ alttab)
     appNewVersion="6.70.1"
     expectedTeamID="QXD7GW8FHY"
     ;;
-betterdisplay)
-    name="BetterDisplay"
-    type="dmg"
-    downloadURL="https://github.com/waydabber/BetterDisplay/releases/download/v2.3.4/BetterDisplay-v2.3.4.dmg"
-    appNewVersion="2.3.4"
-    expectedTeamID="299YSU96J7"
-    ;;
 bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
@@ -1657,8 +1650,8 @@ microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    downloadURL="https://update.code.visualstudio.com/1.85.2/darwin-universal/stable"
-    appNewVersion="1.85.2"
+    downloadURL="https://update.code.visualstudio.com/1.90.1/darwin-universal/stable"
+    appNewVersion="1.90.1"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
     blockingProcesses=( Code )
