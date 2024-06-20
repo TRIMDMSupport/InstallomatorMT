@@ -28,7 +28,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 DEBUG=0
 
 # notify behavior
-NOTIFY=all
+NOTIFY=success
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
