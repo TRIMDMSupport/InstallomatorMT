@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6beta"
-VERSIONDATE="2024-06-19"
+VERSIONDATE="2024-06-20"
 
 # MARK: Functions
 
@@ -1520,17 +1520,17 @@ alttab)
     expectedTeamID="QXD7GW8FHY"
     ;;
 bruno)
-    # https://github.com/usebruno/bruno; https://www.usebruno.com/
+    # https://github.com/usebruno/bruno
     name="Bruno"
     type="dmg"
+    appNewVersion="1.11.0"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_arm64_mac.dmg"
+        downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_$appNewVersion_arm64_mac.dmg"
     elif [[ $(arch) == "i386" ]]; then
         archiveName="bruno_[0-9.]*_x64_mac.dmg"
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_x64_mac.dmg"
+        downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_$appNewVersion_x64_mac.dmg"
     fi
-    appNewVersion="1.11.0"
     expectedTeamID="W7LPPWA48L"
     ;;
 dbeaverce)
@@ -1655,6 +1655,14 @@ visualstudiocode)
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
     blockingProcesses=( Code )
+    ;;
+podmancli)
+    name="Podman CLI"
+    type="pkg"
+    appNewVersion="5.1.1"
+    downloadURL="https://github.com/containers/podman/releases/download/v$appNewVersion/podman-installer-macos-universal.pkg"
+    archiveName="podman-installer-macos-universal.pkg"
+    expectedTeamID="HYSCB8KRL2"
     ;;
 privileges)
     # credit: Erik Stam (@erikstam)
