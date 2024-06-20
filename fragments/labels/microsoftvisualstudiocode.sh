@@ -1,5 +1,4 @@
-microsoftvisualstudiocode|\
-visualstudiocode)
+microsoftvisualstudiocode)
     name="Visual Studio Code"
     type="zip"
     downloadURL="https://update.code.visualstudio.com/1.90.1/darwin-universal/stable"

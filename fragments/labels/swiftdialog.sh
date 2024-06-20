@@ -1,4 +1,3 @@
-dialog|\
 swiftdialog)
     name="Dialog"
     type="pkg"

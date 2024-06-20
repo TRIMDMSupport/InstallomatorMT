@@ -1520,15 +1520,10 @@ alttab)
     expectedTeamID="QXD7GW8FHY"
     ;;
 bruno)
-    # https://github.com/usebruno/bruno
     name="Bruno"
     type="dmg"
+    downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_arm64_mac.dmg"
     appNewVersion="1.11.0"
-    if [[ $(arch) == "arm64" ]]; then
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_1.11.0_arm64_mac.dmg"
-    elif [[ $(arch) == "i386" ]]; then
-        downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_1.11.0_x64_mac.dmg"
-    fi
     expectedTeamID="W7LPPWA48L"
     ;;
 dbeaverce)
@@ -1554,11 +1549,7 @@ displaylinkmanager)
 docker)
     name="Docker"
     type="dmg"
-    if [[ $(arch) == "arm64" ]]; then
-     downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
-    elif [[ $(arch) == "i386" ]]; then
-     downloadURL="https://desktop.docker.com/mac/main/amd64/137060/Docker.dmg"
-    fi
+    downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
     appNewVersion="4.27.2"
     expectedTeamID="9BNSXJN65R"
     blockingProcesses=( "Docker Desktop" "Docker" )
@@ -1644,8 +1635,7 @@ microsoftazurestorageexplorer)
     appNewVersion="1.33.1"
     expectedTeamID="UBF8T346G9"
     ;;
-microsoftvisualstudiocode|\
-visualstudiocode)
+microsoftvisualstudiocode)
     name="Visual Studio Code"
     type="zip"
     downloadURL="https://update.code.visualstudio.com/1.90.1/darwin-universal/stable"
@@ -1684,7 +1674,6 @@ stats)
     appNewVersion="2.10.15"
     expectedTeamID="RP2S87B72W"
     ;;
-dialog|\
 swiftdialog)
     name="Dialog"
     type="pkg"
@@ -1692,7 +1681,8 @@ swiftdialog)
     downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
     appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
     expectedTeamID="PWA5E9TQ59"
-    ;;utm)
+    ;;
+utm)
     name="UTM"
     type="dmg"
     downloadURL="https://github.com/utmapp/UTM/releases/download/v4.4.5/UTM.dmg"
