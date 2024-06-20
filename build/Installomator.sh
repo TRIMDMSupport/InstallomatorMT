@@ -25,10 +25,10 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 # also no actual installation will be performed
 # debug mode 1 will download to the directory the script is run in, but will not check the version
 # debug mode 2 will download to the temp directory, check for blocking processes, check the version, but will not install anything or remove the current version
-DEBUG=1
+DEBUG=0
 
 # notify behavior
-NOTIFY=success
+NOTIFY=all
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
@@ -45,7 +45,7 @@ PROMPT_TIMEOUT=86400
 
 # behavior when blocking processes are found
 # BLOCKING_PROCESS_ACTION is ignored if app label uses updateTool
-BLOCKING_PROCESS_ACTION=tell_user
+BLOCKING_PROCESS_ACTION=prompt_user_loop
 # options:
 #   - ignore       continue even when blocking processes are found
 #   - quit         app will be told to quit nicely if running
@@ -301,7 +301,7 @@ NOTIFY_DIALOG=0
 #
 ### Logging
 # Logging behavior
-LOGGING="INFO"
+LOGGING="DEBUG"
 # options:
 #   - DEBUG     Everything is logged
 #   - INFO      (default) normal logging level
@@ -336,7 +336,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
         rosetta2=no
     fi
 fi
-VERSION="10.6beta"
+VERSION="10.6MT"
 VERSIONDATE="2024-06-20"
 
 # MARK: Functions
@@ -1525,10 +1525,10 @@ bruno)
     type="dmg"
     appNewVersion="1.11.0"
     if [[ $(arch) == "arm64" ]]; then
-        archiveName="bruno_[0-9.]*_arm64_mac.dmg"
+       # archiveName="bruno_[0-9.]*_arm64_mac.dmg"
         downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_$appNewVersion_arm64_mac.dmg"
     elif [[ $(arch) == "i386" ]]; then
-        archiveName="bruno_[0-9.]*_x64_mac.dmg"
+       # archiveName="bruno_[0-9.]*_x64_mac.dmg"
         downloadURL="https://github.com/usebruno/bruno/releases/download/v$appNewVersion/bruno_$appNewVersion_x64_mac.dmg"
     fi
     expectedTeamID="W7LPPWA48L"
