@@ -1586,7 +1586,7 @@ dockutil)
 figma)
     name="Figma"
     type="dmg"
-    appNewVersion="124.1.11"
+    appNewVersion="124.1.6"
     archiveName="Figma-$appNewVersion.dmg"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://desktop.figma.com/mac-arm/Figma-$appNewVersion.dmg"
