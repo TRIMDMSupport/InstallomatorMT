@@ -109,7 +109,7 @@ IGNORE_APP_STORE_APPS=no
 #                  Known bad example: Slack will lose all settings.
 
 # Owner of copied apps
-SYSTEMOWNER=0
+SYSTEMOWNER=1
 # options:
 #  - 0             Current user will be owner of copied apps, just like if they
 #                  installed it themselves (default).
@@ -1655,7 +1655,7 @@ microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    appNewVersion="1.90.1"
+    appNewVersion="1.90.2"
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
