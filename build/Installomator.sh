@@ -28,7 +28,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 DEBUG=0
 
 # notify behavior
-NOTIFY=success
+NOTIFY=silent
 # options:
 #   - success      notify the user on success
 #   - silent       no notifications
@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-06-20"
+VERSIONDATE="2024-06-21"
 
 # MARK: Functions
 
@@ -1515,26 +1515,34 @@ valuesfromarguments)
 alttab)
     name="AltTab"
     type="zip"
-    downloadURL="https://github.com/lwouis/alt-tab-macos/releases/download/v6.70.1/AltTab-6.70.1.zip"
     appNewVersion="6.70.1"
+    downloadURL="https://github.com/lwouis/alt-tab-macos/releases/download/v${appNewVersion}/AltTab-${appNewVersion}.zip"
     expectedTeamID="QXD7GW8FHY"
     ;;
 bruno)
+    # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    downloadURL="https://github.com/usebruno/bruno/releases/download/v1.11.0/bruno_1.11.0_arm64_mac.dmg"
     appNewVersion="1.11.0"
+    link="https://github.com/usebruno/bruno/releases/download/"
+    if [[ $(arch) == "arm64" ]]; then
+        archiveName="bruno_[0-9.]*_arm64_mac.dmg"
+        downloadURL="${link}v${appNewVersion}/bruno_${appNewVersion}_$(arch)_mac.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        archiveName="bruno_[0-9.]*_x64_mac.dmg"
+        downloadURL="${link}v${appNewVersion}/bruno_${appNewVersion}_x64_mac.dmg"
+    fi
     expectedTeamID="W7LPPWA48L"
     ;;
 dbeaverce)
     name="DBeaver"
     type="dmg"
-    if [[ $(arch) == "arm64" ]]; then
-        downloadURL="https://dbeaver.io/files/23.3.3/dbeaver-ce-23.3.3-macos-aarch64.dmg"
-    elif [[ $(arch) == "i386" ]]; then
-        downloadURL="https://dbeaver.io/files/23.3.3/dbeaver-ce-23.3.3-macos-x86_64.dmg"
-    fi
     appNewVersion="23.3.3"
+    if [[ $(arch) == "arm64" ]]; then
+        downloadURL="https://dbeaver.io/files/${appNewVersion}/dbeaver-ce-${appNewVersion}-macos-aarch64.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        downloadURL="https://dbeaver.io/files/${appNewVersion}/dbeaver-ce-${appNewVersion}-macos-x86_64.dmg"
+    fi
     expectedTeamID="42B6MDKMW8"
     blockingProcesses=( dbeaver )
     ;;
@@ -1549,7 +1557,11 @@ displaylinkmanager)
 docker)
     name="Docker"
     type="dmg"
-    downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
+    if [[ $(arch) == "arm64" ]]; then
+     downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+     downloadURL="https://desktop.docker.com/mac/main/amd64/137060/Docker.dmg"
+    fi
     appNewVersion="4.27.2"
     expectedTeamID="9BNSXJN65R"
     blockingProcesses=( "Docker Desktop" "Docker" )
@@ -1565,18 +1577,22 @@ dockutil)
     ;;drawio)
     name="draw.io"
     type="dmg"
-    archiveName="draw.io-universal-[0-9.]*.dmg"
-    downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v24.1.0/draw.io-universal-24.1.0.dmg"
     appNewVersion="24.1.0"
+    archiveName="draw.io-universal-[0-9.]*.dmg"
+    downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
     ;;
 figma)
     name="Figma"
     type="dmg"
-    archiveName="Figma-124.1.11.dmg"
-    downloadURL="https://desktop.figma.com/mac/Figma-124.1.11.dmg"
     appNewVersion="124.1.11"
+    archiveName="Figma-$appNewVersion.dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        downloadURL="https://desktop.figma.com/mac-arm/Figma-$appNewVersion.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        downloadURL="https://desktop.figma.com/mac/Figma-$appNewVersion.dmg"
+    fi
     expectedTeamID="T8RA8NE3B7"
     ;;
 iterm)
@@ -1591,12 +1607,12 @@ jetbrainsintellijideace|\
 intellijideace)
     name="IntelliJ IDEA CE"
     type="dmg"
-    if [[ $(arch) == "i386" ]]; then
-        downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4.dmg"
-    elif [[ $(arch) == "arm64" ]]; then
-        downloadURL="https://download.jetbrains.com/idea/ideaIC-2023.3.4-aarch64.dmg"
-    fi
     appNewVersion="2023.3.4"
+    if [[ $(arch) == "i386" ]]; then
+        downloadURL="https://download.jetbrains.com/idea/ideaIC-${appNewVersion}.dmg"
+    elif [[ $(arch) == "arm64" ]]; then
+        downloadURL="https://download.jetbrains.com/idea/ideaIC-${appNewVersion}-aarch64.dmg"
+    fi
     expectedTeamID="2ZEFAR8TH3"
     ;;
 keystoreexplorer)
@@ -1610,36 +1626,37 @@ krita)
     # credit: Søren Theilgaard (@theilgaard)
     name="krita"
     type="dmg"
-    downloadURL="https://download.kde.org/stable/krita/5.2.2/krita-5.2.2.dmg"
     appNewVersion="5.2.2"
+    downloadURL="https://download.kde.org/stable/krita/${appNewVersion}/krita-${appNewVersion}.dmg"
     expectedTeamID="5433B4KXM8"
     ;;
 macpass)
     name="MacPass"
     type="zip"
-    downloadURL="https://github.com/MacPass/MacPass/releases/download/0.8.1/MacPass-0.8.1.zip"
     appNewVersion="0.8.1"
+    downloadURL="https://github.com/MacPass/MacPass/releases/download/${appNewVersion}/MacPass-${appNewVersion}.zip"
     expectedTeamID="55SM4L4Z97"
     ;;
 
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
+    appNewVersion="1.33.1"
     if [[ $(arch) == "arm64" ]]; then
-        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-arm64.zip"
+        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
     elif [[ $(arch) == "i386" ]]; then
-        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v1.33.1/StorageExplorer-darwin-x64.zip"
+        downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-x64.zip"
         archiveName="StorageExplorer-darwin-x64.zip" 
     fi
-    appNewVersion="1.33.1"
     expectedTeamID="UBF8T346G9"
     ;;
-microsoftvisualstudiocode)
+microsoftvisualstudiocode|\
+visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    downloadURL="https://update.code.visualstudio.com/1.90.1/darwin-universal/stable"
     appNewVersion="1.90.1"
+    downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
     blockingProcesses=( Code )
@@ -1648,7 +1665,7 @@ podmancli)
     name="Podman CLI"
     type="pkg"
     appNewVersion="5.1.1"
-    downloadURL="https://github.com/containers/podman/releases/download/v$appNewVersion/podman-installer-macos-universal.pkg"
+    downloadURL="https://github.com/containers/podman/releases/download/v${appNewVersion}/podman-installer-macos-universal.pkg"
     archiveName="podman-installer-macos-universal.pkg"
     expectedTeamID="HYSCB8KRL2"
     ;;
@@ -1656,24 +1673,25 @@ privileges)
     # credit: Erik Stam (@erikstam)
     name="Privileges"
     type="zip"
-    downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/1.5.4/Privileges.zip"
     appNewVersion="1.5.4"
+    downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges.zip"
     expectedTeamID="7R5ZEU67FQ"
     ;;
 rectangle)
     name="Rectangle"
     type="dmg"
-    downloadURL="https://github.com/TRIMDMSupport/RectangleMT/releases/download/v0.79/Rectangle0.79.dmg"
     appNewVersion="0.79"
+    downloadURL="https://github.com/TRIMDMSupport/RectangleMT/releases/download/v${appNewVersion}/Rectangle${appNewVersion}.dmg"
     expectedTeamID="XSYZ3E4B7D"
     ;;
 stats)
     name="Stats"
     type="dmg"
-    downloadURL="https://github.com/exelban/stats/releases/download/v2.10.15/Stats.dmg"
     appNewVersion="2.10.15"
+    downloadURL="https://github.com/exelban/stats/releases/download/v${appNewVersion}/Stats.dmg"
     expectedTeamID="RP2S87B72W"
     ;;
+dialog|\
 swiftdialog)
     name="Dialog"
     type="pkg"
@@ -1685,17 +1703,17 @@ swiftdialog)
 utm)
     name="UTM"
     type="dmg"
-    downloadURL="https://github.com/utmapp/UTM/releases/download/v4.4.5/UTM.dmg"
     appNewVersion="4.4.5"
+    downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
 vlc)
     name="VLC"
     type="dmg"
-    #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
-    archiveName="vlc-3.0.20-universal.dmg"
-    downloadURL="https://get.videolan.org/vlc/3.0.20/macosx/vlc-3.0.20-universal.dmg"
     appNewVersion="3.0.20"
+    #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
+    archiveName="vlc-${appNewVersion}-universal.dmg"
+    downloadURL="https://get.videolan.org/vlc/${appNewVersion}/macosx/vlc-${appNewVersion}-universal.dmg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;

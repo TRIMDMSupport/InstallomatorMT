@@ -1,8 +1,12 @@
 figma)
     name="Figma"
     type="dmg"
-    archiveName="Figma-124.1.11.dmg"
-    downloadURL="https://desktop.figma.com/mac/Figma-124.1.11.dmg"
     appNewVersion="124.1.11"
+    archiveName="Figma-$appNewVersion.dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        downloadURL="https://desktop.figma.com/mac-arm/Figma-$appNewVersion.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        downloadURL="https://desktop.figma.com/mac/Figma-$appNewVersion.dmg"
+    fi
     expectedTeamID="T8RA8NE3B7"
     ;;
