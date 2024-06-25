@@ -337,7 +337,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-06-21"
+VERSIONDATE="2024-06-25"
 
 # MARK: Functions
 
@@ -1523,7 +1523,7 @@ bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    appNewVersion="1.11.0"
+    appNewVersion="1.19.0"
     link="https://github.com/usebruno/bruno/releases/download/"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
@@ -1577,7 +1577,7 @@ dockutil)
     ;;drawio)
     name="draw.io"
     type="dmg"
-    appNewVersion="24.1.0"
+    appNewVersion="24.6.1"
     archiveName="draw.io-universal-[0-9.]*.dmg"
     downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
     expectedTeamID="UZEUFB4N53"
@@ -1598,8 +1598,8 @@ figma)
 iterm)
     name="iTerm"
     type="zip"
-    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_4_23.zip"
-    appNewVersion="3.4.23"
+    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_2.zip"
+    appNewVersion="3.5.2"
     expectedTeamID="H7V7XYVQ7D"
     blockingProcesses=( iTerm2 )
     ;;
@@ -1641,7 +1641,7 @@ macpass)
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
-    appNewVersion="1.33.1"
+    appNewVersion="1.34.0"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
