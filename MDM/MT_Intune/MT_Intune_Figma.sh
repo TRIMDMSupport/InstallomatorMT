@@ -116,11 +116,10 @@ if [ ! -e "${destFile}" ]; then
 fi
 
 # Check if new version of label is available
-
-
 output=$("$destFile" "$item" "CHECK_VERSION=1")
 
 if echo "$output" | grep -q "no newer version"; then
+    echo "No newer version."
     exit $1
 fi
 

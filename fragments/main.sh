@@ -237,6 +237,10 @@ else
     printlog "Latest version not specified."
 fi
 
+if [ $CHECK_VERSION -eq 1 ]; then
+    cleanupAndExit 0 "CHECK_VERSION variable set to 1." REQ
+fi
+
 # MARK: check if this is an Update and we can use updateTool
 if [[ (-n $appversion && -n "$updateTool") || "$type" == "updateronly" ]]; then
     printlog "App needs to be updated and uses $updateTool. Ignoring BLOCKING_PROCESS_ACTION and running updateTool now."

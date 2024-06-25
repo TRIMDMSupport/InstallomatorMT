@@ -172,6 +172,8 @@ DIALOG_LIST_ITEM_NAME=""
 NOTIFY_DIALOG=0
 # If this variable is set to 1, then we will check for installed Swift Dialog v. 2 or later, and use that for notification
 
+CHECK_VERSION=0
+# If this variable is set to 1, then the script only checks if the installed version of given label is older
 
 # NOTE: How labels work
 
