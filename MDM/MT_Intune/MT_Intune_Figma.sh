@@ -115,6 +115,15 @@ if [ ! -e "${destFile}" ]; then
     exit 99
 fi
 
+# Check if new version of label is available
+
+
+output=$("$destFile" "$item" "CHECK_VERSION=1")
+
+if echo "$output" | grep -q "no newer version"; then
+    exit $1
+fi
+
 # No sleeping
 /usr/bin/caffeinate -d -i -m -u &
 caffeinatepid=$!
