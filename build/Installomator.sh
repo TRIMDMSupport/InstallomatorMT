@@ -1693,6 +1693,21 @@ stats)
     downloadURL="https://github.com/exelban/stats/releases/download/v${appNewVersion}/Stats.dmg"
     expectedTeamID="RP2S87B72W"
     ;;
+supportcompanion)
+    name="SupportCompanion"
+    type="pkg"
+    appNewVersion="1.1.0.80790"
+    downloadURL="https://github.com/macadmins/SupportCompanion/releases/download/v${appNewVersion}/SupportCompanion-${appNewVersion}.pkg"
+    expectedTeamID="T4SK8ZXCXG"
+    ;;
+supportcompanionla)
+    name="SupportCompanion Launch Agent"
+    type="pkg"
+    appNewVersion="1.0.0"
+    SupportCompanionVersion="1.1.0.80790"
+    downloadURL="https://github.com/macadmins/SupportCompanion/releases/download/v${SupportCompanionVersion}/SupportCompanion-${appNewVersion}.pkg"
+    expectedTeamID="T4SK8ZXCXG"
+    ;;
 dialog|\
 swiftdialog)
     name="Dialog"
