@@ -4,17 +4,17 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="microsoftvisualstudiocode" # enter the software to install
+item="microsoftazurestorageexplorer" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png"
+icon="https://static.macupdate.com/products/63165/l/microsoft-azure-storage-explorer-logo.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
 # dockutil variables
 addToDock="0" # with dockutil after installation (0 if not)
-appPath="/Applications/Visual Studio Code.app"
+appPath="/Applications/Microsoft Azure Storage Explorer.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"

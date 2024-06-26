@@ -4,17 +4,17 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="microsoftvisualstudiocode" # enter the software to install
+item="iterm" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png"
+icon="https://cdn.icon-icons.com/icons2/3053/PNG/512/iterm_macos_bigsur_icon_189500.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
 # dockutil variables
 addToDock="0" # with dockutil after installation (0 if not)
-appPath="/Applications/Visual Studio Code.app"
+appPath="/Applications/iTerm.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
