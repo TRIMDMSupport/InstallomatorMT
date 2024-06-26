@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-06-26"
+VERSIONDATE="2024-06-27"
 
 # MARK: Functions
 
@@ -1535,6 +1535,13 @@ bruno)
         downloadURL="${link}v${appNewVersion}/bruno_${appNewVersion}_x64_mac.dmg"
     fi
     expectedTeamID="W7LPPWA48L"
+    ;;
+cyberduck)
+    name="Cyberduck"
+    type="zip"
+    appNewVersion="8.9.0.41543"
+    downloadURL="https://update.cyberduck.io//Cyberduck-${appNewVersion}.zip"
+    expectedTeamID="G69SCX94XU"
     ;;
 dbeaverce)
     name="DBeaver"
