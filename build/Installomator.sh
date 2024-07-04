@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-06-27"
+VERSIONDATE="2024-07-04"
 
 # MARK: Functions
 
@@ -1660,6 +1660,39 @@ microsoftazurestorageexplorer)
     fi
     expectedTeamID="UBF8T346G9"
     ;;
+microsoftcompanyportal)
+    name="Company Portal"
+    type="pkg"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=869655"
+    #appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.intunecompanyportal.standalone"]/cfbundleshortversionstring' 2>/dev/null | sed -E 's/<cfbundleshortversionstring>([0-9.]*)<.*/\1/')
+    appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/CompanyPortal_.*pkg" | cut -d "_" -f 2 | cut -d "-" -f 1)
+    expectedTeamID="UBF8T346G9"
+    if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
+        printlog "Running msupdate --list"
+        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
+    fi
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArguments=( --install --apps IMCP01 )
+    ;;
+microsoftteamsnew)
+    name="Microsoft Teams (work or school)"
+    type="pkg"
+    #packageID="com.microsoft.teams2"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=2249065"
+    #appNewVersion=$(curl -fsIL "${downloadURL}" | grep -i "^location" | tail -1 | cut -d "/" -f5)
+    # No version in download path, so grab it from homepage
+    appNewVersion=$(curl -fs https://macadmins.software/latest.xml | xpath '//latest/package[id="com.microsoft.teams2.standalone"]/version' 2>/dev/null | sed -E 's/<version>([0-9.]*) .*/\1/')
+    #versionKey="CFBundleGetInfoString"
+    expectedTeamID="UBF8T346G9"
+    blockingProcesses=( MSTeams "Microsoft Teams" "Microsoft Teams WebView" "Microsoft Teams Launcher" "Microsoft Teams (work preview)")
+    # msupdate requires a PPPC profile pushed out from Jamf to work, https://github.com/pbowden-msft/MobileConfigs/tree/master/Jamf-MSUpdate
+    if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
+        printlog "Running msupdate --list"
+        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
+    fi
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArguments=( --install --apps TEAMS21 ) # --wait 600 # TEAM01
+    ;;
 microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
@@ -1685,6 +1718,14 @@ privileges)
     appNewVersion="1.5.4"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges.zip"
     expectedTeamID="7R5ZEU67FQ"
+    ;;
+proximity)
+    name="Proximity"
+    type="dmg"
+    appNewVersion="4.0.0"
+    blockingProcesses=("Cisco Proximity")
+    downloadURL="https://proximity.cisco.com/mac/Proximity.dmg"
+    expectedTeamID="2E72E2E39X"
     ;;
 rectangle)
     name="Rectangle"
@@ -1753,10 +1794,9 @@ vmwarehorizonclient)
     ;;
 webex|\
 webexteams)
-    # credit: Erik Stam (@erikstam)
     name="Webex"
     type="dmg"
-    appNewVersion=$(curl -fs https://help.webex.com/en-us/article/8dmbcr/Webex-App-%7C-What%27s-New | tr '"' "\n" |  grep "Mac—"| head -1|sed 's/[^0-9\.]//g' )
+    appNewVersion="44.3.0.28993"
     blockingProcesses=( "Webex" "Webex Teams" "Cisco WebEx Start" "WebexHelper")
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://binaries.webex.com/WebexDesktop-MACOS-Apple-Silicon-Gold/Webex.dmg"
