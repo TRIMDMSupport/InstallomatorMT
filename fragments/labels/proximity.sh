@@ -1,5 +1,5 @@
 proximity)
-    name="Proximity"
+    name="Cisco Proximity"
     type="dmg"
     appNewVersion="4.0.0"
     blockingProcesses=("Cisco Proximity")
