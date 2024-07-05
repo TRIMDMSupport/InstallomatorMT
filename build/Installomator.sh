@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-07-04"
+VERSIONDATE="2024-07-05"
 
 # MARK: Functions
 
@@ -1521,7 +1521,13 @@ alttab)
     downloadURL="https://github.com/lwouis/alt-tab-macos/releases/download/v${appNewVersion}/AltTab-${appNewVersion}.zip"
     expectedTeamID="QXD7GW8FHY"
     ;;
-bruno)
+androidfiletransfer)
+    name="Android File Transfer"
+    type="dmg"
+    appNewVersion="1.0.12"
+    downloadURL="https://dl.google.com/dl/androidjumper/mtp/current/AndroidFileTransfer.dmg"
+    expectedTeamID="EQHXZ8M8AV"
+    ;;bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
@@ -1689,7 +1695,7 @@ privileges)
 proximity)
     name="Cisco Proximity"
     type="dmg"
-    appNewVersion="4.0.0"
+    appNewVersion="desktop-4.0.0"
     blockingProcesses=("Cisco Proximity")
     downloadURL="https://proximity.cisco.com/mac/Proximity.dmg"
     expectedTeamID="2E72E2E39X"
