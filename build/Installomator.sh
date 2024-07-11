@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-07-05"
+VERSIONDATE="2024-07-11"
 
 # MARK: Functions
 
@@ -1788,6 +1788,14 @@ wireshark)
       downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%20${appNewVersion}%20Arm%2064.dmg"
     fi
     expectedTeamID="7Z6EMTD2C6"
+    ;;
+xquartz)
+    # credit: AP Orlebeke (@apizz)
+    name="XQuartz"
+    type="pkg"
+    appNewVersion="2.8.5"
+    downloadURL="https://github.com/XQuartz/XQuartz/releases/download/XQuartz-${appNewVersion}/XQuartz-${appNewVersion}.pkg"
+    expectedTeamID="NA574AWV7E"
     ;;
 *)
     # unknown label
