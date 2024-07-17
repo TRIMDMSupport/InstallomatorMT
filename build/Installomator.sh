@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-07-11"
+VERSIONDATE="2024-07-17"
 
 # MARK: Functions
 
@@ -1707,7 +1707,14 @@ rectangle)
     downloadURL="https://github.com/TRIMDMSupport/RectangleMT/releases/download/v${appNewVersion}/Rectangle${appNewVersion}.dmg"
     expectedTeamID="XSYZ3E4B7D"
     ;;
-stats)
+santa)
+    name="Santa"
+    type="pkgInDmg"
+    packageID="com.google.santa"
+    appNewVersion="2024.5"
+    downloadURL="https://github.com/google/santa/releases/download/${appNewVersion}/santa-${appNewVersion}.dmg"
+    expectedTeamID="EQHXZ8M8AV"
+    ;;stats)
     name="Stats"
     type="dmg"
     appNewVersion="2.10.15"
