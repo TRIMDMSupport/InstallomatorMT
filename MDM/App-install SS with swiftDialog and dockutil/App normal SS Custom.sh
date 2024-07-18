@@ -56,7 +56,7 @@ installomatorOptions="BLOCKING_PROCESS_ACTION=prompt_user DIALOG_CMD_FILE=${dial
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 # Check if any Installomator script is already running
-while pgrep -x "Installomator" > /dev/null ; do 
+while pgrep -fl "Installomator" > /dev/null ; do 
     echo "An instance of Installomator is already running. Waiting for 60 seconds to try again."
     sleep 60
 done
