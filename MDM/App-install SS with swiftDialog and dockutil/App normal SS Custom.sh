@@ -103,6 +103,12 @@ uid=$(id -u "$currentUser")
 # Find the home folder of the user
 userHome="$(dscl . -read /users/${currentUser} NFSHomeDirectory | awk '{print $2}')"
 
+# Check if any Installomator script is already running
+if [ pgrep -x "Installomator" > /dev/null ]; then 
+    echo "An instance of Installomator is already running."
+    exit $1
+fi
+
 # Download custom version of Installomator.sh
 getCustomInstallomator
 
