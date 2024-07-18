@@ -55,6 +55,12 @@ installomatorOptions="BLOCKING_PROCESS_ACTION=prompt_user DIALOG_CMD_FILE=${dial
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
+# Check if any Installomator script is already running
+while pgrep -x "Installomator" > /dev/null ; do 
+    echo "An instance of Installomator is already running. Waiting for 60 seconds to try again."
+    sleep 60
+done
+
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
 
 dialogUpdate() {
@@ -102,12 +108,6 @@ fi
 uid=$(id -u "$currentUser")
 # Find the home folder of the user
 userHome="$(dscl . -read /users/${currentUser} NFSHomeDirectory | awk '{print $2}')"
-
-# Check if any Installomator script is already running
-if [ pgrep -x "Installomator" > /dev/null ]; then 
-    echo "An instance of Installomator is already running."
-    exit $1
-fi
 
 # Download custom version of Installomator.sh
 getCustomInstallomator
