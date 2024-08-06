@@ -21,7 +21,7 @@ dialog_command_file="/var/tmp/dialog.log"
 dialogApp="/Library/Application Support/Dialog/Dialog.app"
 dockutil="/usr/local/bin/dockutil"
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
 #   LOGGING=REQ
@@ -55,11 +55,21 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIA
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-# Check if any Installomator script is already running
-while pgrep -fl "Installomator" > /dev/null ; do 
-    echo "An instance of Installomator is already running. Waiting for 60 seconds to try again."
-    sleep 60
-done
+
+#check running other Installomator script. 
+PID_FILE="/tmp/Intune_Installomator_script.pid" 
+
+if [ -e "$PID_FILE" ]; then 
+    PID=$(cat "$PID_FILE") 
+    while ps -ef | grep $PID | grep -v grep | grep -v ps; do 
+        echo "Other Installomator script is already running. Waiting 5 sec" 
+        sleep 5
+    done
+    rm "$PID_FILE"
+fi 
+
+
+echo $$ > "$PID_FILE" 
 
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
 
@@ -122,12 +132,14 @@ if [ ! -e "${destFile}" ]; then
 fi
 
 # Check if new version of label is available
-output=$("$destFile" "$item" "CHECK_VERSION=1")
+output=$("$destFile" "$item" "LOGGING=INFO" "CHECK_VERSION=1")
 
 if echo "$output" | grep -q "no newer version"; then
     echo "No newer version."
     exit $1
 fi
+
+installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # No sleeping
 /usr/bin/caffeinate -d -i -m -u &

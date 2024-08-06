@@ -4,17 +4,17 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="krita" # enter the software to install
+item="microsigner" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Calligrakrita-base.svg/1200px-Calligrakrita-base.svg.png"
+icon=""
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
 # dockutil variables
 addToDock="0" # with dockutil after installation (0 if not)
-appPath="/Applications/krita.app"
+appPath="/Applications/MicroSigner.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
@@ -54,7 +54,6 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIA
 # Mark: Script
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
-
 
 #check running other Installomator script. 
 PID_FILE="/tmp/Intune_Installomator_script.pid" 

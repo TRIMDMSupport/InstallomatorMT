@@ -55,6 +55,21 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=kill DIALOG_CMD_FILE
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
+#check running other Installomator script. 
+PID_FILE="/tmp/Intune_Installomator_script.pid" 
+
+if [ -e "$PID_FILE" ]; then 
+    PID=$(cat "$PID_FILE") 
+    while ps -ef | grep $PID | grep -v grep | grep -v ps; do 
+        echo "Other Installomator script is already running. Waiting 5 sec" 
+        sleep 5
+    done
+    rm "$PID_FILE"
+fi 
+
+
+echo $$ > "$PID_FILE" 
+
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
 
 dialogUpdate() {
@@ -116,7 +131,7 @@ if [ ! -e "${destFile}" ]; then
 fi
 
 # Check if new version of label is available
-output=$("$destFile" "$item" "CHECK_VERSION=1")
+output=$("$destFile" "$item" "LOGGING=INFO" "CHECK_VERSION=1")
 
 if echo "$output" | grep -q "no newer version"; then
     echo "No newer version."

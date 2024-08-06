@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-07-18"
+VERSIONDATE="2024-08-06"
 
 # MARK: Functions
 
@@ -1653,6 +1653,14 @@ macpass)
     expectedTeamID="55SM4L4Z97"
     ;;
 
+microsigner)
+    name="MicroSigner"
+    type="dmg"
+    appNewVersion="16"
+    downloadURL="https://download.microsigner.com/client/MicroSigner.dmg"
+    versionKey="CFBundleVersion"
+    expectedTeamID="M5DJ4YC39W"
+    ;;
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
