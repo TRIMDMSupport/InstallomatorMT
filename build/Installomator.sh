@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-08-06"
+VERSIONDATE="2024-08-08"
 
 # MARK: Functions
 
@@ -1613,8 +1613,8 @@ figma)
 iterm)
     name="iTerm"
     type="zip"
-    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_2.zip"
-    appNewVersion="3.5.2"
+    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_3.zip"
+    appNewVersion="3.5.3"
     expectedTeamID="H7V7XYVQ7D"
     blockingProcesses=( iTerm2 )
     ;;
