@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-08-08"
+VERSIONDATE="2024-08-09"
 
 # MARK: Functions
 
@@ -1531,7 +1531,7 @@ androidfiletransfer)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    appNewVersion="1.19.0"
+    appNewVersion="1.24.0"
     link="https://github.com/usebruno/bruno/releases/download/"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
@@ -1592,7 +1592,7 @@ dockutil)
     ;;drawio)
     name="draw.io"
     type="dmg"
-    appNewVersion="24.6.1"
+    appNewVersion="24.7.5"
     archiveName="draw.io-universal-[0-9.]*.dmg"
     downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
     expectedTeamID="UZEUFB4N53"
@@ -1678,7 +1678,7 @@ microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    appNewVersion="1.90.2"
+    appNewVersion="1.92"
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
@@ -1719,7 +1719,7 @@ santa)
     name="Santa"
     type="pkgInDmg"
     packageID="com.google.santa"
-    appNewVersion="2024.5"
+    appNewVersion="2024.7"
     downloadURL="https://github.com/google/santa/releases/download/${appNewVersion}/santa-${appNewVersion}.dmg"
     expectedTeamID="EQHXZ8M8AV"
     ;;stats)
