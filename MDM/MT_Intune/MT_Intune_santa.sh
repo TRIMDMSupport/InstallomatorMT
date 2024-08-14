@@ -55,6 +55,14 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=kill DIALOG_CMD_FILE
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
+#put / refresh installed satus file
+Installed_file="/usr/local/Installomator/installed/${item}"
+if [ -e "$Installed_file" ]; then 
+    rm "$Installed_file"
+fi
+
+echo  $icon > "$Installed_file"
+
 #check running other Installomator script. 
 PID_FILE="/tmp/Intune_Installomator_script.pid" 
 

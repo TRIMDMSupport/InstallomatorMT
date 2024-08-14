@@ -21,7 +21,7 @@ dialog_command_file="/var/tmp/dialog.log"
 dialogApp="/Library/Application Support/Dialog/Dialog.app"
 dockutil="/usr/local/bin/dockutil"
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
 #   LOGGING=REQ
@@ -54,6 +54,14 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIA
 # Mark: Script
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+#put / refresh installed satus file
+Installed_file="/usr/local/Installomator/installed/${item}"
+if [ -e "$Installed_file" ]; then 
+    rm "$Installed_file"
+fi
+
+echo  $icon > "$Installed_file"
 
 #check running other Installomator script. 
 PID_FILE="/tmp/Intune_Installomator_script.pid" 
@@ -137,6 +145,8 @@ if echo "$output" | grep -q "no newer version"; then
     echo "No newer version."
     exit $1
 fi
+
+installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # No sleeping
 /usr/bin/caffeinate -d -i -m -u &
