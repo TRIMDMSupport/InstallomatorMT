@@ -61,6 +61,8 @@ if [ -e "$Installed_file" ]; then
     rm "$Installed_file"
 fi
 
+mkdir -p "/usr/local/Installomator/installed"
+touch $Installed_file
 echo  $icon > "$Installed_file"
 
 #check running other Installomator script. 
