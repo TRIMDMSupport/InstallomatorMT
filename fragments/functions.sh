@@ -84,6 +84,11 @@ printlog(){
     log_message=$1
     log_priority=$2
     timestamp=$(date +%F\ %T)
+    # Check if log file is bigger than 50MB, if it is then append filename with a date
+    if [[ $(find "$log_location" -type f -size +50000000c 2>/dev/null) ]]; then
+        mv $log_location "${log_location%.log}_$(date +%F-%H-%M).log"
+        touch $log_location
+    fi 
 
     # Check to make sure that the log isn't the same as the last, if it is then don't log and increment a timer.
     if [[ ${log_message} == ${previous_log_message} ]]; then
