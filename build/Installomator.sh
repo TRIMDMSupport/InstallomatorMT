@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-08-21"
+VERSIONDATE="2024-08-23"
 
 # MARK: Functions
 
@@ -1803,9 +1803,9 @@ wireshark)
     type="dmg"
     appNewVersion="4.2.5"
     if [[ $(arch) == "i386" ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%20${appNewVersion}%20Intel%2064.dmg"
+      downloadURL="https://2.na.dl.wireshark.org/osx/all-versions/Wireshark%20${appNewVersion}%20Intel%2064.dmg"
     elif [[ $(arch) == "arm64" ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%20${appNewVersion}%20Arm%2064.dmg"
+      downloadURL="https://2.na.dl.wireshark.org/osx/all-versions/Wireshark%20${appNewVersion}%20Arm%2064.dmg"
     fi
     expectedTeamID="7Z6EMTD2C6"
     ;;

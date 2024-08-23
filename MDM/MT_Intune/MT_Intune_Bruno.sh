@@ -65,6 +65,9 @@ mkdir -p "/usr/local/Installomator/installed"
 touch $Installed_file
 echo  $icon > "$Installed_file"
 
+#forget uninstall pkg
+sudo pkgutil --forget "com.github.payload_free.${item}.uninstall"
+
 #check running other Installomator script.
 PID_FILE="/tmp/Intune_Installomator_script.pid" 
 
