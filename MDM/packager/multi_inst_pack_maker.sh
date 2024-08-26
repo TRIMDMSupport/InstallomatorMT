@@ -1,8 +1,9 @@
 #!/bin/bash
 
+loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
 
 # Directory to parse
-DIRECTORY="/Users/balazs.imre/Documents/Work/MT/Mac_development/InstallomatorMT/InstallomatorMT/MDM/MT_Intune"
+DIRECTORY="/Users/${loggedInUser}/Documents/Work/MT/Mac_development/InstallomatorMT/InstallomatorMT/MDM/MT_Intune"
 
 SCRIPT_TO_CALL="./packager.sh"
 # Iterate over each file in the directory
