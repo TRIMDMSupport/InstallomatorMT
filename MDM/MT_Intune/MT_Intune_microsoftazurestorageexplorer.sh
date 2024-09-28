@@ -55,15 +55,16 @@ installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALO
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-#put / refresh installed satus file
+#put installed satus file or exit
 Installed_file="/usr/local/Installomator/installed/${item}"
 if [ -e "$Installed_file" ]; then 
-    rm "$Installed_file"
+    echo "Már lefutott 1 alkalommal a telepítő, így kilépek"
+    exit 1
+else
+    mkdir -p "/usr/local/Installomator/installed"
+    touch $Installed_file
+    echo  $icon > "$Installed_file"
 fi
-
-mkdir -p "/usr/local/Installomator/installed"
-touch $Installed_file
-echo  $icon > "$Installed_file"
 
 #forget uninstall pkg
 sudo pkgutil --forget "com.github.payload_free.${item}.uninstall"
