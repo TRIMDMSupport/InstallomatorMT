@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-09-28"
+VERSIONDATE="2024-10-02"
 
 # MARK: Functions
 
@@ -1550,8 +1550,9 @@ androidfiletransfer)
 cyberduck)
     name="Cyberduck"
     type="zip"
-    appNewVersion="8.9.0.41543"
-    downloadURL="https://update.cyberduck.io//Cyberduck-${appNewVersion}.zip"
+    appNewVersion="8.9.0"
+    CFBundleVersion=".41543"
+    downloadURL="https://update.cyberduck.io//Cyberduck-${appNewVersion}${CFBundleVersion}.zip"
     expectedTeamID="G69SCX94XU"
     ;;
 dbeaverce)
@@ -1782,7 +1783,7 @@ vmwarehorizonclient)
     #downloadGroup=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY" | grep -o '[^"]*_MAC_[^"]*')
     #fileName=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&dlgType=PRODUCT_BINARY&downloadGroup=${downloadGroup}" | grep -o '"fileName":"[^"]*"' | cut -d: -f2 | sed 's/"//g')
     downloadURL="https://download3.omnissa.com/software/CART25FQ2_MAC_2406/VMware-Horizon-Client-2406-8.13.0-10025792799.dmg"
-    appNewVersion="2406"
+    appNewVersion="8.13.0"
     expectedTeamID="EG7KH642X6"
     ;;
 webex|\
