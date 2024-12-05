@@ -2,7 +2,7 @@ bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    appNewVersion="1.24.0"
+    appNewVersion="1.11.0"
     link="https://github.com/usebruno/bruno/releases/download/"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"

@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-11-18"
+VERSIONDATE="2024-12-05"
 
 # MARK: Functions
 
@@ -1536,7 +1536,7 @@ androidfiletransfer)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    appNewVersion="1.24.0"
+    appNewVersion="1.11.0"
     link="https://github.com/usebruno/bruno/releases/download/"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
@@ -1684,7 +1684,7 @@ microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    appNewVersion="1.92.2"
+    appNewVersion="1.95.3"
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
