@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2024-12-05"
+VERSIONDATE="2025-01-07"
 
 # MARK: Functions
 
@@ -1598,7 +1598,7 @@ dockutil)
     ;;drawio)
     name="draw.io"
     type="dmg"
-    appNewVersion="24.7.5"
+    appNewVersion="24.1.0"
     archiveName="draw.io-universal-[0-9.]*.dmg"
     downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
     expectedTeamID="UZEUFB4N53"
@@ -1719,7 +1719,7 @@ raycast)
     type="dmg"
     downloadURL="https://releases.raycast.com/download"
     #appNewVersion="$( curl -fsIL "https://www.raycast.com/download" | grep -i ^location | grep Raycast_ | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/' )"
-    appNewVersion="1.85.2"
+    appNewVersion="1.88.4"
     expectedTeamID="SY64MV22J9"
     ;;
 rectangle)
