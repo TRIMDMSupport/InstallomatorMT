@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-01-07"
+VERSIONDATE="2025-01-15"
 
 # MARK: Functions
 
@@ -1598,7 +1598,7 @@ dockutil)
     ;;drawio)
     name="draw.io"
     type="dmg"
-    appNewVersion="24.1.0"
+    appNewVersion="26.0.4"
     archiveName="draw.io-universal-[0-9.]*.dmg"
     downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
     expectedTeamID="UZEUFB4N53"
