@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-01-25"
+VERSIONDATE="2025-01-28"
 
 # MARK: Functions
 
@@ -1884,7 +1884,7 @@ swiftdialog)
 utm)
     name="UTM"
     type="dmg"
-    appNewVersion="4.4.5"
+    appNewVersion="4.6.4"
     downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
