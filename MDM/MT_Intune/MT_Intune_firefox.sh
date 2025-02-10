@@ -4,24 +4,24 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="vlc_local" # enter the software to install
+item="firefox" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="/Users/Shared/VLC.png"
+icon="https://cdn0.iconfinder.com/data/icons/mozilla-icons/256/firefox_png.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
 # dockutil variables
 addToDock="0" # with dockutil after installation (0 if not)
-appPath="/Applications/VLC.app"
+appPath="/Applications/Firefox.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
 dialogApp="/Library/Application Support/Dialog/Dialog.app"
 dockutil="/usr/local/bin/dockutil"
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
 #   LOGGING=REQ
@@ -67,7 +67,7 @@ else
 fi
 
 #forget uninstall pkg
-sudo pkgutil --forget "com.github.payload_free.${item}.uninstall"
+#sudo pkgutil --forget "com.github.payload_free.${item}.uninstall"
 
 #check running other Installomator script. 
 PID_FILE="/tmp/Intune_Installomator_script.pid" 

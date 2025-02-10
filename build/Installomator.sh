@@ -1616,6 +1616,15 @@ figma)
     fi
     expectedTeamID="T8RA8NE3B7"
     ;;
+firefox)
+    name="Firefox"
+    type="pkg"
+    appNewVersion="133.0"
+    archiveName="Firefox%20${appNewVersion}.pkg"
+    downloadURL="https://ftp.mozilla.org/pub/firefox/releases/${appNewVersion}/mac/hu/Firefox%20${appNewVersion}.pkg"
+    expectedTeamID="43AQ936H96"
+    ;;
+
 iterm)
     name="iTerm"
     type="zip"
@@ -1904,7 +1913,7 @@ vlc_local)
     type="dmg"
     appNewVersion="3.0.21"
     archiveName="vlc-${appNewVersion}-arm64.dmg"
-    downloadURL="/Users/Shared/vlc-${appNewVersion}-arm64.dmg"
+    downloadURL="file:///Users/Shared/vlc-${appNewVersion}-arm64.dmg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
