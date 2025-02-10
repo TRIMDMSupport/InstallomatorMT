@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-01-28"
+VERSIONDATE="2025-02-10"
 
 # MARK: Functions
 
@@ -1895,6 +1895,16 @@ vlc)
     #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
     archiveName="vlc-${appNewVersion}-universal.dmg"
     downloadURL="https://get.videolan.org/vlc/${appNewVersion}/macosx/vlc-${appNewVersion}-universal.dmg"
+    versionKey="CFBundleShortVersionString"
+    expectedTeamID="75GAHG3SZQ"
+    ;;
+
+vlc_local)
+    name="VLC"
+    type="dmg"
+    appNewVersion="3.0.21"
+    archiveName="vlc-${appNewVersion}-arm64.dmg"
+    downloadURL="/Users/Shared/vlc-${appNewVersion}-arm64.dmg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
