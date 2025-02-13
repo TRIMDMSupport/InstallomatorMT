@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-02-10"
+VERSIONDATE="2025-02-13"
 
 # MARK: Functions
 
@@ -1623,6 +1623,15 @@ firefox)
     archiveName="Firefox%20${appNewVersion}.pkg"
     downloadURL="https://ftp.mozilla.org/pub/firefox/releases/${appNewVersion}/mac/hu/Firefox%20${appNewVersion}.pkg"
     expectedTeamID="43AQ936H96"
+    ;;
+
+googlechrome_local)
+    name="Google Chrome"
+    type="dmg"
+    appNewVersion="133.0.6943.99"
+    archiveName="googlechrome.dmg"
+    downloadURL="file:///Users/Shared/googlechrome.dmg"
+    expectedTeamID="EQHXZ8M8AV"
     ;;
 
 iterm)
