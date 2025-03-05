@@ -59,7 +59,7 @@ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 Installed_file="/usr/local/Installomator/installed/${item}"
 if [ -e "$Installed_file" ]; then 
     echo "Már lefutott 1 alkalommal a telepítő, így kilépek"
-    exit 1
+    exit
 else
     mkdir -p "/usr/local/Installomator/installed"
     touch $Installed_file
