@@ -284,7 +284,7 @@ else
         --title none \
         --icon "$icon" \
         --message "$message" \
-        --mini \
+        --ontop \
         --progress 100 \
         --position bottomright \
         --movable \
