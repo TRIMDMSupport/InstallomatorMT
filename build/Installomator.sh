@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-02-13"
+VERSIONDATE="2025-03-07"
 
 # MARK: Functions
 
@@ -1519,6 +1519,16 @@ valuesfromarguments)
     ;;
 
 # label descriptions start here
+acrobatreader_local)
+    name="Adobe Acrobat Reader"
+    type="pkg"
+    appNewVersion="24.005.20414"
+    archiveName="AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
+    downloadURL="file:///Users/Shared/AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
+    versionKey="CFBundleShortVersionString"
+    expectedTeamID="JQ525L2MZD"
+    ;;
+
 alttab)
     name="AltTab"
     type="zip"
