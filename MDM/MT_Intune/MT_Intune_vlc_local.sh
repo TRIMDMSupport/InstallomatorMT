@@ -283,7 +283,7 @@ else
         --ontop \
         --progress 100 \
         --position bottomright \
-        --movable \
+        --mini \
         --commandfile "$dialog_command_file"
 
     # give everything a moment to catch up

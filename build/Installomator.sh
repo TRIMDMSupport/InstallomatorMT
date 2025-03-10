@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-03-07"
+VERSIONDATE="2025-03-10"
 
 # MARK: Functions
 
@@ -1626,16 +1626,15 @@ figma)
     fi
     expectedTeamID="T8RA8NE3B7"
     ;;
-firefox)
+firefoxpkg)
     name="Firefox"
     type="pkg"
-    appNewVersion="133.0"
-    archiveName="Firefox%20${appNewVersion}.pkg"
-    downloadURL="https://ftp.mozilla.org/pub/firefox/releases/${appNewVersion}/mac/hu/Firefox%20${appNewVersion}.pkg"
+    downloadURL="https://download.mozilla.org/?product=firefox-pkg-latest-ssl&os=osx&lang=en-US"
+    firefoxVersions=$(curl -fs "https://product-details.mozilla.org/1.0/firefox_versions.json")
+    appNewVersion=$(getJSONValue "$firefoxVersions" "LATEST_FIREFOX_VERSION")
     expectedTeamID="43AQ936H96"
-    ;;
-
-googlechrome_local)
+    blockingProcesses=( firefox )
+    ;;googlechrome_local)
     name="Google Chrome"
     type="dmg"
     appNewVersion="133.0.6943.99"
