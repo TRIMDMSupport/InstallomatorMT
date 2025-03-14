@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-03-10"
+VERSIONDATE="2025-03-14"
 
 # MARK: Functions
 
@@ -1663,7 +1663,13 @@ intellijideace)
     fi
     expectedTeamID="2ZEFAR8TH3"
     ;;
-keystoreexplorer)
+keka)
+    name="Keka"
+    type="dmg"
+    appNewVersion="1.4.7"
+    downloadURL="https://github.com/aonez/Keka/releases/download/v${appNewVersion}/Keka-${appNewVersion}.dmg"
+    expectedTeamID="4FG648TM2A"
+    ;;keystoreexplorer)
     name="KeyStore Explorer"
     type="dmg"
     downloadURL="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.3/kse-553.dmg"
