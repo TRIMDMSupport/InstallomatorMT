@@ -64,21 +64,7 @@ fi
 mkdir -p "/usr/local/Installomator/installed"
 touch $Installed_file
 echo  $icon > "$Installed_file"
-
-#check running other Installomator script.
-PID_FILE="/tmp/Intune_Installomator_script.pid" 
-
-if [ -e "$PID_FILE" ]; then 
-    PID=$(cat "$PID_FILE") 
-    while ps -ef | grep $PID | grep -v grep | grep -v ps; do 
-        echo "Other Installomator script is already running. Waiting 5 sec" 
-        sleep 5
-    done
-    rm "$PID_FILE"
-fi 
-
-
-echo $$ > "$PID_FILE" 
+ 
 
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
 
@@ -287,7 +273,7 @@ else
         --ontop \
         --progress 100 \
         --position bottomright \
-        --movable \
+        --mini \
         --commandfile "$dialog_command_file"
 
     # give everything a moment to catch up
