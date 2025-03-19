@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-03-14"
+VERSIONDATE="2025-03-19"
 
 # MARK: Functions
 
@@ -1617,7 +1617,7 @@ dockutil)
 figma)
     name="Figma"
     type="dmg"
-    appNewVersion="124.1.6"
+    appNewVersion="125.1.5"
     archiveName="Figma-$appNewVersion.dmg"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://desktop.figma.com/mac-arm/Figma-$appNewVersion.dmg"
