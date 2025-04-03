@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-03-19"
+VERSIONDATE="2025-04-03"
 
 # MARK: Functions
 
@@ -1614,7 +1614,13 @@ dockutil)
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
     ;;
-figma)
+dre_console)
+    name="Dameware Remote Everywhere Console"
+    type="appInDmgInZip"
+    downloadURL="https://swi-rc.cdn-sw.net/dre/mac/DRE_Mac_Console.zip"
+    appNewVersion="6.00.69"
+    expectedTeamID="YT3GCGK3Z7"
+    ;;figma)
     name="Figma"
     type="dmg"
     appNewVersion="125.1.5"
@@ -1634,16 +1640,20 @@ firefoxpkg)
     appNewVersion=$(getJSONValue "$firefoxVersions" "LATEST_FIREFOX_VERSION")
     expectedTeamID="43AQ936H96"
     blockingProcesses=( firefox )
-    ;;googlechrome_local)
+    ;;googlechromepkg)
     name="Google Chrome"
-    type="dmg"
-    appNewVersion="133.0.6943.99"
-    archiveName="googlechrome.dmg"
-    downloadURL="file:///Users/Shared/googlechrome.dmg"
+    type="pkg"
+    #
+    # Note: this url acknowledges that you accept the terms of service
+    # https://support.google.com/chrome/a/answer/9915669
+    #
+    downloadURL="https://dl.google.com/chrome/mac/stable/accept_tos%3Dhttps%253A%252F%252Fwww.google.com%252Fintl%252Fen_ph%252Fchrome%252Fterms%252F%26_and_accept_tos%3Dhttps%253A%252F%252Fpolicies.google.com%252Fterms/googlechrome.pkg"
+    appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
-    ;;
-
-iterm)
+    updateTool="/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
+    updateToolArguments=( -runMode oneshot -userInitiated YES )
+    updateToolRunAsCurrentUser=1
+    ;;iterm)
     name="iTerm"
     type="zip"
     downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_3.zip"
@@ -1921,6 +1931,16 @@ utm)
     downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
+vlc_local)
+    name="VLC"
+    type="dmg"
+    appNewVersion="3.0.21"
+    archiveName="vlc-${appNewVersion}-arm64.dmg"
+    downloadURL="file:///Users/Shared/vlc-${appNewVersion}-arm64.dmg"
+    versionKey="CFBundleShortVersionString"
+    expectedTeamID="75GAHG3SZQ"
+    ;;
+
 vlc)
     name="VLC"
     type="dmg"
@@ -1928,16 +1948,6 @@ vlc)
     #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
     archiveName="vlc-${appNewVersion}-universal.dmg"
     downloadURL="https://get.videolan.org/vlc/${appNewVersion}/macosx/vlc-${appNewVersion}-universal.dmg"
-    versionKey="CFBundleShortVersionString"
-    expectedTeamID="75GAHG3SZQ"
-    ;;
-
-vlc_local)
-    name="VLC"
-    type="dmg"
-    appNewVersion="3.0.21"
-    archiveName="vlc-${appNewVersion}-arm64.dmg"
-    downloadURL="file:///Users/Shared/vlc-${appNewVersion}-arm64.dmg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;

@@ -4,11 +4,11 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="googlechrome_local" # enter the software to install
+item="googlechromepkg" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="/Users/Shared/googlechrome.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/scriptdesign/refs/heads/main/icons/Google_Chrome_icon_(March_2011).svg.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
