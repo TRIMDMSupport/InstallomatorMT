@@ -1527,6 +1527,8 @@ acrobatreader_local)
     downloadURL="file:///Users/Shared/AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="JQ525L2MZD"
+    Company="Adobe"
+    targetDir="/Applications/Adobe Acrobat DC"
     ;;
 
 alttab)
