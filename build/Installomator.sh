@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-04-03"
+VERSIONDATE="2025-04-07"
 
 # MARK: Functions
 
@@ -1520,7 +1520,7 @@ valuesfromarguments)
 
 # label descriptions start here
 acrobatreader_local)
-    name="Adobe Acrobat Reader"
+    name="Adobe Acrobat"
     type="pkg"
     appNewVersion="24.005.20414"
     archiveName="AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
@@ -1581,8 +1581,8 @@ displaylinkmanager)
     name="DisplayLink Manager"
     type="pkg"
     packageID="com.displaylink.DisplayLinkUserAgent"
-    downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2024-05/DisplayLink%20Manager%20Graphics%20Connectivity1.10.2-EXE.pkg"
-    appNewVersion="1.10.2"
+    downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2025-04/DisplayLink%20Manager%20Graphics%20Connectivity1.12.1-EXE.pkg"
+    appNewVersion="1.12.1"
     expectedTeamID="73YQY62QM3"
     ;;
 docker)
@@ -1863,7 +1863,14 @@ privileges)
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges.zip"
     expectedTeamID="7R5ZEU67FQ"
     ;;
-proximity)
+privileges2)
+    name="Privileges"
+    type="pkg"
+    packageID="corp.sap.privileges.pkg"
+    appNewVersion="2.2.0"
+    downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
+    expectedTeamID="7R5ZEU67FQ"
+    ;;proximity)
     name="Cisco Proximity"
     type="dmg"
     appNewVersion="desktop-4.0.0"

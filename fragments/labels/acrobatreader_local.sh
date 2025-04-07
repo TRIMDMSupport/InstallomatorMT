@@ -1,5 +1,5 @@
 acrobatreader_local)
-    name="Adobe Acrobat Reader"
+    name="Adobe Acrobat"
     type="pkg"
     appNewVersion="24.005.20414"
     archiveName="AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
