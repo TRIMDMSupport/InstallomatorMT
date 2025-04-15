@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-04-07"
+VERSIONDATE="2025-04-15"
 
 # MARK: Functions
 
@@ -1528,7 +1528,7 @@ acrobatreader_local)
     versionKey="CFBundleShortVersionString"
     expectedTeamID="JQ525L2MZD"
     Company="Adobe"
-    targetDir="/Applications/Adobe Acrobat DC"
+    packageID="com.adobe.acrobat.AcroRdrSCADCUpd2400520421_MUI"
     ;;
 
 alttab)
@@ -1857,7 +1857,14 @@ microsoftword)
     archiveName="podman-installer-macos-universal.pkg"
     expectedTeamID="HYSCB8KRL2"
     ;;
-privileges)
+priviledge2)
+    name="Privileges"
+    type="pkg"
+    packageID="corp.sap.privileges.pkg"
+    appNewVersion="2.2.0"
+    downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
+    expectedTeamID="7R5ZEU67FQ"
+    ;;privileges)
     # credit: Erik Stam (@erikstam)
     name="Privileges"
     type="zip"

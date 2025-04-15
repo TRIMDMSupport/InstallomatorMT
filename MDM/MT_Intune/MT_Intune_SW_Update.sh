@@ -29,8 +29,10 @@ SCRIPT_TO_CALL="/usr/local/Installomator/MT_Intune_VFA.sh"
 for FILE in "$DIRECTORY"/*; do
   if [ -f "$FILE" ]; then
     FILENAME=$(basename "$FILE")
+    if [[ ! $FILENAME == *"_local"* ]]; then
     FIRST_LINE=$(head -n 1 "$FILE")
     # Call the script with the filename and first line as arguments
     "$SCRIPT_TO_CALL" "$FILENAME" "$FIRST_LINE"
+    fi
   fi
 done

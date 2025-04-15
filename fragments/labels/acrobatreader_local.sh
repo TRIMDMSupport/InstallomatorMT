@@ -7,6 +7,6 @@ acrobatreader_local)
     versionKey="CFBundleShortVersionString"
     expectedTeamID="JQ525L2MZD"
     Company="Adobe"
-    targetDir="/Applications/Adobe Acrobat DC"
+    packageID="com.adobe.acrobat.AcroRdrSCADCUpd2400520421_MUI"
     ;;
 
