@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-04-15"
+VERSIONDATE="2025-04-17"
 
 # MARK: Functions
 
@@ -1876,7 +1876,7 @@ privileges2)
     name="Privileges"
     type="pkg"
     packageID="corp.sap.privileges.pkg"
-    appNewVersion="2.2.0"
+    appNewVersion="2.3.0"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
     expectedTeamID="7R5ZEU67FQ"
     ;;proximity)
@@ -1943,7 +1943,7 @@ swiftdialog)
 utm)
     name="UTM"
     type="dmg"
-    appNewVersion="4.6.4"
+    appNewVersion="4.6.5"
     downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
