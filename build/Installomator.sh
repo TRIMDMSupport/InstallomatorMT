@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-04-17"
+VERSIONDATE="2025-04-22"
 
 # MARK: Functions
 
@@ -1841,7 +1841,19 @@ microsoftword)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps MSWD2019 )
-    ;;particulars)
+    ;;mongodbcompass)
+    name="MongoDB Compass"
+    type="dmg"
+    appNewVersion="1.46.0"
+    downloadURL="https://github.com/mongodb-js/compass/releases/download/v${appNewVersion}/mongodb-compass-${appNewVersion}-darwin-arm64.dmg" 
+    expectedTeamID="4XWMY46275"
+    ;;
+
+
+
+
+
+    particulars)
     name="Particulars"
     type="pkg"
     packageID="net.glencode.Particulars"

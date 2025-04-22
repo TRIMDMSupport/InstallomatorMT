@@ -4,17 +4,17 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="privileges2" # enter the software to install
+item="mongodbcompass" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://raw.githubusercontent.com/TRIMDMSupport/scriptdesign/refs/heads/main/icons/Privileges.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/scriptdesign/refs/heads/main/icons/mongodb_compass.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
 # dockutil variables
 addToDock="0" # with dockutil after installation (0 if not)
-appPath="/Applications/Privileges.app"
+appPath="/Applications/MongoDB Compass.app"
 
 # Other variables
 dialog_command_file="/var/tmp/dialog.log"
