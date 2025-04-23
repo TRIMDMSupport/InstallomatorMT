@@ -14,7 +14,7 @@ for FILE in "$DIRECTORY"/*; do
     third_block=$(echo "$FILENAME" | awk -F '[_|.]' '{print $3}')
     pkgname="$third_block"
     pkgid="com.github.payload_free.${third_block}"
-    pkgvers="1.7"
+    pkgvers="1.8"
 
     "$SCRIPT_TO_CALL" "$pkgname" "$pkgid" "$pkgvers" "$DIRECTORY"
   fi
