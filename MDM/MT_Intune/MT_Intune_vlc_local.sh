@@ -55,15 +55,11 @@ installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIA
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-#put installed satus file or exit
+#installed file exist then exit
 Installed_file="/usr/local/Installomator/installed/${item}"
 if [ -e "$Installed_file" ]; then 
     echo "Már lefutott 1 alkalommal a telepítő, így kilépek"
     exit
-else
-    mkdir -p "/usr/local/Installomator/installed"
-    touch $Installed_file
-    echo  $icon > "$Installed_file"
 fi
 
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
@@ -308,6 +304,16 @@ if [[ $installomatorVersion -ge 10 && $(sw_vers -buildVersion | cut -c1-2) -ge 2
 
     # just to be safe
     #killall "Dialog" 2>/dev/null || true
+fi
+
+#put installed satus file or exit
+Installed_file="/usr/local/Installomator/installed/${item}"
+if [ -e "$Installed_file" ]; then 
+    exit
+else
+    mkdir -p "/usr/local/Installomator/installed"
+    touch $Installed_file
+    echo  $icon > "$Installed_file"
 fi
 
 echo "[$(DATE)][LOG-END]"

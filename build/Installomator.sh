@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-04-22"
+VERSIONDATE="2025-06-03"
 
 # MARK: Functions
 
@@ -1581,10 +1581,10 @@ dbeaverce)
     ;;
 displaylinkmanager)
     name="DisplayLink Manager"
-    type="pkg"
+    type="pkgInZip"
     packageID="com.displaylink.DisplayLinkUserAgent"
-    downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2025-04/DisplayLink%20Manager%20Graphics%20Connectivity1.12.1-EXE.pkg"
-    appNewVersion="1.12.1"
+    downloadURL="https://www.synaptics.com/sites/default/files/exe_files/2025-05/DisplayLink%20Manager%20Graphics%20Connectivity1.12.3-EXE.zip"
+    appNewVersion="1.12.3"
     expectedTeamID="73YQY62QM3"
     ;;
 docker)
