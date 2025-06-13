@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-06-12"
+VERSIONDATE="2025-06-13"
 
 # MARK: Functions
 
@@ -1645,16 +1645,9 @@ firefoxpkg)
     ;;googlechromepkg)
     name="Google Chrome"
     type="pkg"
-    #
-    # Note: this url acknowledges that you accept the terms of service
-    # https://support.google.com/chrome/a/answer/9915669
-    #
     downloadURL="https://dl.google.com/chrome/mac/stable/accept_tos%3Dhttps%253A%252F%252Fwww.google.com%252Fintl%252Fen_ph%252Fchrome%252Fterms%252F%26_and_accept_tos%3Dhttps%253A%252F%252Fpolicies.google.com%252Fterms/googlechrome.pkg"
-    appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[1].version" )
+    appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
-    updateTool="/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app/Contents/MacOS/GoogleSoftwareUpdateAgent"
-    updateToolArguments=( -runMode oneshot -userInitiated YES )
-    updateToolRunAsCurrentUser=1
     ;;iterm)
     name="iTerm"
     type="zip"
@@ -1822,7 +1815,7 @@ microsoftedgeenterprisestable)
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    appNewVersion="1.100.3"
+    appNewVersion="1.101.0"
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
