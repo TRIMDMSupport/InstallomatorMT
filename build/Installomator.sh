@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-06-13"
+VERSIONDATE="2025-06-27"
 
 # MARK: Functions
 
@@ -1914,6 +1914,13 @@ santa)
     appNewVersion="2024.7"
     downloadURL="https://github.com/google/santa/releases/download/${appNewVersion}/santa-${appNewVersion}.dmg"
     expectedTeamID="EQHXZ8M8AV"
+    ;;slack)
+    name="Slack"
+    type="dmg"
+    appNewVersion="4.44.65"
+    downloadURL="https://downloads.slack-edge.com/desktop-releases/mac/universal/${appNewVersion}/Slack-${appNewVersion}-macOS.dmg"
+    expectedTeamID="BQR82RBBHL"
+    #current download link: curl -fsIL "https://slack.com/ssb/download-osx-universal" | grep -i "^location"
     ;;stats)
     name="Stats"
     type="dmg"
