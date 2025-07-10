@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-06-27"
+VERSIONDATE="2025-07-10"
 
 # MARK: Functions
 
@@ -1548,7 +1548,7 @@ androidfiletransfer)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
-    appNewVersion="1.11.0"
+    appNewVersion="2.7.0"
     link="https://github.com/usebruno/bruno/releases/download/"
     if [[ $(arch) == "arm64" ]]; then
         archiveName="bruno_[0-9.]*_arm64_mac.dmg"
@@ -1625,7 +1625,7 @@ dre_console)
     ;;figma)
     name="Figma"
     type="dmg"
-    appNewVersion="125.1.5"
+    appNewVersion="125.4.9"
     archiveName="Figma-$appNewVersion.dmg"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://desktop.figma.com/mac-arm/Figma-$appNewVersion.dmg"
