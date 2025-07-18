@@ -1530,7 +1530,6 @@ acrobatreader_local)
     Company="Adobe"
     packageID="com.adobe.acrobat.AcroRdrSCADCUpd2400520421_MUI"
     ;;
-
 alttab)
     name="AltTab"
     type="zip"
@@ -1544,7 +1543,8 @@ androidfiletransfer)
     appNewVersion="1.0.12"
     downloadURL="https://dl.google.com/dl/androidjumper/mtp/current/AndroidFileTransfer.dmg"
     expectedTeamID="EQHXZ8M8AV"
-    ;;bruno)
+    ;;
+bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
     name="Bruno"
     type="dmg"
@@ -1607,7 +1607,8 @@ dockutil)
     appNewVersion=$(versionFromGit "kcrawford" "dockutil")
     expectedTeamID="Z5J8CJBUWC"
     blockingProcesses=( NONE )
-    ;;drawio)
+    ;;
+drawio)
     name="draw.io"
     type="dmg"
     appNewVersion="26.0.4"
@@ -1622,7 +1623,8 @@ dre_console)
     downloadURL="https://swi-rc.cdn-sw.net/dre/mac/DRE_Mac_Console.zip"
     appNewVersion="6.00.69"
     expectedTeamID="YT3GCGK3Z7"
-    ;;figma)
+    ;;
+figma)
     name="Figma"
     type="dmg"
     appNewVersion="125.4.9"
@@ -1642,13 +1644,15 @@ firefoxpkg)
     appNewVersion=$(getJSONValue "$firefoxVersions" "LATEST_FIREFOX_VERSION")
     expectedTeamID="43AQ936H96"
     blockingProcesses=( firefox )
-    ;;googlechromepkg)
+    ;;
+googlechromepkg)
     name="Google Chrome"
     type="pkg"
     downloadURL="https://dl.google.com/chrome/mac/stable/accept_tos%3Dhttps%253A%252F%252Fwww.google.com%252Fintl%252Fen_ph%252Fchrome%252Fterms%252F%26_and_accept_tos%3Dhttps%253A%252F%252Fpolicies.google.com%252Fterms/googlechrome.pkg"
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
-    ;;iterm)
+    ;;
+iterm)
     name="iTerm"
     type="zip"
     downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_5_3.zip"
@@ -1674,7 +1678,8 @@ keka)
     appNewVersion="1.4.7"
     downloadURL="https://github.com/aonez/Keka/releases/download/v${appNewVersion}/Keka-${appNewVersion}.dmg"
     expectedTeamID="4FG648TM2A"
-    ;;keystoreexplorer)
+    ;;
+keystoreexplorer)
     name="KeyStore Explorer"
     type="dmg"
     downloadURL="https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.3/kse-553.dmg"
@@ -1696,7 +1701,6 @@ macpass)
     downloadURL="https://github.com/MacPass/MacPass/releases/download/${appNewVersion}/MacPass-${appNewVersion}.zip"
     expectedTeamID="55SM4L4Z97"
     ;;
-
 microsigner)
     name="MicroSigner"
     type="dmg"
@@ -1726,7 +1730,8 @@ microsoftedgeenterprisestable)
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
     appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
-    ;;microsoftexcel)
+    ;;
+microsoftexcel)
     name="Microsoft Excel"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525135"
@@ -1739,7 +1744,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps XCEL2019 )
-    ;;microsoftonedrive)
+    ;;
+microsoftonedrive)
     # This version match the Last Released Production version setting of OneDrive update channel. It’s default if no update channel setting for OneDrive updates has been specified. Enterprise (Deferred) is also supported with label “microsoftonedrive-deferred”.
     # https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0#OSVersion=Mac
     name="OneDrive"
@@ -1754,7 +1760,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps ONDR18 )
-    ;;microsoftonenote)
+    ;;
+microsoftonenote)
     name="Microsoft OneNote"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=820886"
@@ -1767,7 +1774,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps ONMC2019 )
-    ;;microsoftoutlook)
+    ;;
+microsoftoutlook)
     name="Microsoft Outlook"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525137"
@@ -1780,7 +1788,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps OPIM2019 )
-    ;;microsoftpowerpoint)
+    ;;
+microsoftpowerpoint)
     name="Microsoft PowerPoint"
     type="pkg"
     downloadURL="https://go.microsoft.com/fwlink/?linkid=525136"
@@ -1793,7 +1802,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps PPT32019 )
-    ;;microsoftteamsnew)
+    ;;
+microsoftteamsnew)
     name="Microsoft Teams"
     type="pkg"
     #packageID="com.microsoft.teams2"
@@ -1811,7 +1821,8 @@ microsoftedgeenterprisestable)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps TEAMS21 ) # --wait 600 # TEAM01
-    ;;microsoftvisualstudiocode|\
+    ;;
+microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
@@ -1834,19 +1845,24 @@ microsoftword)
     fi
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps MSWD2019 )
-    ;;mongodbcompass)
+    ;;
+mongodbcompass)
     name="MongoDB Compass"
     type="dmg"
     appNewVersion="1.46.0"
     downloadURL="https://github.com/mongodb-js/compass/releases/download/v${appNewVersion}/mongodb-compass-${appNewVersion}-darwin-arm64.dmg" 
     expectedTeamID="4XWMY46275"
     ;;
-
-
-
-
-
-    particulars)
+omnissahorizonclient)
+    name="Omnissa Horizon Client"
+    type="pkgInDmg"
+    #downloadGroup=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY" | grep -o '[^"]*_MAC_[^"]*')
+    #fileName=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&dlgType=PRODUCT_BINARY&downloadGroup=${downloadGroup}" | grep -o '"fileName":"[^"]*"' | cut -d: -f2 | sed 's/"//g')
+    downloadURL="https://download3.omnissa.com/software/CART26FQ1_MAC_2503/Omnissa-Horizon-Client-2503-8.15.0-14236092062.dmg"
+    appNewVersion="8.15.0"
+    expectedTeamID="S2ZMFGQM93"
+    ;;
+particulars)
     name="Particulars"
     type="pkg"
     packageID="net.glencode.Particulars"
@@ -1854,7 +1870,8 @@ microsoftword)
     appNewVersion=$(curl -fsI "${downloadURL}" | grep -i location | grep -oE "[0-9]+\.[0-9]+")
     expectedTeamID="2Z25XDNP2X"
     blockingProcesses=( NONE )
-    ;;podmancli)
+    ;;
+podmancli)
     name="Podman CLI"
     type="pkg"
     appNewVersion="5.1.1"
@@ -1869,7 +1886,8 @@ priviledge2)
     appNewVersion="2.4.0"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
     expectedTeamID="7R5ZEU67FQ"
-    ;;privileges)
+    ;;
+privileges)
     # credit: Erik Stam (@erikstam)
     name="Privileges"
     type="zip"
@@ -1884,7 +1902,8 @@ privileges2)
     appNewVersion="2.4.0"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
     expectedTeamID="7R5ZEU67FQ"
-    ;;proximity)
+    ;;
+proximity)
     name="Cisco Proximity"
     type="dmg"
     appNewVersion="desktop-4.0.0"
@@ -1914,14 +1933,16 @@ santa)
     appNewVersion="2024.7"
     downloadURL="https://github.com/google/santa/releases/download/${appNewVersion}/santa-${appNewVersion}.dmg"
     expectedTeamID="EQHXZ8M8AV"
-    ;;slack)
+    ;;
+slack)
     name="Slack"
     type="dmg"
     appNewVersion="4.44.65"
     downloadURL="https://downloads.slack-edge.com/desktop-releases/mac/universal/${appNewVersion}/Slack-${appNewVersion}-macOS.dmg"
     expectedTeamID="BQR82RBBHL"
     #current download link: curl -fsIL "https://slack.com/ssb/download-osx-universal" | grep -i "^location"
-    ;;stats)
+    ;;
+stats)
     name="Stats"
     type="dmg"
     appNewVersion="2.10.15"
@@ -1968,7 +1989,6 @@ vlc_local)
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
-
 vlc)
     name="VLC"
     type="dmg"
@@ -1979,15 +1999,14 @@ vlc)
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
-
 vmwarehorizonclient)
-    name="Omnissa Horizon Client"
+    name="Vmware Horizon Client"
     type="pkgInDmg"
     #downloadGroup=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/products/getRelatedDLGList?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&version=horizon_8&dlgType=PRODUCT_BINARY" | grep -o '[^"]*_MAC_[^"]*')
     #fileName=$(curl -fsL "https://my.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&category=desktop_end_user_computing&product=vmware_horizon_clients&dlgType=PRODUCT_BINARY&downloadGroup=${downloadGroup}" | grep -o '"fileName":"[^"]*"' | cut -d: -f2 | sed 's/"//g')
-    #downloadURL="https://download3.omnissa.com/software/CART26FQ1_MAC_2503/Omnissa-Horizon-Client-2503-8.15.0-14236092062.dmg"
-    appNewVersion="8.15.0"
-    expectedTeamID="S2ZMFGQM93"
+    downloadURL="https://download3.omnissa.com/software/CART25FQ2_MAC_2406/VMware-Horizon-Client-2406-8.13.0-10025792799.dmg"
+    appNewVersion="8.13.0"
+    expectedTeamID="EG7KH642X6"
     ;;
 webex|\
 webexteams)

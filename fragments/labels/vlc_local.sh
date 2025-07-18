@@ -7,4 +7,3 @@ vlc_local)
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
-
