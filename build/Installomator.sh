@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-07-21"
+VERSIONDATE="2025-09-01"
 
 # MARK: Functions
 
@@ -1591,15 +1591,15 @@ docker)
     name="Docker"
     type="dmg"
     if [[ $(arch) == "arm64" ]]; then
-     downloadURL="https://desktop.docker.com/mac/main/arm64/137060/Docker.dmg"
+     downloadURL="https://desktop.docker.com/mac/main/arm64/203075/Docker.dmg"
     elif [[ $(arch) == "i386" ]]; then
-     downloadURL="https://desktop.docker.com/mac/main/amd64/137060/Docker.dmg"
+     downloadURL="https://desktop.docker.com/mac/main/amd64/203075/Docker.dmg"
     fi
-    appNewVersion="4.27.2"
+    appNewVersion="4.45.0"
     expectedTeamID="9BNSXJN65R"
     blockingProcesses=( "Docker Desktop" "Docker" )
     ;;
-dockutil)
+#release link: https://docs.docker.com/desktop/release-notes/dockutil)
     name="dockutil"
     type="pkg"
     packageID="dockutil.cli.tool"
@@ -1727,6 +1727,7 @@ microsoftedgeconsumerstable|\
 microsoftedgeenterprisestable)
     name="Microsoft Edge"
     type="pkg"
+    #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ
     downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
     appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
