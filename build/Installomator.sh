@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-01"
+VERSIONDATE="2025-09-02"
 
 # MARK: Functions
 
@@ -1599,7 +1599,8 @@ docker)
     expectedTeamID="9BNSXJN65R"
     blockingProcesses=( "Docker Desktop" "Docker" )
     ;;
-#release link: https://docs.docker.com/desktop/release-notes/dockutil)
+#release link: https://docs.docker.com/desktop/release-notes/
+dockutil)
     name="dockutil"
     type="pkg"
     packageID="dockutil.cli.tool"
