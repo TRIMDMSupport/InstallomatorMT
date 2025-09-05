@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-02"
+VERSIONDATE="2025-09-05"
 
 # MARK: Functions
 
@@ -1721,6 +1721,14 @@ microsoftazurestorageexplorer)
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-x64.zip"
         archiveName="StorageExplorer-darwin-x64.zip" 
     fi
+    expectedTeamID="UBF8T346G9"
+    ;;
+microsoftdefender|\
+microsoftdefenderatp)
+    name="Microsoft Defender"
+    type="pkg"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=2097502"
+    appNewVersion=$(curl -fs https://raw.githubusercontent.com/MicrosoftDocs/defender-docs/public/defender-endpoint/mac-whatsnew.md | grep -m 1 -o "Build: [0-9\.]*" | awk '{print $2}')
     expectedTeamID="UBF8T346G9"
     ;;
 microsoftedge|\
