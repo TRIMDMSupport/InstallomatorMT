@@ -1,4 +1,4 @@
-microsoftedgeIT)
+microsoftedgeit)
     name="Microsoft Edge"
     type="pkg"
     #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ

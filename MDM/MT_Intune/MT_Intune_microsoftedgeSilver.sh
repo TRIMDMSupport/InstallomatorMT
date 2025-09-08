@@ -4,7 +4,7 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="microsoftedgeSilver" # enter the software to install
+item="microsoftedgesilver" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon

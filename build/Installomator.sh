@@ -1743,7 +1743,7 @@ microsoftedgeenterprisestable)
     # latest version appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
     ;;
-microsoftedgeIT)
+microsoftedgeit)
     name="Microsoft Edge"
     type="pkg"
     #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ
@@ -1753,7 +1753,7 @@ microsoftedgeIT)
     # latest version appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
     ;;
-microsoftedgeSilver)
+microsoftedgesilver)
     name="Microsoft Edge"
     type="pkg"
     #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ

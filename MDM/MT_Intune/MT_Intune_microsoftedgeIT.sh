@@ -4,7 +4,7 @@
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="microsoftedgeIT" # enter the software to install
+item="microsoftedgeit" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
