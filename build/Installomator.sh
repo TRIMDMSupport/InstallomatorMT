@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-08"
+VERSIONDATE="2025-09-11"
 
 # MARK: Functions
 
@@ -1625,7 +1625,14 @@ dre_console)
     appNewVersion="6.00.69"
     expectedTeamID="YT3GCGK3Z7"
     ;;
-figma)
+evernote)
+    name="Evernote"
+    type="dmg"
+    downloadURL="https://mac.desktop.evernote.com/builds/Evernote-latest.dmg"
+    appNewVersion=$(curl -s https://evernote.com/release-notes | grep Latest | awk -F '<!-- -->' '{print $2}')
+    expectedTeamID="Q79WDW8YH9"
+    ;;
+    figma)
     name="Figma"
     type="dmg"
     appNewVersion="125.4.9"
