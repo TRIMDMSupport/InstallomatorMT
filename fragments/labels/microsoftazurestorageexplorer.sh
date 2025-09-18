@@ -1,7 +1,7 @@
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
-    appNewVersion="1.34.0"
+    appNewVersion="1.39.1"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"

@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-11"
+VERSIONDATE="2025-09-18"
 
 # MARK: Functions
 
@@ -1683,7 +1683,7 @@ intellijideace)
 keka)
     name="Keka"
     type="dmg"
-    appNewVersion="1.4.7"
+    appNewVersion="1.6.0"
     downloadURL="https://github.com/aonez/Keka/releases/download/v${appNewVersion}/Keka-${appNewVersion}.dmg"
     expectedTeamID="4FG648TM2A"
     ;;
@@ -1720,7 +1720,7 @@ microsigner)
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
     type="zip"
-    appNewVersion="1.34.0"
+    appNewVersion="1.39.1"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://github.com/microsoft/AzureStorageExplorer/releases/download/v${appNewVersion}/StorageExplorer-darwin-arm64.zip"
         archiveName="StorageExplorer-darwin-arm64.zip"
@@ -1938,7 +1938,7 @@ privileges2)
     name="Privileges"
     type="pkg"
     packageID="corp.sap.privileges.pkg"
-    appNewVersion="2.4.0"
+    appNewVersion="2.4.1"
     downloadURL="https://github.com/SAP/macOS-enterprise-privileges/releases/download/${appNewVersion}/Privileges_${appNewVersion}.pkg"
     expectedTeamID="7R5ZEU67FQ"
     ;;
@@ -2015,7 +2015,7 @@ swiftdialog)
 utm)
     name="UTM"
     type="dmg"
-    appNewVersion="4.6.5"
+    appNewVersion="4.7.4"
     downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
