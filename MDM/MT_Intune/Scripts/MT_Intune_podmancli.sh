@@ -8,7 +8,7 @@ item="podmancli" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://cdn.prod.website-files.com/62a8969da1ab56329dc8c41e/643cc5871777adf4cf8e7035_637c669ef1deb561ceb7deec_podman1.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/podmancli.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 

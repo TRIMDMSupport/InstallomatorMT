@@ -8,7 +8,7 @@ item="particulars" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5a/62/4f/5a624f5b-0ac2-b33a-e3e0-78e5ff6e90ab/AppIcon-0-85-220-0-5-0-0-2x-0-0.png/1200x630bb.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/particulars.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 

@@ -8,7 +8,7 @@ item="microsoftazurestorageexplorer" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://static.macupdate.com/products/63165/l/microsoft-azure-storage-explorer-logo.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/microsoftazurestorageexplorer.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 

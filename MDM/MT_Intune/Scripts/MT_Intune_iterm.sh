@@ -8,7 +8,7 @@ item="iterm" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://cdn.icon-icons.com/icons2/3053/PNG/512/iterm_macos_bigsur_icon_189500.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/iterm.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 

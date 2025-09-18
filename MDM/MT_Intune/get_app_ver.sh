@@ -42,37 +42,25 @@ process_content() {
   local content="$1"
   local app_new_version_value=""
 
-  # Keresd meg az appNewVersion sort
-  # A grep -o P opciója csak a minta illeszkedő részét adja vissza (Perl regex)
-  # A lookbehind (?<=...) és lookahead (?=...) segítségével pontosan a kívánt részt kapjuk
-  # A (?m) multiline mód bekapcsolása, hogy a ^ és $ működjenek soronként, de a mi mintánkban nem feltétlen szükséges.
-  # A (.*) minden karaktert illeszt a sor végéig
   local app_version_line=$(echo "$content" | grep 'appNewVersion=' | head -n 1 | sed -E 's/.*appNewVersion=(.*)/\1/')
-   echo "$app_version_line" 
   if [ -z "$app_version_line" ]; then
     echo "Nem találtam 'appNewVersion=' sort a megadott tartalomban."
     return 1
   fi
 
   # Eltávolítjuk az esetleges idézőjeleket az elejéről és a végéről
-  echo "$app_version_line"
-  echo "Eltávolítjuk az esetleges idézőjeleket az elejéről és a végéről"
   app_version_line=$(echo "$app_version_line" | sed -E 's/^"|"$//g')
-
 
   # Ellenőrizzük, hogy a sor tartalmaz-e parancskimenet helyettesítést ($(CMD))
   if [[ "$app_version_line" =~ ^\$\(.*\)$ ]]; then
-    echo "Az 'appNewVersion' parancsot tartalmaz. Futtatom..."
-    echo "$app_version_line"
-    echo "Kivágjuk a parancsot a zárójelek közül"
     # Kivágjuk a parancsot a zárójelek közül
     local command_to_run=$(echo "$app_version_line" | sed -E 's/^\$\((.*)\)$/\1/')
-    echo "$app_version_line"
 
     # Futtatjuk a parancsot és mentjük a kimenetét
     app_new_version_value=$(eval "$command_to_run")
     if [ $? -ne 0 ]; then
-      error_exit "Hiba történt a parancs futtatása közben: '$command_to_run'"
+      echo "Hiba történt a parancs futtatása közben: '$command_to_run'"
+      return 1
     fi
   else
     # Ha sima string, akkor azt mentjük el
@@ -88,12 +76,7 @@ process_content() {
 file_content=$(curl -fsL "$GITHUB_RAW_URL")
 # Ha a curl sikertelen, akkor kezeld a hibát.
 # Ezen a ponton feltételezem, hogy a file_content már tartalmazza a linkről letöltött adatokat.
-echo "$file_content"
+
 # Példa az első mintafájllal
 app_version=$(process_content "$file_content")
-if [ $? -eq 0 ]; then
-  echo "A $FILE_NAME appNewVersion értéke: $app_version"
-else
-  echo "Nem sikerült kinyerni az értéket az első mintából."
-fi
-echo ""
+echo $app_version
