@@ -6,7 +6,7 @@ pkgvers="$3"
 directory="$4"
 scriptfile="${directory}/MT_Intune_${pkgname}.sh"
 
-pkgname="${pkgname}_Installomator"
+pkgname="${pkgname}_Installomator_${pkgvers}"
 
 loggedInUser=$( scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }' )
 
@@ -26,5 +26,5 @@ chmod a+x "/tmp/${pkgname}/scripts/postinstall"
 	
 pkgbuild --identifier "${pkgid}" --version "${pkgvers}" --root "/tmp/${pkgname}/nopayload" --scripts "/tmp/${pkgname}/scripts" "/tmp/${pkgname}/${pkgname}.pkg"
 	
-cp /tmp/${pkgname}/${pkgname}.pkg ~/Downloads
-chmod 777 "/Users/${loggedInUser}/Downloads/${pkgname}.pkg"
+cp /tmp/${pkgname}/${pkgname}.pkg ./Packages
+chmod 777 "./Packages/${pkgname}.pkg"

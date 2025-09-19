@@ -21,7 +21,7 @@ dialog_command_file="/var/tmp/dialog.log"
 dialogApp="/Library/Application Support/Dialog/Dialog.app"
 dockutil="/usr/local/bin/dockutil"
 
-GITHUB_RAW_URL="https://raw.githubusercontent.com/Installomator/Installomator/refs/heads/main/fragments/labels/${item}.sh"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/fragments/labels/${item}.sh"
 
 installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
@@ -221,9 +221,9 @@ else
     # Configure and display swiftDialog
     itemName=$( ${destFile} ${item} RETURN_LABEL_NAME=1 LOGGING=DEBUG | tail -1 || true )
     if [[ "$itemName" != "#" ]]; then
-        message="Installing ${itemName} ${app_version}…"
+        message="Installing ${itemName} ${app_version} …"
     else
-        message="Installing ${item} ${app_version}…"
+        message="Installing ${item} ${app_version} …"
     fi
     echo "$item $itemName"
 

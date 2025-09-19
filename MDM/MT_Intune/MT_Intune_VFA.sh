@@ -21,6 +21,8 @@ dialog_command_file="/var/tmp/dialog.log"
 dialogApp="/Library/Application Support/Dialog/Dialog.app"
 dockutil="/usr/local/bin/dockutil"
 
+GITHUB_RAW_URL="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/fragments/labels/${item}.sh"
+
 installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
@@ -63,7 +65,7 @@ fi
 
 mkdir -p "/usr/local/Installomator/installed"
 touch $Installed_file
-echo  $icon > "$Installed_file"
+echo  "https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/${item}.png" > "$Installed_file"
  
 
 echo "$(date +%F\ %T) [LOG-BEGIN] $item"
@@ -92,24 +94,72 @@ checkCmdOutput () {
     fi
     #echo "$checkOutput"
 }
-getCustomInstallomator () {
-    # Ensure the target directory exists
-    mkdir -p /usr/local/Installomator
 
-    # If the script exists, and was modified in the last 30 minutes then skip the download
-    if [ -f "/usr/local/Installomator/Installomator.sh" ]; then
-        if ! [ `find "/usr/local/Installomator/Installomator.sh" -mmin +30` ]; then
-            echo "Installomator script is updated"
-            return 0
-        fi
-    fi
+# from @Pico: https://macadmins.slack.com/archives/CGXNNJXJ9/p1652222365989229?thread_ts=1651786411.413349&cid=CGXNNJXJ9
+getJSONValue() {
+	# $1: JSON string OR file path to parse (tested to work with up to 1GB string and 2GB file).
+	# $2: JSON key path to look up (using dot or bracket notation).
+	printf '%s' "$1" | /usr/bin/osascript -l 'JavaScript' \
+		-e "let json = $.NSString.alloc.initWithDataEncoding($.NSFileHandle.fileHandleWithStandardInput.readDataToEndOfFile$(/usr/bin/uname -r | /usr/bin/awk -F '.' '($1 > 18) { print "AndReturnError(ObjC.wrap())" }'), $.NSUTF8StringEncoding)" \
+		-e 'if ($.NSFileManager.defaultManager.fileExistsAtPath(json)) json = $.NSString.stringWithContentsOfFileEncodingError(json, $.NSUTF8StringEncoding, ObjC.wrap())' \
+		-e "const value = JSON.parse(json.js)$([ -n "${2%%[.[]*}" ] && echo '.')$2" \
+		-e 'if (typeof value === "object") { JSON.stringify(value, null, 4) } else { value }'
+}
 
-    if ! curl -L -# --show-error 'https://github.com/TRIMDMSupport/InstallomatorMT/releases/latest/download/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
-        echo "ERROR: Cannot download Installomator script."
+versionFromGit() {
+    # credit: Søren Theilgaard (@theilgaard)
+    # $1 git user name, $2 git repo name
+    gitusername=${1?:"no git user name"}
+    gitreponame=${2?:"no git repo name"}
+
+    #appNewVersion=$(curl -L --silent --fail "https://api.github.com/repos/$gitusername/$gitreponame/releases/latest" | grep tag_name | cut -d '"' -f 4 | sed 's/[^0-9\.]//g')
+    appNewVersion=$(curl -sLI "https://github.com/$gitusername/$gitreponame/releases/latest" | grep -i "^location" | tr "/" "\n" | tail -1 | sed 's/[^0-9\.]//g')
+    if [ -z "$appNewVersion" ]; then
+        printlog "could not retrieve version number for $gitusername/$gitreponame" WARN
+        appNewVersion=""
     else
-        chmod 755 /usr/local/Installomator/Installomator.sh
+        echo "$appNewVersion"
+        return 0
     fi
 }
+
+# Függvény a tartalom feldolgozására és az appNewVersion kinyerésére
+process_content() {
+  local content="$1"
+  local app_new_version_value=""
+
+  local app_version_line=$(echo "$content" | grep 'appNewVersion=' | head -n 1 | sed -E 's/.*appNewVersion=(.*)/\1/')
+  if [ -z "$app_version_line" ]; then
+    echo "Nem találtam 'appNewVersion=' sort a megadott tartalomban."
+    return 1
+  fi
+
+  # Eltávolítjuk az esetleges idézőjeleket az elejéről és a végéről
+  app_version_line=$(echo "$app_version_line" | sed -E 's/^"|"$//g')
+
+  # Ellenőrizzük, hogy a sor tartalmaz-e parancskimenet helyettesítést ($(CMD))
+  if [[ "$app_version_line" =~ ^\$\(.*\)$ ]]; then
+    # Kivágjuk a parancsot a zárójelek közül
+    local command_to_run=$(echo "$app_version_line" | sed -E 's/^\$\((.*)\)$/\1/')
+
+    # Futtatjuk a parancsot és mentjük a kimenetét
+    app_new_version_value=$(eval "$command_to_run")
+    if [ $? -ne 0 ]; then
+      echo "Hiba történt a parancs futtatása közben: '$command_to_run'"
+      return 1
+    fi
+  else
+    # Ha sima string, akkor azt mentjük el
+    app_new_version_value="$app_version_line"
+  fi
+
+  echo "$app_new_version_value" # Visszaadjuk az értéket
+  return 0
+}
+
+file_content=$(curl -fsL "$GITHUB_RAW_URL")
+app_version=$(process_content "$file_content")
+
 
 # Check the currently logged in user
 currentUser=$(stat -f "%Su" /dev/console)
@@ -121,9 +171,6 @@ fi
 uid=$(id -u "$currentUser")
 # Find the home folder of the user
 userHome="$(dscl . -read /users/${currentUser} NFSHomeDirectory | awk '{print $2}')"
-
-# Download custom version of Installomator.sh
-getCustomInstallomator
 
 # Verify that Installomator has been installed
 destFile="/usr/local/Installomator/Installomator.sh"
@@ -173,9 +220,9 @@ else
     # Configure and display swiftDialog
     itemName=$( ${destFile} ${item} RETURN_LABEL_NAME=1 LOGGING=REQ INSTALL=force | tail -1 || true )
     if [[ "$itemName" != "#" ]]; then
-        message="Installing ${itemName}…"
+        message="Installing ${itemName} ${app_version} …"
     else
-        message="Installing ${item}…"
+        message="Installing ${item} ${app_version} …"
     fi
     echo "$item $itemName"
 
