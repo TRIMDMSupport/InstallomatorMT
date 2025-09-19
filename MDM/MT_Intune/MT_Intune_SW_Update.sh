@@ -6,12 +6,12 @@ getVFAMDM () {
     mkdir -p /usr/local/Installomator
     rm -rf /usr/local/Installomator/MT_Intune_VFA.sh
     # Check when the script was last modified, if less than 10 minutes, then skip the download
-    if [ -f "/usr/local/Installomator/MT_Intune_VFA.sh" ]; then
-        if ! [ `find "/usr/local/Installomator/MT_Intune_VFA.sh" -mmin +30` ]; then
-            echo "VFA MDM script is updated"
-            return 0
-        fi
-    fi
+    #if [ -f "/usr/local/Installomator/MT_Intune_VFA.sh" ]; then
+    #    if ! [ `find "/usr/local/Installomator/MT_Intune_VFA.sh" -mmin +30` ]; then
+    #        echo "VFA MDM script is updated"
+    #        return 0
+    #    fi
+    #fi
 
     if ! curl -L -# --show-error 'https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/MT_Intune_VFA.sh' -o '/usr/local/Installomator/MT_Intune_VFA.sh' ; then
         echo "ERROR: Cannot download VFA MDM script."
