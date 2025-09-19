@@ -8,7 +8,7 @@ item="$1" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="$2"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/${item}.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
@@ -58,10 +58,8 @@ installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALO
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 #put / refresh installed satus file
-Installed_file="/usr/local/Installomator/installed/${item}"
-if [ -e "$Installed_file" ]; then 
-    rm "$Installed_file"
-fi
+sudo rm -rf "$Installed_file"
+
 
 mkdir -p "/usr/local/Installomator/installed"
 touch $Installed_file
