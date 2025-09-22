@@ -42,7 +42,7 @@ else
 fi
 
 # Átváltás a newlabel branchre
-TARGET_BRANCH="newlabel"
+TARGET_BRANCH="newLabels"
 echo "Átváltás a '$TARGET_BRANCH' branchre..."
 git checkout "$TARGET_BRANCH" || hiba_kezeles "Nem sikerült átváltani a '$TARGET_BRANCH' branchre. Lehet, hogy nem létezik, vagy helyi módosítások akadályozzák."
 
