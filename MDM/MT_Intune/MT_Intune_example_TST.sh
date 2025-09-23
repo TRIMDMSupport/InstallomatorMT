@@ -23,7 +23,7 @@ dockutil="/usr/local/bin/dockutil"
 
 GITHUB_RAW_URL="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/fragments/labels/${item}.sh"
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="DEBUG=2 LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
 #   LOGGING=REQ
@@ -190,7 +190,7 @@ if echo "$output" | grep -q "no newer version"; then
     exit $1
 fi
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="DEBUG=2 LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # No sleeping
 /usr/bin/caffeinate -d -i -m -u &

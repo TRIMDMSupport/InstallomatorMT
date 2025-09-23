@@ -41,4 +41,5 @@ vlc
 vmwarehorizonclient
 webex
 wireshark
-xquartz
+xquartzmicrosoftcompanyportal
+microsoftcompanyportal

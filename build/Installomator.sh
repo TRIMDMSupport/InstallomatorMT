@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-22"
+VERSIONDATE="2025-09-23"
 
 # MARK: Functions
 
@@ -1587,6 +1587,7 @@ displaylinkmanager)
     appNewVersion="1.12.3"
     expectedTeamID="73YQY62QM3"
     ;;
+#https://www.synaptics.com/sites/default/files/exe_files/2025-09/DisplayLink%20Manager%20Graphics%20Connectivity13.1-EXE.zip
 docker)
     name="Docker"
     type="dmg"
@@ -1730,6 +1731,18 @@ microsoftazurestorageexplorer)
     fi
     expectedTeamID="UBF8T346G9"
     ;;
+microsoftcompanyportal)
+    name="Company Portal"
+    type="pkg"
+    downloadURL="https://go.microsoft.com/fwlink/?linkid=853070"
+    expectedTeamID="UBF8T346G9"
+    if [[ -x "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" && $INSTALL != "force" && $DEBUG -eq 0 ]]; then
+        printlog "Running msupdate --list"
+        "/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate" --list
+    fi
+    updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
+    updateToolArguments=( --install --apps IMCP01 )
+    ;;
 microsoftdefender|\
 microsoftdefenderatp)
     name="Microsoft Defender"
@@ -1865,7 +1878,7 @@ microsoftvisualstudiocode|\
 visualstudiocode)
     name="Visual Studio Code"
     type="zip"
-    appNewVersion="1.102.1"
+    appNewVersion="1.104.1"
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
