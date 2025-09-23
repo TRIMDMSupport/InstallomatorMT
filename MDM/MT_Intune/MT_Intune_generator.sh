@@ -87,4 +87,6 @@ chmod 777 ./TST_Scripts/*.sh
 chmod +x ./Scripts/*.sh
 chmod +x ./TST_Scripts/*.sh
 
+echo "${item_name}" >> labels.txt
+
 echo "Scriptek, és package elkészült!"

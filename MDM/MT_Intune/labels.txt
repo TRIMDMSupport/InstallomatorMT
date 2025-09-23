@@ -43,3 +43,4 @@ webex
 wireshark
 xquartzmicrosoftcompanyportal
 microsoftcompanyportal
+espanso
