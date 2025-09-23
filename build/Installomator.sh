@@ -1626,6 +1626,14 @@ dre_console)
     appNewVersion="6.00.69"
     expectedTeamID="YT3GCGK3Z7"
     ;;
+espanso)
+    name="Espanso"
+    type="zip"
+    appNewVersion="2.2.5"
+    downloadURL="https://github.com/espanso/espanso/releases/download/v${appNewVersion}/Espanso-Mac-Universal.zip"
+    blockingProcesses=( "Espanso" "espanso" )
+    expectedTeamID="K839T4T5BY"
+    ;;
 evernote)
     name="Evernote"
     type="dmg"

@@ -18,5 +18,14 @@ if [ -f "$FULL_PATH" ]; then
   "./update.sh"
   exit 0
 else
+  "./create_label.sh" "$label"
+  echo "Módosítsd a label fájlt, mentsd el! Kérlek az icon létrehozásához másold be a png fájl web url-jét:"
+  read -r link
+  cd "MDM/MT_Intune"
+  "./get_icon.sh" "$label" "$link"
+  "./MT_Intune_generator.sh" "$label"
+  cd ".."
+  cd ".."
+  "./update.sh"
   echo "A fájl nem létezik lokálisan."
 fi

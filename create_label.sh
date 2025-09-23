@@ -37,15 +37,16 @@ if curl --output /dev/null --silent --head --fail "$GITHUB_RAW_URL"; then
   if curl -o "$FULL_PATH" "$GITHUB_RAW_URL"; then
     echo "A fájl sikeresen letöltve: '$FULL_PATH'."
     echo "Megnyitás a 'code' paranccsal..."
+    chmod 777 "$FULL_PATH"
     code "$FULL_PATH"
     exit 0
   else
     echo "Hiba történt a fájl letöltésekor."
-    exit 1
   fi
 else
   echo "A fájl nem létezik a távoli szerveren, vagy hiba történt a lekérés során, így lemásolom a bruno.sh-t, és annak megfelelő tartalommal nyitom meg."
   cp "$SRC_PATH" "$FULL_PATH"
+  chmod 777 "$FULL_PATH"
   code "$FULL_PATH"
-  exit 1
+  exit 0
 fi
