@@ -2,6 +2,9 @@
 # Installomator
 
 _The one installer script to rule them all._
+Install environment:
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/install.sh)"
 
 ![](https://img.shields.io/github/v/release/Installomator/Installomator)&nbsp;![](https://img.shields.io/github/downloads/Installomator/Installomator/latest/total)&nbsp;![](https://img.shields.io/badge/macOS-10.14%2B-success)&nbsp;![](https://img.shields.io/github/license/Installomator/Installomator)
 
