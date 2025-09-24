@@ -166,7 +166,7 @@ log_info "Hitelesítési folyamat elindítása..."
 log_warn "Lépj be a github.com-ra a TRI_MDM_Support@telekom.hu felhasználóval és generálj egy Fine-grained personal access token-t!"
 
 
-git config --global --add safe.directory $INSTALL_DIR
+git config --global --add safe.directory $INSTALL_DIR/$REPO_NAME
 git config --global user.email "TRI_MDM_Support@telekom.hu"
 git config --global user.name "TRIMDMSupport"
 git config --global credential.helper osxkeychain
