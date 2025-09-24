@@ -2,6 +2,7 @@
 # Installomator
 
 _The one installer script to rule them all._
+
 Install environment:
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/install.sh)"
