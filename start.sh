@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 # 1. lépés: Bekér egy stringet a felhasználótól
 echo "Kérlek add meg a label-t: "
 read -r label
