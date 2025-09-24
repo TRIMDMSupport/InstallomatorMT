@@ -161,6 +161,8 @@ TARGET_BRANCH="newLabels"
 log_info "Átváltás a '$TARGET_BRANCH' branchre..."
 git checkout "$TARGET_BRANCH" || hiba_kezeles "Nem sikerült átváltani a '$TARGET_BRANCH' branchre. Lehet, hogy nem létezik, vagy helyi módosítások akadályozzák."
 
+sudo chmod -R 777 "$INSTALL_DIR"
+
 # Hitelesítési folyamat elindítása (ssh kulcs hozzáadása)
 log_info "Hitelesítési folyamat elindítása..."
 log_warn "Lépj be a github.com-ra a TRI_MDM_Support@telekom.hu felhasználóval és generálj egy Fine-grained personal access token-t!"
