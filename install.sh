@@ -45,13 +45,11 @@ if xcode-select -p &>/dev/null; then
   log_info "Ellenőrizzük az Xcode licenc elfogadását..."
   if ! /usr/bin/xcrun clang 2>&1 | grep -q "license"; then
     log_success "Az Xcode licenc el van fogadva."
-    exit 0
   else
     log_warn "Az Xcode licenc nincs elfogadva. Megpróbáljuk elfogadni..."
     # Próbáljuk elfogadni a licencet root jogokkal
     if sudo xcodebuild -license accept; then
       log_success "Az Xcode licenc sikeresen elfogadva."
-      exit 0
     else
       log_error "Nem sikerült elfogadni az Xcode licencet. Lehet, hogy manuális beavatkozásra van szükség."
     fi
