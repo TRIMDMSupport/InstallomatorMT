@@ -45,7 +45,6 @@ if xcode-select -p &>/dev/null; then
   log_info "Ellenőrizzük az Xcode licenc elfogadását..."
   if ! /usr/bin/xcrun clang 2>&1 | grep -q "license"; then
     log_success "Az Xcode licenc el van fogadva."
-    return 0
   else
     log_warn "Az Xcode licenc nincs elfogadva. Megpróbáljuk elfogadni..."
     # Próbáljuk elfogadni a licencet root jogokkal
@@ -55,7 +54,7 @@ if xcode-select -p &>/dev/null; then
       log_error "Nem sikerült elfogadni az Xcode licencet. Lehet, hogy manuális beavatkozásra van szükség."
     fi
   fi
-fi
+else
 
 # Elindítjuk az Xcode Command Line Tools telepítését
 log_info "Az Xcode Command Line Tools telepítése..."
@@ -110,6 +109,7 @@ else
   fi
 fi
 
+fi
 log_success "Az Xcode Command Line Tools telepítési folyamata befejeződött."
 
 
