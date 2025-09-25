@@ -45,6 +45,7 @@ if xcode-select -p &>/dev/null; then
   log_info "Ellenőrizzük az Xcode licenc elfogadását..."
   if ! /usr/bin/xcrun clang 2>&1 | grep -q "license"; then
     log_success "Az Xcode licenc el van fogadva."
+    return 0
   else
     log_warn "Az Xcode licenc nincs elfogadva. Megpróbáljuk elfogadni..."
     # Próbáljuk elfogadni a licencet root jogokkal
@@ -178,5 +179,13 @@ echo "username=TRIMDMSupport"
 echo "password=<Fine-grained personal access token>"
 git credential-osxkeychain store
 
+if [ -d "/Applications/Visual Studio Code.app" ]; then
+    log_info "A Microsoft Visual Studio Code telepítve van."
+else
+    log_info "A Microsoft Visual Studio Code telepítését elindítom ..."
+    cd $INSTALL_DIR/$REPO_NAME/MDM/MT_Intune/Scripts
+    chmod +x *.sh
+    ./MT_Intune_microsoftvisualstudiocode.sh
+fi
 
 log_success "A teljes telepítési folyamat befejeződött!"
