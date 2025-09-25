@@ -125,12 +125,16 @@ currentUser=$(stat -f "%Su" /dev/console)
 # Célkönyvtár beállítása
 INSTALL_DIR="/Users/$currentUser/Documents/Work/MT/Mac_development"
 
-# Paraméter ellenőrzése
-if [ ! -z "$1" ]; then
-    INSTALL_DIR="$1"
-fi
+log_warn "A repository a következő helyre hozom létre [$INSTALL_DIR]!"
+log_warn "Ha ez megfelelő, akkor csak üss egy entert, ha nem jó, akkor írd be a teljes elérési útvonalat:"
+read -r comment
 
-log_info "A repository a következő helyre lesz telepítve: $INSTALL_DIR"
+if [ -z "$comment" ]; then
+  log_info "A repository a következő helyre lesz telepítve: $INSTALL_DIR"
+else
+  INSTALL_DIR=$comment
+  log_info "A repository a következő helyre lesz telepítve: $INSTALL_DIR"
+fi
 
 # Célkönyvtár létrehozása, ha nem létezik
 if [ ! -d "$INSTALL_DIR" ]; then
@@ -187,5 +191,10 @@ else
     chmod +x *.sh
     ./MT_Intune_microsoftvisualstudiocode.sh
 fi
-
+log_warn "Indítsd el a Visual Studio Code alkalmazást"
+read -r vsstart
+log_warn "Nyisd meg a Command Palettát (Cmd+Shift+P), írd be 'shell command', és futtasd a Shell Command: Install 'code' command in PATH parancsot."
+read -r vsstart
+log_warn "Érdemes újraindítani a Terminal alkalmazást annak érdekében, hogy működjön a code parancs!"
+read -r vsstart
 log_success "A teljes telepítési folyamat befejeződött!"
