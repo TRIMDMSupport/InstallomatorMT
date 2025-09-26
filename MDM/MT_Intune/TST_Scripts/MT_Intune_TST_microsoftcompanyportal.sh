@@ -30,11 +30,11 @@ log_error() {
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
 
-item="dbeaverce" # enter the software to install
+item="microsoftcompanyportal" # enter the software to install
 # Examples: adobecreativeclouddesktop, canva, cyberduck, handbrake, inkscape, textmate, vlc
 
 # Dialog icon
-icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/dbeaverce.png"
+icon="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/MDM/MT_Intune/Icons/microsoftcompanyportal.png"
 # icon should be a file system path or an URL to an online PNG, so beginning with either “/” or “http”.
 # In Mosyle an URL can be found by copy picture address from a Custom Command icon.
 
@@ -49,7 +49,7 @@ dockutil="/usr/local/bin/dockutil"
 
 GITHUB_RAW_URL="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/fragments/labels/${item}.sh"
 
-installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="DEBUG=2 LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # Other installomatorOptions:
 #   LOGGING=REQ
@@ -83,13 +83,6 @@ installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALO
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-#put installed satus file or exit
-Installed_file="/usr/local/Installomator/installed/${item}"
-if [ -e "$Installed_file" ]; then 
-    log_info "Már lefutott 1 alkalommal a telepítő, így kilépek"
-    exit
-fi
-
 log_info "$(date +%F\ %T) [LOG-BEGIN] $item"
 
 dialogUpdate() {
@@ -97,7 +90,7 @@ dialogUpdate() {
     local dcommand="$1"
 
     if [[ -n $dialog_command_file ]]; then
-        log_info "$dcommand" >> "$dialog_command_file"
+        echo "$dcommand" >> "$dialog_command_file"
         log_info "Dialog: $dcommand"
     fi
 }
@@ -192,7 +185,6 @@ process_content() {
 file_content=$(curl -fsL "$GITHUB_RAW_URL")
 app_version=$(process_content "$file_content")
 
-
 # Check the currently logged in user
 currentUser=$(stat -f "%Su" /dev/console)
 if [ -z "$currentUser" ] || [ "$currentUser" = "loginwindow" ] || [ "$currentUser" = "_mbsetupuser" ] || [ "$currentUser" = "root" ]; then
@@ -217,14 +209,14 @@ if [ ! -e "${destFile}" ]; then
 fi
 
 # Check if new version of label is available
-output=$("$destFile" "$item" "LOGGING=INFO" "CHECK_VERSION=1")
+output=$("$destFile" "$item" "LOGGING=DEBUG" "CHECK_VERSION=1")
 
 if echo "$output" | grep -q "no newer version"; then
     log_info "No newer version."
     exit $1
 fi
 
-installomatorOptions="LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
+installomatorOptions="DEBUG=2 LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_loop DIALOG_CMD_FILE=${dialog_command_file}" # Separated by space
 
 # No sleeping
 /usr/bin/caffeinate -d -i -m -u &
@@ -243,17 +235,17 @@ if [[ $installomatorVersion -lt 10 ]] || [[ $(sw_vers -buildVersion | cut -c1-2)
     #echo "And macOS 11 Big Sur (build 20A) is required for swiftDialog. Installed build $(sw_vers -buildVersion)."
     installomatorNotify="NOTIFY=all"
 else
-    installomatorNotify="NOTIFY=silent"
+    installomatorNotify="NOTIFY=all"
     # check for Swift Dialog
     if [[ ! -d $dialogApp ]]; then
-        log_warm "Cannot find dialog at $dialogApp"
+        log_error "Cannot find dialog at $dialogApp"
         # Install using Installlomator
-        cmdOutput="$(${destFile} dialog LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=REQ NOTIFY=silent || true)"
+        cmdOutput="$(${destFile} dialog LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=DEBUG NOTIFY=all || true)"
         checkCmdOutput "${cmdOutput}"
     fi
 
     # Configure and display swiftDialog
-    itemName=$( ${destFile} ${item} RETURN_LABEL_NAME=1 LOGGING=REQ INSTALL=force | tail -1 || true )
+    itemName=$( ${destFile} ${item} RETURN_LABEL_NAME=1 LOGGING=DEBUG | tail -1 || true )
     if [[ "$itemName" != "#" ]]; then
         message="Installing ${itemName} ${app_version} …"
     else
@@ -272,11 +264,11 @@ else
     elif [[ "$(echo ${icon} | grep -iE "^\/.*")" != "" ]]; then
         #echo "icon looks to be a file"
         if [[ ! -a "${icon}" ]]; then
-            log_info "Cannot find icon file ${icon}. Reset icon."
+            log_error "Cannot find icon file ${icon}. Reset icon."
             icon=""
         fi
     else
-        log_info "Cannot figure out icon ${icon}. Reset icon."
+        log_error "Cannot figure out icon ${icon}. Reset icon."
         icon=""
     fi
     #echo "icon after first check: $icon"
@@ -370,9 +362,9 @@ checkCmdOutput "${cmdOutput}"
 if [[ $addToDock -eq 1 ]]; then
     dialogUpdate "progresstext: Adding to Dock"
     if [[ ! -d $dockutil ]]; then
-        log_warm "Cannot find dockutil at $dockutil, trying installation"
+        log_error "Cannot find dockutil at $dockutil, trying installation"
         # Install using Installlomator
-        cmdOutput="$(${destFile} dockutil LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=REQ NOTIFY=silent || true)"
+        cmdOutput="$(${destFile} dockutil LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=DEBUG NOTIFY=all || true)"
         checkCmdOutput "${cmdOutput}"
     fi
     log_info "Adding to Dock"
@@ -398,17 +390,6 @@ if [[ $installomatorVersion -ge 10 && $(sw_vers -buildVersion | cut -c1-2) -ge 2
 
     # just to be safe
     #killall "Dialog" 2>/dev/null || true
-fi
-
-#put installed satus file or exit
-Installed_file="/usr/local/Installomator/installed/${item}"
-if [ -e "$Installed_file" ]; then 
-    log_info "Már lefutott 1 alkalommal a telepítő, így kilépek"
-    exit
-else
-    mkdir -p "/usr/local/Installomator/installed"
-    touch $Installed_file
-    echo  $icon > "$Installed_file"
 fi
 
 log_success "[$(DATE)][LOG-END]"

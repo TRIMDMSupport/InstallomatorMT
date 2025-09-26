@@ -1,5 +1,31 @@
 #!/bin/sh
 
+# --- Színes kimenet beállítása ---
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_YELLOW='\033[0;33m'
+COLOR_BLUE='\033[0;34m'
+COLOR_RESET='\033[0m'
+
+# --- Segédfüggvények ---
+
+log_info() {
+  echo -e "${COLOR_BLUE}[INFO]${COLOR_RESET} $1"
+}
+
+log_success() {
+  echo -e "${COLOR_GREEN}[SUCCESS]${COLOR_RESET} $1"
+}
+
+log_warn() {
+  echo -e "${COLOR_YELLOW}[WARM]${COLOR_RESET} $1" >&2
+}
+
+log_error() {
+  echo -e "${COLOR_RED}[ERROR]${COLOR_RESET} $1" >&2
+  exit 1
+}
+
 # Installation using Installomator with Dialog showing progress (and posibility of adding to the Dock)
 
 LOGO="microsoft" # "mosyleb", "mosylem", "addigy", "microsoft", "ws1", "kandji", "filewave"
@@ -57,7 +83,7 @@ installomatorOptions="DEBUG=2 LOGGING=DEBUG BLOCKING_PROCESS_ACTION=prompt_user_
 # PATH declaration
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
-echo "$(date +%F\ %T) [LOG-BEGIN] $item"
+log_info "$(date +%F\ %T) [LOG-BEGIN] $item"
 
 dialogUpdate() {
     # $1: dialog command
@@ -65,18 +91,18 @@ dialogUpdate() {
 
     if [[ -n $dialog_command_file ]]; then
         echo "$dcommand" >> "$dialog_command_file"
-        echo "Dialog: $dcommand"
+        log_info "Dialog: $dcommand"
     fi
 }
 checkCmdOutput () {
     local checkOutput="$1"
     exitStatus="$( echo "${checkOutput}" | grep --binary-files=text -i "exit" | tail -1 | sed -E 's/.*exit code ([0-9]).*/\1/g' || true )"
     if [[ ${exitStatus} -eq 0 ]] ; then
-        echo "${item} succesfully installed."
+        log_success "${item} succesfully installed."
         selectedOutput="$( echo "${checkOutput}" | grep --binary-files=text -E ": (REQ|ERROR|WARN)" || true )"
         echo "$selectedOutput"
     else
-        echo "ERROR installing ${item}. Exit code ${exitStatus}"
+        log_error "ERROR installing ${item}. Exit code ${exitStatus}"
         echo "$checkOutput"
         #errorOutput="$( echo "${checkOutput}" | grep --binary-files=text -i "error" || true )"
         #echo "$errorOutput"
@@ -88,7 +114,7 @@ getCustomInstallomator () {
     mkdir -p /usr/local/Installomator
 
     if ! curl -L -# --show-error 'https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/build/Installomator.sh' -o '/usr/local/Installomator/Installomator.sh' ; then
-            echo "ERROR: Cannot download Installomator script."
+            log_error "Cannot download Installomator script."
     else
         chmod 755 /usr/local/Installomator/Installomator.sh
     fi
@@ -129,7 +155,7 @@ process_content() {
 
   local app_version_line=$(echo "$content" | grep 'appNewVersion=' | head -n 1 | sed -E 's/.*appNewVersion=(.*)/\1/')
   if [ -z "$app_version_line" ]; then
-    echo "Nem találtam 'appNewVersion=' sort a megadott tartalomban."
+    log_error "Did not find a line with 'appNewVersion=' in the provided content."
     return 1
   fi
 
@@ -144,7 +170,7 @@ process_content() {
     # Futtatjuk a parancsot és mentjük a kimenetét
     app_new_version_value=$(eval "$command_to_run")
     if [ $? -ne 0 ]; then
-      echo "Hiba történt a parancs futtatása közben: '$command_to_run'"
+      log_error "An error occurred while executing the command: '$command_to_run'"
       return 1
     fi
   else
@@ -162,7 +188,7 @@ app_version=$(process_content "$file_content")
 # Check the currently logged in user
 currentUser=$(stat -f "%Su" /dev/console)
 if [ -z "$currentUser" ] || [ "$currentUser" = "loginwindow" ] || [ "$currentUser" = "_mbsetupuser" ] || [ "$currentUser" = "root" ]; then
-    echo "ERROR. Logged in user is $currentUser! Cannot proceed."
+    log_error "Logged in user is $currentUser! Cannot proceed."
     exit 97
 fi
 # Get the current user's UID for dockutil
@@ -176,9 +202,9 @@ getCustomInstallomator
 # Verify that Installomator has been installed
 destFile="/usr/local/Installomator/Installomator.sh"
 if [ ! -e "${destFile}" ]; then
-    echo "Installomator not found here:"
-    echo "${destFile}"
-    echo "Exiting."
+    log_error "Installomator not found here:"
+    log_error "${destFile}"
+    log_error "Exiting."
     exit 99
 fi
 
@@ -186,7 +212,7 @@ fi
 output=$("$destFile" "$item" "LOGGING=DEBUG" "CHECK_VERSION=1")
 
 if echo "$output" | grep -q "no newer version"; then
-    echo "No newer version."
+    log_info "No newer version."
     exit $1
 fi
 
@@ -204,7 +230,7 @@ caffexit () {
 installomatorVersion="$(${destFile} version | cut -d "." -f1 || true)"
 
 if [[ $installomatorVersion -lt 10 ]] || [[ $(sw_vers -buildVersion | cut -c1-2) -lt 20 ]]; then
-    echo "Skipping swiftDialog UI, using notifications."
+    log_info "Skipping swiftDialog UI, using notifications."
     #echo "Installomator should be at least version 10 to support swiftDialog. Installed version $installomatorVersion."
     #echo "And macOS 11 Big Sur (build 20A) is required for swiftDialog. Installed build $(sw_vers -buildVersion)."
     installomatorNotify="NOTIFY=all"
@@ -212,7 +238,7 @@ else
     installomatorNotify="NOTIFY=all"
     # check for Swift Dialog
     if [[ ! -d $dialogApp ]]; then
-        echo "Cannot find dialog at $dialogApp"
+        log_error "Cannot find dialog at $dialogApp"
         # Install using Installlomator
         cmdOutput="$(${destFile} dialog LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=DEBUG NOTIFY=all || true)"
         checkCmdOutput "${cmdOutput}"
@@ -225,24 +251,24 @@ else
     else
         message="Installing ${item} ${app_version} …"
     fi
-    echo "$item $itemName"
+    log_info "$item $itemName"
 
     #Check icon (expecting beginning with “http” to be web-link and “/” to be disk file)
     #echo "icon before check: $icon"
     if [[ "$(echo ${icon} | grep -iE "^(http|ftp).*")" != ""  ]]; then
         #echo "icon looks to be web-link"
         if ! curl -sfL --output /dev/null -r 0-0 "${icon}" ; then
-            echo "ERROR: Cannot download ${icon} link. Reset icon."
+            log_error "Cannot download ${icon} link. Reset icon."
             icon=""
         fi
     elif [[ "$(echo ${icon} | grep -iE "^\/.*")" != "" ]]; then
         #echo "icon looks to be a file"
         if [[ ! -a "${icon}" ]]; then
-            echo "ERROR: Cannot find icon file ${icon}. Reset icon."
+            log_error "Cannot find icon file ${icon}. Reset icon."
             icon=""
         fi
     else
-        echo "ERROR: Cannot figure out icon ${icon}. Reset icon."
+        log_error "Cannot figure out icon ${icon}. Reset icon."
         icon=""
     fi
     #echo "icon after first check: $icon"
@@ -310,8 +336,8 @@ else
             icon="${LOGO_PATH}"
         fi
     fi
-    echo "LOGO: $LOGO"
-    echo "icon: ${icon}"
+    log_info "LOGO: $LOGO"
+    log_info "icon: ${icon}"
 
     # display first screen
     open -a "$dialogApp" --args \
@@ -336,16 +362,16 @@ checkCmdOutput "${cmdOutput}"
 if [[ $addToDock -eq 1 ]]; then
     dialogUpdate "progresstext: Adding to Dock"
     if [[ ! -d $dockutil ]]; then
-        echo "Cannot find dockutil at $dockutil, trying installation"
+        log_error "Cannot find dockutil at $dockutil, trying installation"
         # Install using Installlomator
         cmdOutput="$(${destFile} dockutil LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=DEBUG NOTIFY=all || true)"
         checkCmdOutput "${cmdOutput}"
     fi
-    echo "Adding to Dock"
+    log_info "Adding to Dock"
     $dockutil  --add "${appPath}" "${userHome}/Library/Preferences/com.apple.dock.plist" || true
     sleep 1
 else
-    echo "Not adding to Dock."
+    log_info "Not adding to Dock."
 fi
 
 # Mark: Ending
@@ -366,6 +392,6 @@ if [[ $installomatorVersion -ge 10 && $(sw_vers -buildVersion | cut -c1-2) -ge 2
     #killall "Dialog" 2>/dev/null || true
 fi
 
-echo "[$(DATE)][LOG-END]"
+log_success "[$(DATE)][LOG-END]"
 
 caffexit $exitStatus

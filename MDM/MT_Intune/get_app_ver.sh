@@ -1,5 +1,31 @@
 #!/bin/bash
 
+# --- Színes kimenet beállítása ---
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_YELLOW='\033[0;33m'
+COLOR_BLUE='\033[0;34m'
+COLOR_RESET='\033[0m'
+
+# --- Segédfüggvények ---
+
+log_info() {
+  echo -e "${COLOR_BLUE}[INFO]${COLOR_RESET} $1"
+}
+
+log_success() {
+  echo -e "${COLOR_GREEN}[SUCCESS]${COLOR_RESET} $1"
+}
+
+log_warn() {
+  echo -e "${COLOR_YELLOW}[WARM]${COLOR_RESET} $1" >&2
+}
+
+log_error() {
+  echo -e "${COLOR_RED}[ERROR]${COLOR_RESET} $1" >&2
+  exit 1
+}
+
 FILE_NAME="$1"
 GITHUB_RAW_URL="https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/fragments/labels/$FILE_NAME.sh"
 
@@ -23,7 +49,7 @@ versionFromGit() {
     #appNewVersion=$(curl -L --silent --fail "https://api.github.com/repos/$gitusername/$gitreponame/releases/latest" | grep tag_name | cut -d '"' -f 4 | sed 's/[^0-9\.]//g')
     appNewVersion=$(curl -sLI "https://github.com/$gitusername/$gitreponame/releases/latest" | grep -i "^location" | tr "/" "\n" | tail -1 | sed 's/[^0-9\.]//g')
     if [ -z "$appNewVersion" ]; then
-        printlog "could not retrieve version number for $gitusername/$gitreponame" WARN
+        log_error "could not retrieve version number for $gitusername/$gitreponame" WARN
         appNewVersion=""
     else
         echo "$appNewVersion"
@@ -33,7 +59,7 @@ versionFromGit() {
 
 # Függvény a hibaüzenetek kiírására
 error_exit() {
-  echo "Hiba: $1" >&2
+  log_error "$1" >&2
   exit 1
 }
 
@@ -44,7 +70,7 @@ process_content() {
 
   local app_version_line=$(echo "$content" | grep 'appNewVersion=' | head -n 1 | sed -E 's/.*appNewVersion=(.*)/\1/')
   if [ -z "$app_version_line" ]; then
-    echo "Nem találtam 'appNewVersion=' sort a megadott tartalomban."
+    log_error "Did not find a line with 'appNewVersion=' in the provided content."
     return 1
   fi
 
@@ -59,7 +85,7 @@ process_content() {
     # Futtatjuk a parancsot és mentjük a kimenetét
     app_new_version_value=$(eval "$command_to_run")
     if [ $? -ne 0 ]; then
-      echo "Hiba történt a parancs futtatása közben: '$command_to_run'"
+      log_error "An error occurred while executing the command: '$command_to_run'"
       return 1
     fi
   else
