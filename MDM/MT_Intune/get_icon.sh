@@ -63,7 +63,7 @@ mkdir -p "$ICON_PATH"
 # PNG letöltése
 echo "Letöltés indítása: $PNG_LINK"
 if wget -O "${ICON_PATH}/${APP_NAME}.png" "$PNG_LINK"; then
-  log_success "Sikeresen letöltöttem a fájlt: ${ICON_PATH}/${APP_NAME}.png"
+  echo "Sikeresen letöltöttem a fájlt: ${ICON_PATH}/${APP_NAME}.png"
 else
   log_error "Hiba történt a fájl letöltése közben."
   exit 1
