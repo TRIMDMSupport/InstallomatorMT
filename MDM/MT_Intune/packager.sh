@@ -26,5 +26,5 @@ chmod a+x "/tmp/${pkgname}/scripts/postinstall"
 	
 pkgbuild --identifier "${pkgid}" --version "${pkgvers}" --root "/tmp/${pkgname}/nopayload" --scripts "/tmp/${pkgname}/scripts" "/tmp/${pkgname}/${pkgname}.pkg"
 	
-cp /tmp/${pkgname}/${pkgname}.pkg ./Packages
+cp /tmp/${pkgname}/${pkgname}.pkg ./Packages/
 chmod 777 "./Packages/${pkgname}.pkg"
