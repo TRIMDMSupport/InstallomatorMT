@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-26"
+VERSIONDATE="2025-09-29"
 
 # MARK: Functions
 
@@ -1543,6 +1543,13 @@ androidfiletransfer)
     appNewVersion="1.0.12"
     downloadURL="https://dl.google.com/dl/androidjumper/mtp/current/AndroidFileTransfer.dmg"
     expectedTeamID="EQHXZ8M8AV"
+    ;;
+authpass)
+    name="AuthPass"
+    type="zip"
+    appNewVersion="1.9.11"
+    link="https://github.com/authpass/authpass/releases/download/v${appNewVersion}/AuthPass.app-${appNewVersion}_2007.zip/"
+    expectedTeamID="64ZPC769JY"
     ;;
 bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
