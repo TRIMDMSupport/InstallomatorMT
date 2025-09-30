@@ -97,7 +97,7 @@ dialogUpdate() {
     local dcommand="$1"
 
     if [[ -n $dialog_command_file ]]; then
-        log_info "$dcommand" >> "$dialog_command_file"
+        echo "$dcommand" >> "$dialog_command_file"
         log_info "Dialog: $dcommand"
     fi
 }
