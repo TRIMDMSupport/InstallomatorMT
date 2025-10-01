@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-09-30"
+VERSIONDATE="2025-10-01"
 
 # MARK: Functions
 

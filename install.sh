@@ -176,12 +176,21 @@ git config --global user.email "TRI_MDM_Support@telekom.hu"
 git config --global user.name "TRIMDMSupport"
 git config --global credential.helper osxkeychain
 git remote set-url origin https://github.com/TRIMDMSupport/InstallomatorMT.git
-log_info "Hitelesítéshez szükséges adatokat a következő módon add meg a git credential-osxkeychain store parancs után:"
-echo "protocol=https"
-echo "host=github.com"
-echo "username=TRIMDMSupport"
-echo "password=<Fine-grained personal access token>"
-git credential-osxkeychain store
+#log_info "Hitelesítéshez szükséges adatokat a következő módon add meg a git credential-osxkeychain store parancs után:"
+#echo "protocol=https"
+#echo "host=github.com"
+#echo "username=TRIMDMSupport"
+#echo "password=<Fine-grained personal access token>"
+#git credential-osxkeychain store
+
+PROTOCOL="https"
+HOST="github.com"
+USERNAME="TRIMDMSupport"
+log_info "Hitelesítéshez szükséges Fine-grained personal access token-t add meg:"
+read -r PASSWORD
+
+# Az adatok "továbbítása" a git credential-osxkeychain store parancsnak
+printf "protocol=%s\nhost=%s\nusername=%s\npassword=%s\n\n" "$PROTOCOL" "$HOST" "$USERNAME" "$PASSWORD" | git credential-osxkeychain store
 
 if [ -d "/Applications/Visual Studio Code.app" ]; then
     log_info "A Microsoft Visual Studio Code telepítve van."
