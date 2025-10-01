@@ -2046,15 +2046,6 @@ utm)
     downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
     expectedTeamID="WDNLXAD4W8"
     ;;
-vlc_local)
-    name="VLC"
-    type="dmg"
-    appNewVersion="3.0.21"
-    archiveName="vlc-${appNewVersion}-arm64.dmg"
-    downloadURL="file:///Users/Shared/vlc-${appNewVersion}-arm64.dmg"
-    versionKey="CFBundleShortVersionString"
-    expectedTeamID="75GAHG3SZQ"
-    ;;
 vlc)
     name="VLC"
     type="dmg"
@@ -2062,6 +2053,15 @@ vlc)
     #latestVersionURL="https://get.videolan.org/vlc/last/macosx/"
     archiveName="vlc-${appNewVersion}-universal.dmg"
     downloadURL="https://get.videolan.org/vlc/${appNewVersion}/macosx/vlc-${appNewVersion}-universal.dmg"
+    versionKey="CFBundleShortVersionString"
+    expectedTeamID="75GAHG3SZQ"
+    ;;
+vlc_local)
+    name="VLC"
+    type="dmg"
+    appNewVersion="3.0.21"
+    archiveName="vlc-${appNewVersion}-arm64.dmg"
+    downloadURL="file:///Users/Shared/vlc-${appNewVersion}-arm64.dmg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="75GAHG3SZQ"
     ;;
