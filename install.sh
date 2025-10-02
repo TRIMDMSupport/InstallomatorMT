@@ -206,4 +206,5 @@ log_warn "Nyisd meg a Command Palettát (Cmd+Shift+P), írd be 'shell command', 
 read -r vsstart
 log_warn "Érdemes újraindítani a Terminal alkalmazást annak érdekében, hogy működjön a code parancs!"
 read -r vsstart
-log_success "A teljes telepítési folyamat befejeződött!"
+cd $INSTALL_DIR/$REPO_NAME
+log_success "A teljes telepítési folyamat befejeződött, és beléptem a(z) $REPO_NAME könyvtárba!"
