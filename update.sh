@@ -25,6 +25,8 @@ log_error() {
   echo -e "${COLOR_RED}[HIBA]${COLOR_RESET} $1" >&2
   exit 1
 }
+sudo chmod -R 777 .git
+sudo chmod -R 777 *
 
 # 1. Bekér egy stringet a felhasználótól
 log_warn "Git Comment értéke: "
