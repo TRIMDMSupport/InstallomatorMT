@@ -45,3 +45,4 @@ xquartzmicrosoftcompanyportal
 microsoftcompanyportal
 espanso
 authpass
+icons

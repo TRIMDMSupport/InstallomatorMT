@@ -1675,6 +1675,13 @@ googlechromepkg)
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
     ;;
+icons)
+    name="Icons"
+    type="pkg"
+    appNewVersion="2.2.1"
+    downloadURL="https://github.com/SAP/macOS-icon-generator/releases/download/${appNewVersion}/Icons_${appNewVersion}.pkg"
+    expectedTeamID="7R5ZEU67FQ"
+    ;;
 iterm)
     name="iTerm"
     type="zip"
