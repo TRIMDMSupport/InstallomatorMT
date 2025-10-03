@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-10-02"
+VERSIONDATE="2025-10-03"
 
 # MARK: Functions
 
@@ -1543,6 +1543,13 @@ androidfiletransfer)
     appNewVersion="1.0.12"
     downloadURL="https://dl.google.com/dl/androidjumper/mtp/current/AndroidFileTransfer.dmg"
     expectedTeamID="EQHXZ8M8AV"
+    ;;
+apidog)
+    name="apidog"
+    type="appInDmgInZip"
+    appNewVersion="2.7.39"
+    downloadURL="https://file-assets.apidog.com/download/Apidog-macOS-arm64-latest.zip"
+    expectedTeamID="8554M245SA"
     ;;
 authpass)
     name="AuthPass"

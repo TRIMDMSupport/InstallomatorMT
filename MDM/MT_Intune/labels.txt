@@ -46,3 +46,4 @@ microsoftcompanyportal
 espanso
 authpass
 icons
+apidog
