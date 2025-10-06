@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-10-03"
+VERSIONDATE="2025-10-06"
 
 # MARK: Functions
 
@@ -1910,7 +1910,7 @@ visualstudiocode)
     downloadURL="https://update.code.visualstudio.com/${appNewVersion}/darwin-universal/stable"
     expectedTeamID="UBF8T346G9"
     appName="Visual Studio Code.app"
-    blockingProcesses=( Code )
+    blockingProcesses=( "Code" "Code Helper" )
     ;;
 microsoftword)
     name="Microsoft Word"
