@@ -3,7 +3,7 @@
 
 Install environment: 
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/TRIMDMSupport/InstallomatorMT/refs/heads/newLabels/install.sh)"
 
 _The one installer script to rule them all._
 
