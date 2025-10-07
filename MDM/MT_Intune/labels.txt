@@ -47,3 +47,4 @@ espanso
 authpass
 icons
 apidog
+packages
