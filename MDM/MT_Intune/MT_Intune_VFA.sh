@@ -84,7 +84,7 @@ installomatorOptions="LOGGING=REQ BLOCKING_PROCESS_ACTION=prompt_user_loop DIALO
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 #put / refresh installed satus file
-Installed_file="/usr/local/Installomator/installed${item}"
+Installed_file="/usr/local/Installomator/installed/${item}"
 sudo rm -rf "$Installed_file"
 
 
