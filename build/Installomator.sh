@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-10-17"
+VERSIONDATE="2025-10-20"
 
 # MARK: Functions
 
@@ -1674,6 +1674,13 @@ firefoxpkg)
     appNewVersion=$(getJSONValue "$(curl -fs "https://product-details.mozilla.org/1.0/firefox_versions.json")" "LATEST_FIREFOX_VERSION")
     expectedTeamID="43AQ936H96"
     blockingProcesses=( firefox )
+    ;;
+gimp)
+    name="GIMP"
+    type="dmg"
+    appNewVersion="3.0.6"
+    downloadURL="https://download.gimp.org/gimp/v3.0/macos/gimp-3.0.6-arm64.dmg"
+    expectedTeamID="T25BQ8HSJF"
     ;;
 googlechromepkg)
     name="Google Chrome"

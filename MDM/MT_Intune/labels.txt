@@ -48,3 +48,4 @@ authpass
 icons
 apidog
 packages
+gimp
