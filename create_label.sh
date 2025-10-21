@@ -66,7 +66,8 @@ if curl --output /dev/null --silent --head --fail "$GITHUB_RAW_URL"; then
   if curl -o "$FULL_PATH" "$GITHUB_RAW_URL"; then
     log_success "A fájl sikeresen letöltve: '$FULL_PATH'."
     log_info "Megnyitás a 'code' paranccsal..."
-    chmod -r 777 "$FULL_PATH"
+    cd TARGET_DIR
+    sudo chmod 777 *
     code "$FULL_PATH"
     exit 0
   else
