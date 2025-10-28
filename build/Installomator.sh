@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-10-21"
+VERSIONDATE="2025-10-28"
 
 # MARK: Functions
 
@@ -1550,6 +1550,15 @@ apidog)
     appNewVersion="2.7.39"
     downloadURL="https://file-assets.apidog.com/download/Apidog-macOS-arm64-latest.zip"
     expectedTeamID="8554M245SA"
+    ;;
+audacity)
+    name="Audacity"
+    type="dmg"
+    archiveName="audacity-macOS-[0-9.]*-arm64.dmg"
+    appNewVersion="3.7.5"
+    downloadURL="https://github.com/audacity/audacity/releases/download/Audacity-${appNewVersion}/audacity-macOS-${appNewVersion}-arm64.dmg"
+    appCustomVersion(){ defaults read "/Applications/Audacity.app/Contents/Info.plist" CFBundleVersion | cut -d '.' -f 1-3 }
+    expectedTeamID="AWEYX923UX"
     ;;
 authpass)
     name="AuthPass"

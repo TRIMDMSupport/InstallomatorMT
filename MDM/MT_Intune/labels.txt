@@ -49,3 +49,4 @@ icons
 apidog
 packages
 gimp
+audacity
