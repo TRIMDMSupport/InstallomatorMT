@@ -19,6 +19,7 @@ cleanupAndExit() { # $1 = exit code, $2 message, $3 level
     if [[ -n $2 && $1 -ne 0 ]]; then
         printlog "ERROR: $2" $3
         updateDialog "fail" "Error ($1; $2)"
+        updateDialog "quit" ""
     else
         printlog "$2" $3
         updateDialog "success" ""
@@ -1039,27 +1040,34 @@ updateDialog() {
        || $state == "indeterminate" ]]; then
         progress=$state
     fi
-
+    
     # when to cmdfile is set, do nothing
     if [[ $cmd_file == "" ]]; then
         return
     fi
 
-    if [[ $listitem == "" ]]; then
-        # no listitem set, update main progress bar and progress text
-        if [[ $progress != "" ]]; then
-            echo "progress: $progress" >> $cmd_file
-        fi
-        if [[ $message != "" ]]; then
-            echo "progresstext: $message" >> $cmd_file
-        fi
+    if [[ $state == "quit" ]]; then
+        sleep 1
+        echo "quit:" >> $cmd_file
+        sleep 1
     else
-        # list item has a value, so we update the progress and text in the list
-        if [[ $progress != "" ]]; then
-            echo "listitem: title: $listitem, statustext: $message, progress: $progress" >> $cmd_file
+
+        if [[ $listitem == "" ]]; then
+            # no listitem set, update main progress bar and progress text
+            if [[ $progress != "" ]]; then
+                echo "progress: $progress" >> $cmd_file
+            fi
+            if [[ $message != "" ]]; then
+                echo "progresstext: $message" >> $cmd_file
+            fi
         else
-            echo "listitem: title: $listitem, statustext: $message, status: $state" >> $cmd_file
+            # list item has a value, so we update the progress and text in the list
+            if [[ $progress != "" ]]; then
+                echo "listitem: title: $listitem, statustext: $message, progress: $progress" >> $cmd_file
+            else
+                echo "listitem: title: $listitem, statustext: $message, status: $state" >> $cmd_file
+            fi
         fi
-    fi
+    fi    
 }
 
