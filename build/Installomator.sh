@@ -1706,6 +1706,15 @@ googlechromepkg)
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
     ;;
+ice)
+	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
+    name="Ice"
+    type="zip"
+    appNewVersion="0.11.12"
+    downloadURL="https://github.com/jordanbaird/Ice/releases/download/${appNewVersion}/Ice.zip"
+    
+    expectedTeamID="K2ATHQPJDP"
+    ;;
 icons)
     name="Icons"
     type="pkg"
