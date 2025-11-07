@@ -52,3 +52,4 @@ gimp
 audacity
 ice
 aldente
+xmind
