@@ -51,4 +51,4 @@ packages
 gimp
 audacity
 ice
-aidente
+aldente
