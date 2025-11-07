@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-11-06"
+VERSIONDATE="2025-11-07"
 
 # MARK: Functions
 
@@ -1537,6 +1537,13 @@ acrobatreader_local)
     expectedTeamID="JQ525L2MZD"
     Company="Adobe"
     packageID="com.adobe.acrobat.AcroRdrSCADCUpd2400520421_MUI"
+    ;;
+aidente)
+    name="AIDente"
+    type="dmg"
+    appNewVersion="1.35.1"
+    downloadURL="https://github.com/AppHouseKitchen/AlDente-Battery_Care_and_Monitoring/releases/download/${appNewVersion}/AlDente.dmg"
+    expectedTeamID="3WVC84GB99"
     ;;
 alttab)
     name="AltTab"
