@@ -41,7 +41,7 @@ vlc
 vmwarehorizonclient
 webex
 wireshark
-xquartzmicrosoftcompanyportal
+xquartz
 microsoftcompanyportal
 espanso
 authpass
