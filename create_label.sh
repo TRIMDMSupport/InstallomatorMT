@@ -67,7 +67,7 @@ if curl --output /dev/null --silent --head --fail "$GITHUB_RAW_URL"; then
     log_success "A fájl sikeresen letöltve: '$FULL_PATH'."
     log_info "Megnyitás a 'code' paranccsal..."
     cd TARGET_DIR
-    sudo chmod 777 *
+    sudo chmod -R 777 *
     code "$FULL_PATH"
     exit 0
   else
@@ -76,7 +76,7 @@ if curl --output /dev/null --silent --head --fail "$GITHUB_RAW_URL"; then
 else
   log_warn "A fájl nem létezik a távoli szerveren, vagy hiba történt a lekérés során, így lemásolom a bruno.sh-t, és annak megfelelő tartalommal nyitom meg."
   cp "$SRC_PATH" "$FULL_PATH"
-  chmod 777 "$FULL_PATH"
+  sudo chmod -R 777 "$FULL_PATH"
   code "$FULL_PATH"
   exit 0
 fi

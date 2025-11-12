@@ -1,6 +1,10 @@
 acrobatreader_local
+aldente
 alttab
 androidfiletransfer
+apidog
+audacity
+authpass
 bruno
 cyberduck
 dbeaverce
@@ -8,9 +12,13 @@ displaylinkmanager
 docker
 drawio
 dre_console
+espanso
 figma
 firefoxpkg
+gimp
 googlechromepkg
+ice
+icons
 iterm
 jetbrainsintellijideace
 keka
@@ -18,6 +26,7 @@ keystoreexplorer
 krita
 macpass
 microsoftazurestorageexplorer
+microsoftcompanyportal
 microsoftdefender
 microsoftedge
 microsoftedgeit
@@ -25,6 +34,7 @@ microsoftedgesilver
 microsoftvisualstudiocode
 mongodbcompass
 omnissahorizonclient
+packages
 particulars
 podmancli
 privileges2
@@ -41,15 +51,5 @@ vlc
 vmwarehorizonclient
 webex
 wireshark
-xquartz
-microsoftcompanyportal
-espanso
-authpass
-icons
-apidog
-packages
-gimp
-audacity
-ice
-aldente
 xmind
+xquartz

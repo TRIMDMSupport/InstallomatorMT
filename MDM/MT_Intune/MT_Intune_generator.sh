@@ -117,5 +117,6 @@ chmod +x ./Scripts/*.sh
 chmod +x ./TST_Scripts/*.sh
 
 echo "${item_name}" >> labels.txt
+sort -o labels.txt labels.txt
 
 log_success "Scriptek, és package elkészült!"
