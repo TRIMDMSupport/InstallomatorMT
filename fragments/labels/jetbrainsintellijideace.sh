@@ -2,7 +2,7 @@ jetbrainsintellijideace|\
 intellijideace)
     name="IntelliJ IDEA CE"
     type="dmg"
-    appNewVersion="2023.3.4"
+    appNewVersion="2025.2.4"
     if [[ $(arch) == "i386" ]]; then
         downloadURL="https://download.jetbrains.com/idea/ideaIC-${appNewVersion}.dmg"
     elif [[ $(arch) == "arm64" ]]; then
