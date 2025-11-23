@@ -1,7 +1,7 @@
 dbeaverce)
     name="DBeaver"
     type="dmg"
-    appNewVersion="23.3.3"
+    appNewVersion="25.2.5"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://dbeaver.io/files/${appNewVersion}/dbeaver-ce-${appNewVersion}-macos-aarch64.dmg"
     elif [[ $(arch) == "i386" ]]; then
