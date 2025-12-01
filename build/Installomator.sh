@@ -1718,7 +1718,7 @@ hiddenbar)
     type="dmg"
     appNewVersion="1.9"
     downloadURL="https://github.com/dwarvesf/hidden/releases/download/v${appNewVersion}/Hidden.Bar.${appNewVersion}.dmg"
-    expectedTeamID="W7LPPWA48L"
+    expectedTeamID="C6D3FZBJNC"
     ;;
     ice)
 	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
