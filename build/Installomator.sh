@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-11-24"
+VERSIONDATE="2025-12-01"
 
 # MARK: Functions
 
@@ -1713,7 +1713,14 @@ googlechromepkg)
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
     ;;
-ice)
+hiddenbar)
+    name="Hidden Bar"
+    type="dmg"
+    appNewVersion="1.9"
+    downloadURL="https://github.com/dwarvesf/hidden/releases/download/v${appNewVersion}/Hidden.Bar.${appNewVersion}.dmg"
+    expectedTeamID="W7LPPWA48L"
+    ;;
+    ice)
 	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
     name="Ice"
     type="zip"
