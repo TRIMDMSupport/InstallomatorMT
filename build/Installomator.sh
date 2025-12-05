@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2025-12-03"
+VERSIONDATE="2025-12-05"
 
 # MARK: Functions
 
@@ -1713,14 +1713,7 @@ googlechromepkg)
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
     ;;
-hiddenbar)
-    name="Hidden Bar"
-    type="dmg"
-    appNewVersion="1.9"
-    downloadURL="https://github.com/dwarvesf/hidden/releases/download/v${appNewVersion}/Hidden.Bar.${appNewVersion}.dmg"
-    expectedTeamID="C6D3FZBJNC"
-    ;;
-    ice)
+ice)
 	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
     name="Ice"
     type="zip"
@@ -2157,12 +2150,8 @@ webexteams)
 wireshark)
     name="Wireshark"
     type="dmg"
-    appNewVersion="4.2.5"
-    if [[ $(arch) == "i386" ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/all-versions/Wireshark%20${appNewVersion}%20Intel%2064.dmg"
-    elif [[ $(arch) == "arm64" ]]; then
-      downloadURL="https://2.na.dl.wireshark.org/osx/all-versions/Wireshark%20${appNewVersion}%20Arm%2064.dmg"
-    fi
+    appNewVersion="4.6.2"
+    downloadURL="https://2.na.dl.wireshark.org/osx/Wireshark%20${appNewVersion}.dmg"
     expectedTeamID="7Z6EMTD2C6"
     ;;
 xmind)

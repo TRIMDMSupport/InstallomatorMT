@@ -17,7 +17,6 @@ figma
 firefoxpkg
 gimp
 googlechromepkg
-hiddenbar
 ice
 icons
 iterm
