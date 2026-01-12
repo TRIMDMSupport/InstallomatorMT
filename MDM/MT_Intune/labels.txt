@@ -39,6 +39,7 @@ particulars
 podmancli
 privileges2
 proximity
+python
 raycast
 rectangle
 santa
