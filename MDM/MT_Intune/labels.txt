@@ -44,6 +44,7 @@ raycast
 rectangle
 santa
 slack
+sqldeveloper
 stats
 supportcompanion
 swiftdialog
