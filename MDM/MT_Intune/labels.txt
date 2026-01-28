@@ -42,7 +42,6 @@ proximity
 python
 raycast
 rectangle
-santa
 slack
 sqldeveloper
 stats
