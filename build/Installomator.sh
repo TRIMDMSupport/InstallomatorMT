@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-01-27"
+VERSIONDATE="2026-02-04"
 
 # MARK: Functions
 
@@ -1827,8 +1827,8 @@ microsoftedgeenterprisestable)
     name="Microsoft Edge"
     type="pkg"
     #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ
-    appNewVersion="140.0.3485.54"
-    downloadURL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/31b9aeb9-9251-4eda-8133-047734bfd5a1/MicrosoftEdge-140.0.3485.54.pkg"
+    aappNewVersion="144.0.3719.82"
+    downloadURL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/4f2967c0-d097-4ac0-92b7-15af707ac2ac/MicrosoftEdge-144.0.3719.82.pkg"
     # latest version downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
     # latest version appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
@@ -2074,14 +2074,6 @@ rectangle)
     appNewVersion="0.92"
     downloadURL="https://github.com/TRIMDMSupport/RectangleMT/releases/download/${appNewVersion}/Rectangle${appNewVersion}.dmg"
     expectedTeamID="XSYZ3E4B7D"
-    ;;
-santa)
-    name="Santa"
-    type="pkgInDmg"
-    packageID="com.google.santa"
-    appNewVersion="2024.9"
-    downloadURL="https://github.com/google/santa/releases/download/${appNewVersion}/santa-${appNewVersion}.dmg"
-    expectedTeamID="EQHXZ8M8AV"
     ;;
 slack)
     name="Slack"
