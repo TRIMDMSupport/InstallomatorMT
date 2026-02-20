@@ -1979,7 +1979,7 @@ microsoftword)
 mongodbcompass)
     name="MongoDB Compass"
     type="dmg"
-    appNewVersion="1.46.0"
+    appNewVersion="1.49.1"
     downloadURL="https://github.com/mongodb-js/compass/releases/download/v${appNewVersion}/mongodb-compass-${appNewVersion}-darwin-arm64.dmg" 
     expectedTeamID="4XWMY46275"
     ;;
@@ -2120,6 +2120,22 @@ supportcompanionla)
     SupportCompanionVersion="1.1.0.80790"
     downloadURL="https://github.com/macadmins/SupportCompanion/releases/download/v${SupportCompanionVersion}/SupportCompanion-${appNewVersion}.pkg"
     expectedTeamID="T4SK8ZXCXG"
+    ;;
+dialog|\
+swiftdialog)
+    name="Dialog"
+    type="pkg"
+    packageID="au.csiro.dialogcli"
+    downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
+    appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
+    expectedTeamID="PWA5E9TQ59"
+    ;;
+utm)
+    name="UTM"
+    type="dmg"
+    appNewVersion="4.7.4"
+    downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
+    expectedTeamID="WDNLXAD4W8"
     ;;
 vlc_local)
     name="VLC"
