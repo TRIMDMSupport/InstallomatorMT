@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-02-13"
+VERSIONDATE="2026-02-20"
 
 # MARK: Functions
 
@@ -1597,6 +1597,14 @@ bruno)
     fi
     expectedTeamID="W7LPPWA48L"
     ;;
+chatgpt)
+    name="ChatGPT"
+    type="dmg"
+    downloadURL="https://persistent.oaistatic.com/sidekick/public/ChatGPT_Desktop_public_1.2026.027_1769832365.dmg"
+    appNewVersion="1.2026.027"
+    # curl -fs "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
+    expectedTeamID="2DC432GLL2"
+    ;;
 cyberduck)
     name="Cyberduck"
     type="zip"
@@ -2112,22 +2120,6 @@ supportcompanionla)
     SupportCompanionVersion="1.1.0.80790"
     downloadURL="https://github.com/macadmins/SupportCompanion/releases/download/v${SupportCompanionVersion}/SupportCompanion-${appNewVersion}.pkg"
     expectedTeamID="T4SK8ZXCXG"
-    ;;
-dialog|\
-swiftdialog)
-    name="Dialog"
-    type="pkg"
-    packageID="au.csiro.dialogcli"
-    downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
-    appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
-    expectedTeamID="PWA5E9TQ59"
-    ;;
-utm)
-    name="UTM"
-    type="dmg"
-    appNewVersion="4.7.4"
-    downloadURL="https://github.com/utmapp/UTM/releases/download/v${appNewVersion}/UTM.dmg"
-    expectedTeamID="WDNLXAD4W8"
     ;;
 vlc_local)
     name="VLC"

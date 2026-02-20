@@ -6,6 +6,7 @@ apidog
 audacity
 authpass
 bruno
+chatgpt
 cyberduck
 dbeaverce
 displaylinkmanager
