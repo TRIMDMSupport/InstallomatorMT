@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-02-20"
+VERSIONDATE="2026-03-09"
 
 # MARK: Functions
 
@@ -1530,15 +1530,14 @@ valuesfromarguments)
 acrobatreader_local)
     name="Adobe Acrobat"
     type="pkg"
-    appNewVersion="24.005.20414"
+    appNewVersion="25.001.21111"
     archiveName="AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
     downloadURL="file:///Users/Shared/AcroRdrSCADC${$(echo $appNewVersion|sed -e 's/\.//g')}_MUI.pkg"
     versionKey="CFBundleShortVersionString"
     expectedTeamID="JQ525L2MZD"
     Company="Adobe"
-    packageID="com.adobe.acrobat.AcroRdrSCADCUpd2400520421_MUI"
-    ;;
-aldente)
+    packageID="com.adobe.acrobat.AcroRdrSCADCUpd2500121111_MUI"
+    ;;aldente)
     name="AlDente"
     type="dmg"
     appNewVersion="1.35.1"
@@ -1758,13 +1757,6 @@ intellijideace)
     fi
     expectedTeamID="2ZEFAR8TH3"
     ;;
-keka)
-    name="Keka"
-    type="dmg"
-    appNewVersion="1.6.0"
-    downloadURL="https://github.com/aonez/Keka/releases/download/v${appNewVersion}/Keka-${appNewVersion}.dmg"
-    expectedTeamID="4FG648TM2A"
-    ;;
 keystoreexplorer)
     name="KeyStore Explorer"
     type="dmg"
@@ -1786,14 +1778,6 @@ macpass)
     appNewVersion="0.8.1"
     downloadURL="https://github.com/MacPass/MacPass/releases/download/${appNewVersion}/MacPass-${appNewVersion}.zip"
     expectedTeamID="55SM4L4Z97"
-    ;;
-microsigner)
-    name="MicroSigner"
-    type="dmg"
-    appNewVersion="16"
-    downloadURL="https://download.microsigner.com/client/MicroSigner.dmg"
-    versionKey="CFBundleVersion"
-    expectedTeamID="M5DJ4YC39W"
     ;;
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
