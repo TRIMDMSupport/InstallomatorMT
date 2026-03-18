@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-03-09"
+VERSIONDATE="2026-03-18"
 
 # MARK: Functions
 
@@ -1757,6 +1757,13 @@ intellijideace)
     fi
     expectedTeamID="2ZEFAR8TH3"
     ;;
+keka)
+    name="Keka"
+    type="dmg"
+    appNewVersion="1.6.0"
+    downloadURL="https://github.com/aonez/Keka/releases/download/v${appNewVersion}/Keka-${appNewVersion}.dmg"
+    expectedTeamID="4FG648TM2A"
+    ;;
 keystoreexplorer)
     name="KeyStore Explorer"
     type="dmg"
@@ -1778,6 +1785,14 @@ macpass)
     appNewVersion="0.8.1"
     downloadURL="https://github.com/MacPass/MacPass/releases/download/${appNewVersion}/MacPass-${appNewVersion}.zip"
     expectedTeamID="55SM4L4Z97"
+    ;;
+microsigner)
+    name="MicroSigner"
+    type="dmg"
+    appNewVersion="16"
+    downloadURL="https://download.microsigner.com/client/MicroSigner.dmg"
+    versionKey="CFBundleVersion"
+    expectedTeamID="M5DJ4YC39W"
     ;;
 microsoftazurestorageexplorer)
     name="Microsoft Azure Storage Explorer"
@@ -2057,7 +2072,7 @@ raycast)
     type="dmg"
     downloadURL="https://releases.raycast.com/download"
     #appNewVersion="$( curl -fsIL "https://www.raycast.com/download" | grep -i ^location | grep Raycast_ | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/' )"
-    appNewVersion="1.104.2"
+    appNewVersion="1.104.10"
     expectedTeamID="SY64MV22J9"
     ;;
 rectangle)
