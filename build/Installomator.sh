@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-03-24"
+VERSIONDATE="2026-03-25"
 
 # MARK: Functions
 
@@ -2085,7 +2085,7 @@ rectangle)
 slack)
     name="Slack"
     type="dmg"
-    appNewVersion="4.44.65"
+    appNewVersion="4.48.100"
     downloadURL="https://downloads.slack-edge.com/desktop-releases/mac/universal/${appNewVersion}/Slack-${appNewVersion}-macOS.dmg"
     expectedTeamID="BQR82RBBHL"
     #current download link: curl -fsIL "https://slack.com/ssb/download-osx-universal" | grep -i "^location"
