@@ -34,6 +34,7 @@ microsoftedgeit
 microsoftedgesilver
 microsoftvisualstudiocode
 mongodbcompass
+nudge
 omnissahorizonclient
 packages
 particulars
