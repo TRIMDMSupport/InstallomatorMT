@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-04-01"
+VERSIONDATE="2026-04-08"
 
 # MARK: Functions
 
@@ -1615,7 +1615,7 @@ cyberduck)
 dbeaverce)
     name="DBeaver"
     type="dmg"
-    appNewVersion="25.2.5"
+    appNewVersion="26.0.2"
     if [[ $(arch) == "arm64" ]]; then
         downloadURL="https://dbeaver.io/files/${appNewVersion}/dbeaver-ce-${appNewVersion}-macos-aarch64.dmg"
     elif [[ $(arch) == "i386" ]]; then
