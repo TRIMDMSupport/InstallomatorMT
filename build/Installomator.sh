@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-04-20"
+VERSIONDATE="2026-04-22"
 
 # MARK: Functions
 
@@ -1673,7 +1673,7 @@ dre_console)
 espanso)
     name="Espanso"
     type="appInDmgInZip"
-    appNewVersion="2.2.5"
+    appNewVersion="2.3.0"
     downloadURL="https://github.com/espanso/espanso/releases/download/v${appNewVersion}/Espanso-Mac-Universal.zip"
     blockingProcesses=( "Espanso" "espanso" )
     expectedTeamID="6424323YUH"
