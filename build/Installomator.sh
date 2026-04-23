@@ -1672,6 +1672,7 @@ dre_console)
     ;;
 espanso)
     name="Espanso"
+    type="appInDmgInZip"
     downloadURL="$(downloadURLFromGit espanso espanso)"
     appNewVersion="$(versionFromGit espanso espanso)"
     blockingProcesses=( "Espanso" "espanso" )
