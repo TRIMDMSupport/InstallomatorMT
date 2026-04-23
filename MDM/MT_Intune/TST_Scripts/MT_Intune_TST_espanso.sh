@@ -243,7 +243,6 @@ else
         cmdOutput="$(${destFile} dialog LOGO=$LOGO BLOCKING_PROCESS_ACTION=ignore LOGGING=DEBUG NOTIFY=all || true)"
         checkCmdOutput "${cmdOutput}"
     fi
-
     # Configure and display swiftDialog
     itemName=$( ${destFile} ${item} RETURN_LABEL_NAME=1 LOGGING=DEBUG | tail -1 || true )
     if [[ "$itemName" != "#" ]]; then
@@ -252,7 +251,6 @@ else
         message="Installing ${item} ${app_version} …"
     fi
     log_info "$item $itemName"
-
     #Check icon (expecting beginning with “http” to be web-link and “/” to be disk file)
     #echo "icon before check: $icon"
     if [[ "$(echo ${icon} | grep -iE "^(http|ftp).*")" != ""  ]]; then
@@ -338,7 +336,9 @@ else
     fi
     log_info "LOGO: $LOGO"
     log_info "icon: ${icon}"
-
+    log_warn "dialogApp: ${dialogApp}"
+    log_warn "message: ${message}"
+    log_warn "dialog_command_file: ${dialog_command_file}"
     # display first screen
     open -a "$dialogApp" --args \
         --title none \
@@ -349,8 +349,16 @@ else
         --position bottomright \
         --mini \
         --commandfile "$dialog_command_file"
-
     # give everything a moment to catch up
+    open -a "$dialogApp" --args \
+        --title none \
+        --icon "$icon" \
+        --message "$message" \
+        --ontop \
+        --progress 100 \
+        --position bottomright \
+        --mini \
+        --commandfile "$dialog_command_file"
     sleep 0.1
 fi
 
