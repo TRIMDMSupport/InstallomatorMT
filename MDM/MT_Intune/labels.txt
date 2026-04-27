@@ -13,7 +13,6 @@ displaylinkmanager
 docker
 drawio
 dre_console
-espanso
 figma
 firefoxpkg
 gimp
