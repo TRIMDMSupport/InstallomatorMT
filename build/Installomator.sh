@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-04-27"
+VERSIONDATE="2026-05-04"
 
 # MARK: Functions
 
@@ -1670,14 +1670,7 @@ dre_console)
     appNewVersion="6.00.69"
     expectedTeamID="YT3GCGK3Z7"
     ;;
-espanso)
-    name="Espanso"
-    type="appInDmgInZip"
-    appNewVersion="2.3.0"
-    downloadURL="https://github.com/espanso/espanso/releases/download/v${appNewVersion}/Espanso-Mac-Universal.zip"
-    blockingProcesses=( "Espanso" "espanso" )
-    expectedTeamID="6424323YUH"
-    ;;evernote)
+evernote)
     name="Evernote"
     type="dmg"
     downloadURL="https://mac.desktop.evernote.com/builds/Evernote-latest.dmg"
@@ -1980,6 +1973,14 @@ mongodbcompass)
     appNewVersion="1.49.1"
     downloadURL="https://github.com/mongodb-js/compass/releases/download/v${appNewVersion}/mongodb-compass-${appNewVersion}-darwin-arm64.dmg" 
     expectedTeamID="4XWMY46275"
+    ;;
+notepadplusplus)
+    # https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos
+    name="Notepad++"
+    type="dmg"
+    appNewVersion="1.0.5"
+    link="https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos/releases/download/v${appNewVersion}/Notepad++v${appNewVersion}.dmg"
+    expectedTeamID="S5972U9P85"
     ;;
 nudge)
     name="Nudge"

@@ -33,6 +33,7 @@ microsoftedgeit
 microsoftedgesilver
 microsoftvisualstudiocode
 mongodbcompass
+notepadplusplus
 nudge
 omnissahorizonclient
 packages
