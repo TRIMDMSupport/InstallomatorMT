@@ -1975,7 +1975,6 @@ mongodbcompass)
     expectedTeamID="4XWMY46275"
     ;;
 notepadplusplus)
-    # https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos
     name="Notepad++"
     type="dmg"
     appNewVersion="1.0.5"
