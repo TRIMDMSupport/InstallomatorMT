@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-05-04"
+VERSIONDATE="2026-05-05"
 
 # MARK: Functions
 
@@ -1680,7 +1680,7 @@ evernote)
     figma)
     name="Figma"
     type="dmg"
-    appNewVersion="125.11.6" 
+    appNewVersion="126.3.12" 
     #curl -f https://desktop.figma.com/mac/RELEASE.json
     archiveName="Figma-$appNewVersion.dmg"
     if [[ $(arch) == "arm64" ]]; then
