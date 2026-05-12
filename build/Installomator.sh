@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-05-05"
+VERSIONDATE="2026-05-12"
 
 # MARK: Functions
 
@@ -1561,7 +1561,7 @@ androidfiletransfer)
 apidog)
     name="apidog"
     type="appInDmgInZip"
-    appNewVersion="2.7.39"
+    appNewVersion="$(curl -s https://apidog.canny.io/changelog | sed -n 's/.*Most recent update: \([0-9.]*\).*/\1/p')"
     downloadURL="https://file-assets.apidog.com/download/Apidog-macOS-arm64-latest.zip"
     expectedTeamID="8554M245SA"
     ;;
