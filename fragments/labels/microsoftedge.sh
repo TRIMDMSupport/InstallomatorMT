@@ -4,8 +4,8 @@ microsoftedgeenterprisestable)
     name="Microsoft Edge"
     type="pkg"
     #MS link older versions: https://www.microsoft.com/en-us/edge/business/download?form=MA13FJ
-    aappNewVersion="144.0.3719.82"
-    downloadURL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/4f2967c0-d097-4ac0-92b7-15af707ac2ac/MicrosoftEdge-144.0.3719.82.pkg"
+    appNewVersion="148.0.3967.54"
+    downloadURL="https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/3aecaff4-a86f-4bbe-b8f8-daeac8f041b7/MicrosoftEdge-148.0.3967.54.pkg"
     # latest version downloadURL="https://go.microsoft.com/fwlink/?linkid=2093504"
     # latest version appNewVersion=$(curl -fsIL "$downloadURL" | grep -i location: | grep -o "/MicrosoftEdge.*pkg" | sed -E 's/.*\/[a-zA-Z]*-([0-9.]*)\..*/\1/g')
     expectedTeamID="UBF8T346G9"
