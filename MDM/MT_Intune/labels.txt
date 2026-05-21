@@ -2,6 +2,7 @@ acrobatreader_local
 aldente
 alttab
 androidfiletransfer
+antigravity
 apidog
 audacity
 authpass
