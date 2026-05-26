@@ -35,6 +35,7 @@ microsoftedgeit
 microsoftedgesilver
 microsoftvisualstudiocode
 mongodbcompass
+nextpadplusplus
 notepadplusplus
 nudge
 omnissahorizonclient
