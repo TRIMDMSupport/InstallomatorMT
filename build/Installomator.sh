@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-05-21"
+VERSIONDATE="2026-05-26"
 
 # MARK: Functions
 
@@ -1610,6 +1610,14 @@ chatgpt)
     appNewVersion="1.2026.027"
     # curl -fs "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
     expectedTeamID="2DC432GLL2"
+    ;;
+coconutbattery)
+    name="coconutBattery"
+    type="zip"
+    coconutXml=$(curl -sL "https://coconut-flavour.com/updates/coconutBattery_4.xml" | sed 's/ xmlns[^=]*="[^"]*"//g; s/sparkle://g')
+    downloadURL=$(echo "$coconutXml" | xpath "string(//channel/item[not(channel)][1]/enclosure/@url)")
+    appNewVersion=$(echo "$coconutXml" | xpath "string(//channel/item[not(channel)][1]/shortVersionString)")
+    expectedTeamID="R5SC3K86L5"
     ;;
 cyberduck)
     name="Cyberduck"

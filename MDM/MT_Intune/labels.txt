@@ -8,6 +8,7 @@ audacity
 authpass
 bruno
 chatgpt
+coconutbattery
 cyberduck
 dbeaverce
 displaylinkmanager
