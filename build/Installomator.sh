@@ -1990,7 +1990,7 @@ mongodbcompass)
     expectedTeamID="4XWMY46275"
     ;;
 nextpadplusplus)
-    name="Notepad++"
+    name="Nextpad++"
     type="dmg"
     downloadURL=$(downloadURLFromGit nextpad-plus-plus nextpad-plus-plus-macos)
     appNewVersion=$(versionFromGit nextpad-plus-plus nextpad-plus-plus-macos)

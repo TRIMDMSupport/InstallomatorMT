@@ -1,5 +1,5 @@
 nextpadplusplus)
-    name="Notepad++"
+    name="Nextpad++"
     type="dmg"
     downloadURL=$(downloadURLFromGit nextpad-plus-plus nextpad-plus-plus-macos)
     appNewVersion=$(versionFromGit nextpad-plus-plus nextpad-plus-plus-macos)
