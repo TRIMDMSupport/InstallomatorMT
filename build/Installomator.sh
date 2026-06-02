@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-05-26"
+VERSIONDATE="2026-06-02"
 
 # MARK: Functions
 
@@ -1751,6 +1751,14 @@ iterm)
     appNewVersion="3.6.6"
     expectedTeamID="H7V7XYVQ7D"
     blockingProcesses=( iTerm2 )
+    ;;
+iterm2)
+    name="iTerm"
+    type="zip"
+    downloadURL="https://iterm2.com/downloads/stable/latest"
+    appNewVersion=$(curl -is https://iterm2.com/downloads/stable/latest | grep location: | grep -o "iTerm2.*zip" | cut -d "-" -f 2 | cut -d '.' -f1 | sed 's/_/./g')
+    expectedTeamID="H7V7XYVQ7D"
+    blockingProcesses=( "iTerm" "iTerm2" )
     ;;
 jetbrainsintellijideace|\
 intellijideace)

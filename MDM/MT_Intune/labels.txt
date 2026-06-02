@@ -22,6 +22,7 @@ googlechromepkg
 ice
 icons
 iterm
+iterm2
 jetbrainsintellijideace
 keka
 keystoreexplorer
