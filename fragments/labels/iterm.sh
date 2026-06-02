@@ -1,8 +1,8 @@
 iterm)
     name="iTerm"
     type="zip"
-    downloadURL="https://iterm2.com/downloads/stable/iTerm2-3_6_6.zip"
-    appNewVersion="3.6.6"
+    downloadURL="https://iterm2.com/downloads/stable/latest"
+    appNewVersion=$(curl -is https://iterm2.com/downloads/stable/latest | grep location: | grep -o "iTerm2.*zip" | cut -d "-" -f 2 | cut -d '.' -f1 | sed 's/_/./g')
     expectedTeamID="H7V7XYVQ7D"
-    blockingProcesses=( iTerm2 )
+    blockingProcesses=( "iTerm" "iTerm2" )
     ;;
