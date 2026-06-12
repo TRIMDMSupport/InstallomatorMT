@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-06-03"
+VERSIONDATE="2026-06-12"
 
 # MARK: Functions
 
@@ -1622,9 +1622,9 @@ coconutbattery)
 cyberduck)
     name="Cyberduck"
     type="zip"
-    appNewVersion="9.3.1"
-    CFBundleVersion=".44136"
-    downloadURL="https://update.cyberduck.io//Cyberduck-${appNewVersion}${CFBundleVersion}.zip"
+    changeLOG="$( curl -fs https://version.cyberduck.io/changelog.rss )"
+    downloadURL=$( echo "$changeLOG" | sed 's/sparkle://g' | xmllint --xpath 'string(//item/enclosure/@url)' - 2>/dev/null)
+    appNewVersion=$( echo "$changeLOG" | sed 's/sparkle://g' | xmllint --xpath 'string(//item/enclosure/@shortVersionString)' - 2>/dev/null)
     expectedTeamID="G69SCX94XU"
     ;;
 dbeaverce)
