@@ -1,4 +1,5 @@
 acrobatreader_local
+affinityapp
 aldente
 alttab
 androidfiletransfer
