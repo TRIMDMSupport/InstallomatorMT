@@ -9,6 +9,7 @@ authpass
 bruno
 chatgpt
 coconutbattery
+cursorai
 cyberduck
 dbeaverce
 displaylinkmanager
