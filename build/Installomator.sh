@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-06-12"
+VERSIONDATE="2026-07-07"
 
 # MARK: Functions
 
@@ -2020,6 +2020,14 @@ nudge)
     appNewVersion="2.1.0.81852"
     downloadURL="https://github.com/macadmins/nudge/releases/download/v${appNewVersion}/Nudge_Suite-${appNewVersion}.pkg"
     expectedTeamID="T4SK8ZXCXG"
+    ;;
+obsidian)
+    # credit: Søren Theilgaard (@theilgaard)
+    name="Obsidian"
+    type="dmg"
+    downloadURL=$( downloadURLFromGit obsidianmd obsidian-releases )
+    appNewVersion=$(versionFromGit obsidianmd obsidian-releases)
+    expectedTeamID="6JSW4SJWN9"
     ;;
 omnissahorizonclient)
     name="Omnissa Horizon Client"
