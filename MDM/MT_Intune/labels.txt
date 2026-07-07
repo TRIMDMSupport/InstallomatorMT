@@ -29,6 +29,7 @@ jetbrainsintellijideace
 keka
 keystoreexplorer
 krita
+loom
 macpass
 microsoftazurestorageexplorer
 microsoftcompanyportal
