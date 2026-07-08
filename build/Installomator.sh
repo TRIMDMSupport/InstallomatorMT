@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-07"
+VERSIONDATE="2026-07-08"
 
 # MARK: Functions
 
@@ -1595,6 +1595,21 @@ authpass)
     appNewVersion="1.9.11"
     downloadURL="https://github.com/authpass/authpass/releases/download/v${appNewVersion}/AuthPass.app-${appNewVersion}_2007.zip/"
     expectedTeamID="64ZPC769JY"
+    ;;
+blender)
+    name="Blender"
+    type="dmg"
+    versionKey="CFBundleShortVersionString"
+    baseVersion=$(curl -sf https://ftp.nluug.nl/pub/graphics/blender/release/ | grep -o 'Blender[0-9]\+\.[0-9]\+' | cut -d 'r' -f 2 | sort -V | tail -1)
+    if [[ $(arch) == "arm64" ]]; then
+        appNewVersion=$(curl -sf https://ftp.nluug.nl/pub/graphics/blender/release/Blender$baseVersion/ | grep -o 'blender-[0-9]\+\.[0-9]\+\.[0-9]\+-macos-arm64\.dmg' | sort -V | tail -1 | sed -E 's/[^0-9]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' )
+        archiveName=$(curl -sf "https://ftp.nluug.nl/pub/graphics/blender/release/Blender$baseVersion/"| grep -o 'blender-[0-9]\+\.[0-9]\+\.[0-9]\+-macos-arm64\.dmg' | sort -V | tail -1)
+        downloadURL="https://ftp.nluug.nl/pub/graphics/blender/release/Blender$baseVersion/$archiveName"
+    elif [[ $(arch) == "i386" ]]; then
+        archiveName=$(curl -sf "https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.5/" | grep -o 'blender-[0-9]\+\.[0-9]\+\.[0-9]\+-macos-x64\.dmg' | sort -V | tail -1)
+        downloadURL="https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.5//$archiveName"
+    fi
+    expectedTeamID="68UA947AUU"
     ;;
 bruno)
     # https://github.com/usebruno/bruno; https://www.usebruno.com/
