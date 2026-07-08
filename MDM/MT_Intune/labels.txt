@@ -39,6 +39,7 @@ microsoftedge
 microsoftedgeit
 microsoftedgesilver
 microsoftvisualstudiocode
+miro
 mongodbcompass
 nextpadplusplus
 notepadplusplus

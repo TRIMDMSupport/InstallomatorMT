@@ -2033,6 +2033,17 @@ microsoftword)
     updateTool="/Library/Application Support/Microsoft/MAU2.0/Microsoft AutoUpdate.app/Contents/MacOS/msupdate"
     updateToolArguments=( --install --apps MSWD2019 )
     ;;
+miro)
+    # credit: @matins
+    name="Miro"
+    type="dmg"
+    if [[ $(arch) == arm64 ]]; then
+        downloadURL="https://desktop.miro.com/platforms/darwin-arm64/Install-Miro.dmg"
+    elif [[ $(arch) == i386 ]]; then
+        downloadURL="https://desktop.miro.com/platforms/darwin/Install-Miro.dmg"
+    fi
+    expectedTeamID="M3GM7MFY7U"
+    ;;
 mongodbcompass)
     name="MongoDB Compass"
     type="dmg"
