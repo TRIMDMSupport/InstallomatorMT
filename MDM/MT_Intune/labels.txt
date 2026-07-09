@@ -20,6 +20,7 @@ drawio
 dre_console
 figma
 firefoxpkg
+framer
 gimp
 googlechromepkg
 ice
