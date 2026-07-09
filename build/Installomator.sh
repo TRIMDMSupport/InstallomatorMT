@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-08"
+VERSIONDATE="2026-07-09"
 
 # MARK: Functions
 
@@ -2206,6 +2206,14 @@ stats)
     appNewVersion="2.10.15"
     downloadURL="https://github.com/exelban/stats/releases/download/v${appNewVersion}/Stats.dmg"
     expectedTeamID="RP2S87B72W"
+    ;;
+sublimetext)
+    # credit: Søren Theilgaard (@theilgaard)
+    name="Sublime Text"
+    type="zip"
+    downloadURL="$(curl -fs "https://www.sublimetext.com/download_thanks?target=mac#direct-downloads" | grep -io "https://download.*_mac.zip" | head -1)"
+    appNewVersion=$(curl -fs https://www.sublimetext.com/download | grep -i -A 4 "id.*changelog" | grep -io "Build [0-9]*")
+    expectedTeamID="Z6D26JE4Y4"
     ;;
 supportcompanion)
     name="SupportCompanion"

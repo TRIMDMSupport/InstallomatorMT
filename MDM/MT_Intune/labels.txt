@@ -57,6 +57,7 @@ rectangle
 slack
 sqldeveloper
 stats
+sublimetext
 supportcompanion
 swiftdialog
 utm
