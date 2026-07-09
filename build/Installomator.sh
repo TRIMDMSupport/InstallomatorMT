@@ -2274,6 +2274,18 @@ vmwarehorizonclient)
     appNewVersion="8.13.0"
     expectedTeamID="EG7KH642X6"
     ;;
+voicebox)
+    name="Voicebox"
+    type="dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        archiveName="Voicebox_[0-9.]*_aarch64.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        archiveName="Voicebox_[0-9.]*_x64.dmg"
+    fi
+    downloadURL="$(downloadURLFromGit jamiepine voicebox)"
+    appNewVersion="$(versionFromGit jamiepine voicebox)"
+    expectedTeamID="YB4V2VA9YY"
+    ;;
 webex|\
 webexteams)
     name="Webex"
