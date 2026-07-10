@@ -1,4 +1,5 @@
 acrobatreader_local
+adobereaderdc
 affinityapp
 aldente
 alttab
