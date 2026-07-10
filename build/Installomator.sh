@@ -2246,8 +2246,8 @@ swiftdialog)
     appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
     expectedTeamID="PWA5E9TQ59"
     ;;
-topnoch)
-    name="Topnoch"
+topnotch)
+    name="Topnotch"
     type="AppInDmgInZip"
     appNewVersion=$(curl -fs https://formulae.brew.sh/api/cask/topnotch.json | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')
     downloadURL="https://updates.topnotch.app/TopNotch-latest.zip"
