@@ -61,6 +61,7 @@ stats
 sublimetext
 supportcompanion
 swiftdialog
+topnotch
 utm
 vlc
 vmwarehorizonclient

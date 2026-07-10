@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-09"
+VERSIONDATE="2026-07-10"
 
 # MARK: Functions
 
@@ -2245,6 +2245,13 @@ swiftdialog)
     downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
     appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
     expectedTeamID="PWA5E9TQ59"
+    ;;
+topnoch)
+    name="Topnoch"
+    type="AppInDmgInZip"
+    appNewVersion=$(curl -fs https://formulae.brew.sh/api/cask/topnotch.json | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')
+    downloadURL="https://updates.topnotch.app/TopNotch-latest.zip"
+    expectedTeamID="AFJU4P8ZV4"
     ;;
 utm)
     name="UTM"
