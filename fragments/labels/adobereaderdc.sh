@@ -3,10 +3,10 @@ adobereaderdc-install|\
 adobereaderdc-update)
     name="Adobe Acrobat Reader"
     type="pkgInDmg"
-    if [[ -d "/Applications/Adobe Acrobat Reader DC.app" ]]; then
-      printlog "Found /Applications/Adobe Acrobat Reader DC.app - Setting readerPath" INFO
-      readerPath="/Applications/Adobe Acrobat Reader DC.app"
-      name="Adobe Acrobat Reader DC"
+    if [[ -d "/Applications/Adobe Acrobat DC/Adobe Acrobat.app" ]]; then
+      printlog "Found /Applications/Adobe Acrobat DC/Adobe Acrobat.app - Setting readerPath" INFO
+      readerPath="/Applications/Adobe Acrobat DC/Adobe Acrobat.app"
+      name="Adobe Acrobat"
     elif [[ -d "/Applications/Adobe Acrobat Reader.app" ]]; then
       printlog "Found /Applications/Adobe Acrobat Reader.app - Setting readerPath" INFO
       readerPath="/Applications/Adobe Acrobat Reader.app"
