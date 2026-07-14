@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-10"
+VERSIONDATE="2026-07-14"
 
 # MARK: Functions
 
@@ -2146,6 +2146,19 @@ nudge)
     appNewVersion="2.1.0.81852"
     downloadURL="https://github.com/macadmins/nudge/releases/download/v${appNewVersion}/Nudge_Suite-${appNewVersion}.pkg"
     expectedTeamID="T4SK8ZXCXG"
+    ;;
+obs)
+    name="OBS"
+    appName="OBS.app"
+    type="dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        archiveName="OBS-Studio-[0-9.]*-macOS-Apple.dmg"
+    elif [[ $(arch) == "i386" ]]; then
+        archiveName="OBS-Studio-[0-9.]*-macOS-Intel.dmg"
+    fi
+    downloadURL=$(downloadURLFromGit obsproject obs-studio )
+    appNewVersion=$(versionFromGit obsproject obs-studio )
+    expectedTeamID="2MMRE5MTB8"
     ;;
 obsidian)
     # credit: Søren Theilgaard (@theilgaard)

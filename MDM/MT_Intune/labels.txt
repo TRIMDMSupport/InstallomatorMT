@@ -46,6 +46,7 @@ mongodbcompass
 nextpadplusplus
 notepadplusplus
 nudge
+obs
 obsidian
 omnissahorizonclient
 packages
