@@ -2,7 +2,7 @@ chatgpt)
     name="ChatGPT"
     type="dmg"
     downloadURL="https://persistent.oaistatic.com/sidekick/public/ChatGPT.dmg"
-    appNewVersion=$(curl -s https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml | grep -m1 "shortVersionString" | sed -E 's|.*<[^>]+>([^<]+)</.*|\1|')
+    appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/chatgpt-classic.json" | sed -n 's/.*"version":"\([^,"]*\).*/\1/p')
     # curl -fs "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
     expectedTeamID="2DC432GLL2"
     ;;
