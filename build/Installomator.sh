@@ -1831,6 +1831,17 @@ googlechromepkg)
     appNewVersion=$(getJSONValue "$(curl -fsL "https://versionhistory.googleapis.com/v1/chrome/platforms/mac/channels/stable/versions/all/releases?filter=fraction%3E0.01,endtime=none&order_by=version%20desc" )" "releases[0].version" )
     expectedTeamID="EQHXZ8M8AV"
     ;;
+grammarly)
+     name="Grammarly Desktop"
+     type="dmg"
+     appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/grammarly-desktop.json" | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')
+     packageID="com.grammarly.ProjectLlama"
+     downloadURL="https://download-mac.grammarly.com/Grammarly.dmg"
+     expectedTeamID="W8F64X92K3"
+     # appName="Grammarly Installer.app"
+     installerTool="Grammarly Installer.app"
+     CLIInstaller="Grammarly Installer.app/Contents/MacOS/Grammarly Desktop"
+;;
 ice)
 	# A versatile macOS menu bar management tool that allows users to hide, show, and rearrange menu bar items
     name="Ice"
