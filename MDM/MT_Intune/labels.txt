@@ -27,6 +27,7 @@ googlechromepkg
 grammarly
 ice
 icons
+imagingedge
 iterm
 iterm2
 jetbrainsintellijideace
