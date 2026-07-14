@@ -1589,7 +1589,7 @@ adobereaderdc-update)
           break
         fi
       done
-      unset version
+      #unset version
       IFS=$SAVEIFS
     fi
     updateTool="/usr/local/bin/RemoteUpdateManager"
