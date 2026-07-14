@@ -1,15 +1,12 @@
 adobereaderdc|\
 adobereaderdc-install|\
 adobereaderdc-update)
-    name="Adobe Acrobat Reader"
+    name="Adobe Acrobat"
     type="pkgInDmg"
     if [[ -d "/Applications/Adobe Acrobat DC/Adobe Acrobat.app" ]]; then
       printlog "Found /Applications/Adobe Acrobat DC/Adobe Acrobat.app - Setting readerPath" INFO
       readerPath="/Applications/Adobe Acrobat DC/Adobe Acrobat.app"
       name="Adobe Acrobat"
-    elif [[ -d "/Applications/Adobe Acrobat Reader.app" ]]; then
-      printlog "Found /Applications/Adobe Acrobat Reader.app - Setting readerPath" INFO
-      readerPath="/Applications/Adobe Acrobat Reader.app"
     fi
     if ! [[ `defaults read "$readerPath/Contents/Resources/AcroLocale.plist"` ]]; then
       printlog "Missing locale data, this will cause the updater to fail.  Deleting Adobe Acrobat Reader DC.app and installing fresh." INFO
@@ -38,6 +35,8 @@ adobereaderdc-update)
       printlog "Changing IFS for Adobe Reader" INFO
       SAVEIFS=$IFS
       IFS=$'\n'
+      adobecurrent=$(curl -sL https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt)
+      appNewVersion="${adobecurrent}"
       versions=( $( curl -s https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+"| head -n 30) )
       local version
       for version in $versions; do
