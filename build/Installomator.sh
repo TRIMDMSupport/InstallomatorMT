@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-14"
+VERSIONDATE="2026-07-27"
 
 # MARK: Functions
 
@@ -1647,7 +1647,7 @@ chatgpt)
     name="ChatGPT"
     type="dmg"
     downloadURL="https://persistent.oaistatic.com/sidekick/public/ChatGPT.dmg"
-    appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/chatgpt-classic.json" | sed -n 's/.*"version":"\([^,"]*\).*/\1/p')
+    appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/chatgpt.json" | sed -n 's/.*"version":"\([^,"]*\).*/\1/p')
     # curl -fs "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
     expectedTeamID="2DC432GLL2"
     ;;
