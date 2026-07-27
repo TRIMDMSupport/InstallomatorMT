@@ -1,5 +1,6 @@
 adobereaderdc)
     name="Adobe Acrobat"
+    appName="Adobe Acrobat DC/Adobe Acrobat.app"
     type="pkgInDmg"
 
     if [[ -d "/Applications/Adobe Acrobat DC/Adobe Acrobat.app" ]]; then

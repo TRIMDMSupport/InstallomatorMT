@@ -1537,8 +1537,10 @@ acrobatreader_local)
     expectedTeamID="JQ525L2MZD"
     Company="Adobe"
     packageID="com.adobe.acrobat.AcroRdrSCADCUpd2500121111_MUI"
-    ;;adobereaderdc)
+    ;;
+    adobereaderdc)
     name="Adobe Acrobat"
+    appName="Adobe Acrobat DC/Adobe Acrobat.app"
     type="pkgInDmg"
 
     if [[ -d "/Applications/Adobe Acrobat DC/Adobe Acrobat.app" ]]; then
