@@ -9,4 +9,3 @@ acrobatreader_local)
     Company="Adobe"
     packageID="com.adobe.acrobat.AcroRdrSCADCUpd2500121111_MUI"
     ;;
-    
