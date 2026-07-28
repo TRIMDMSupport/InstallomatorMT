@@ -1,13 +1,6 @@
 adobereaderdc)
-    name="Adobe Acrobat"
-    appName="Adobe Acrobat DC/Adobe Acrobat.app"
+    name="Adobe Acrobat Reader"
     type="pkgInDmg"
-
-    if [[ -d "/Applications/Adobe Acrobat DC/Adobe Acrobat.app" ]]; then
-      printlog "Found /Applications/Adobe Acrobat DC/Adobe Acrobat.app - Setting readerPath" INFO
-      readerPath="/Applications/Adobe Acrobat DC/Adobe Acrobat.app"
-      name="Adobe Acrobat"
-    fi
     adobecurrent=$(curl -sL https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt)
     adobecurrentmod="${adobecurrent//.}"
     downloadURL=$(echo https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/"$adobecurrentmod"/AcroRdrDC_"$adobecurrentmod"_MUI.dmg)
