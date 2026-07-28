@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-27"
+VERSIONDATE="2026-07-28"
 
 # MARK: Functions
 
@@ -1550,7 +1550,7 @@ acrobatreader_local)
     fi
     adobecurrent=$(curl -sL https://armmf.adobe.com/arm-manifests/mac/AcrobatDC/reader/current_version.txt)
     adobecurrentmod="${adobecurrent//.}"
-    downloadURL=$(echo https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/"$adobecurrentmod"/AcroRdrDCUpd"$adobecurrentmod"_MUI.dmg)
+    downloadURL=$(echo https://ardownload2.adobe.com/pub/adobe/reader/mac/AcrobatDC/"$adobecurrentmod"/AcroRdrDC_"$adobecurrentmod"_MUI.dmg)
     appNewVersion="${adobecurrent}"
     expectedTeamID="JQ525L2MZD"
     blockingProcesses=( "Acrobat Pro DC" "AdobeAcrobat" "AdobeReader" "Distiller" )
