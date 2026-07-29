@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-28"
+VERSIONDATE="2026-07-29"
 
 # MARK: Functions
 
@@ -1641,7 +1641,7 @@ bruno)
 chatgpt)
     name="ChatGPT"
     type="dmg"
-    downloadURL="https://persistent.oaistatic.com/sidekick/public/ChatGPT.dmg"
+    downloadURL="https://persistent.oaistatic.com/codex-app-prod/ChatGPT.dmg"
     appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/chatgpt.json" | sed -n 's/.*"version":"\([^,"]*\).*/\1/p')
     # curl -fs "https://persistent.oaistatic.com/sidekick/public/sparkle_public_appcast.xml"
     expectedTeamID="2DC432GLL2"
@@ -1812,6 +1812,7 @@ imagingedge)
     type="pkgInDmg"
     appNewVersion=$(curl -fsSL "https://formulae.brew.sh/api/cask/imaging-edge.json" | sed -n 's/.*"version":"\([^,"]*\).*/\1/p')
     downloadURL=$(curl -fs "https://support.d-imaging.sony.co.jp/disoft_DL/desktop_DL/mac?fm=gb" | sed -n 's/.*href="\([^"]*\)".*/\1/p')
+    appCustomVersion(){ defaults read "/Applications/Imaging Edge Desktop.app/Contents/Info.plist" CFBundleShortVersionString | awk -F. '{printf "%s.%s.%s.%s\n",$1,$2,$3,substr($4,1,5)}'}
     expectedTeamID="VH49J2FYHE"
     ;;
 iterm)
