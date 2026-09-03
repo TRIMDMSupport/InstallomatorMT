@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-07-29"
+VERSIONDATE="2026-09-03"
 
 # MARK: Functions
 
@@ -1842,6 +1842,18 @@ intellijideace)
         downloadURL="https://download.jetbrains.com/idea/ideaIC-${appNewVersion}-aarch64.dmg"
     fi
     expectedTeamID="2ZEFAR8TH3"
+    ;;
+keepassxc)
+    name="KeePassXC"
+    type="dmg"
+    if [[ $(arch) == i386 ]]; then
+      archiveName="x86_64.dmg"
+    elif [[ $(arch) == arm64 ]]; then
+      archiveName="arm64.dmg"
+    fi
+    downloadURL=$(downloadURLFromGit keepassxreboot keepassxc)
+    appNewVersion=$(versionFromGit keepassxreboot keepassxc)
+    expectedTeamID="G2S7P7J672"
     ;;
 keka)
     name="Keka"
