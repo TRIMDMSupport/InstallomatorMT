@@ -1,6 +1,7 @@
 acrobatreader_local
 adobereaderdc
 affinityapp
+airdropassistant
 aldente
 alttab
 androidfiletransfer

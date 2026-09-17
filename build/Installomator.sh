@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-09-03"
+VERSIONDATE="2026-09-17"
 
 # MARK: Functions
 
@@ -1556,6 +1556,16 @@ affinityapp)
     downloadURL="https://downloads.affinity.studio/Affinity.dmg"
     appNewVersion=$(curl -fsL "https://affinity-update.s3.amazonaws.com/mac2/retail/studiopro.xml" | xpath '//rss/channel/item/sparkle:deltas/enclosure/@sparkle:shortVersionString' 2>/dev/null | cut -d '"' -f 2)
     expectedTeamID="5HD2ARTBFS"
+    ;;
+airdropassistant)
+    name="Air Drop Assistant"
+    type="dmg"
+    if [[ $(arch) == "arm64" ]]; then
+        archiveName="AirDropAssistant.dmg"
+    fi
+    downloadURL="$(downloadURLFromGit boberito AirDropAssistant)"
+    appNewVersion="$(versionFromGit boberito AirDropAssistant)"
+    expectedTeamID="2WUMX954UB"
     ;;
 aldente)
     name="AlDente"
