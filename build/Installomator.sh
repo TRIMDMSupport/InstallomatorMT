@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-09-21"
+VERSIONDATE="2026-09-24"
 
 # MARK: Functions
 
@@ -1726,13 +1726,12 @@ dockutil)
 drawio)
     name="draw.io"
     type="dmg"
-    appNewVersion="26.0.4"
     archiveName="draw.io-universal-[0-9.]*.dmg"
-    downloadURL="https://github.com/jgraph/drawio-desktop/releases/download/v${appNewVersion}/draw.io-universal-${appNewVersion}.dmg"
+    downloadURL="$(downloadURLFromGit jgraph drawio-desktop)"
+    appNewVersion="$(versionFromGit jgraph drawio-desktop)"
     expectedTeamID="UZEUFB4N53"
     blockingProcesses=( draw.io )
-    ;;
-dre_console)
+    ;;dre_console)
     name="Dameware Remote Everywhere Console"
     type="appInDmgInZip"
     downloadURL="https://swi-rc.cdn-sw.net/dre/mac/DRE_Mac_Console.zip"
