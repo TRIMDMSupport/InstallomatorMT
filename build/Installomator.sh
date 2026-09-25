@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-09-24"
+VERSIONDATE="2026-09-25"
 
 # MARK: Functions
 
@@ -2308,6 +2308,18 @@ swiftdialog)
     downloadURL="$(downloadURLFromGit swiftDialog swiftDialog)"
     appNewVersion="$(versionFromGit swiftDialog swiftDialog)"
     expectedTeamID="PWA5E9TQ59"
+    ;;
+tableaureader)
+    name="Tableau Reader"
+    type="pkgInDmg"
+    packageID="com.tableausoftware.Reader.app"
+    if [[ $(arch) == "arm64" ]]; then
+        downloadURL="https://www.tableau.com/downloads/reader/mac-arm64"
+    elif [[ $(arch) == "i386" ]]; then
+        downloadURL="https://www.tableau.com/downloads/reader/mac"
+    fi
+    appNewVersion=${$(curl -fsIL "$downloadURL" | sed -nE 's/.*TableauReader-([0-9]+-[0-9]+-[0-9]+).*/\1/p')//-/.}
+    expectedTeamID="QJ4XPRK37C"
     ;;
 topnotch)
     name="TopNotch"

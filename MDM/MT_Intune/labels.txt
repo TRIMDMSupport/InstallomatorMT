@@ -67,6 +67,7 @@ stats
 sublimetext
 supportcompanion
 swiftdialog
+tableaureader
 topnotch
 utm
 vlc
