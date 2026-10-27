@@ -339,7 +339,7 @@ if [[ $(/usr/bin/arch) == "arm64" ]]; then
     fi
 fi
 VERSION="10.6MT"
-VERSIONDATE="2026-10-09"
+VERSIONDATE="2026-10-27"
 
 # MARK: Functions
 
@@ -1661,8 +1661,8 @@ coconutbattery)
     name="coconutBattery"
     type="zip"
     coconutXml=$(curl -sL "https://coconut-flavour.com/updates/coconutBattery_4.xml" | sed 's/ xmlns[^=]*="[^"]*"//g; s/sparkle://g')
-    downloadURL=$(echo "$coconutXml" | xpath "string(//channel/item[not(channel)][1]/enclosure/@url)")
-    appNewVersion=$(echo "$coconutXml" | xpath "string(//channel/item[not(channel)][1]/shortVersionString)")
+    downloadURL=$(echo "$coconutXml" | xpath -q -e "string(//channel/item[not(channel)][1]/enclosure/@url)")
+    appNewVersion=$(echo "$coconutXml" | xpath -q -e "string(//channel/item[not(channel)][1]/shortVersionString)")
     expectedTeamID="R5SC3K86L5"
     ;;
 cursorai)
